@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.sample" >
+    package="com.example.sample">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -11,7 +11,10 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Sample"
-        android:usesCleartextTraffic="true" >
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".Search"
+            android:exported="true" />
         <activity
             android:name=".Friends"
             android:exported="true" />
@@ -29,7 +32,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="KonnectIt" >
+            android:label="KonnectIt">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
