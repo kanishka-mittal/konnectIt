@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,6 +40,12 @@ public class SearchUsersRecViewAdapter extends RecyclerView.Adapter<SearchUsersR
     public void onBindViewHolder(@NonNull SearchUsersRecViewAdapter.ViewHolder holder, int position) {
         holder.firstName.setText(users.get(position).getFirstName());
         holder.userName.setText(users.get(position).getUserName());
+        holder.addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(ctx, "this button will add this person as a friend...functionality not added yet", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -53,11 +60,13 @@ public class SearchUsersRecViewAdapter extends RecyclerView.Adapter<SearchUsersR
     public class ViewHolder extends RecyclerView.ViewHolder{
         private TextView userName,firstName;
         private RelativeLayout userListItemParent;
+        private Button addBtn;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             userName=itemView.findViewById(R.id.userName);
             firstName=itemView.findViewById(R.id.firstName);
             userListItemParent=itemView.findViewById(R.id.userListItemParent);
+            addBtn=itemView.findViewById(R.id.addBtn);
         }
     }
 
