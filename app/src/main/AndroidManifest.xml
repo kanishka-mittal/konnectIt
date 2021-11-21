@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Sample"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".EditProfile"
+            android:exported="true" />
+        <activity
             android:name=".Search"
             android:exported="true" />
         <activity

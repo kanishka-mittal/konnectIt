@@ -31,8 +31,8 @@ import java.net.URLEncoder;
 public class BackgroundTask extends AsyncTask<String,String,String> {
     Context ctx;
     Activity activity;
-    AlertDialog.Builder builder;
-    AlertDialog alertDialog;
+//    AlertDialog.Builder builder;
+//    AlertDialog alertDialog;
     int userId;
     BackgroundTask(Context ctx){
         this.ctx=ctx;
@@ -41,8 +41,8 @@ public class BackgroundTask extends AsyncTask<String,String,String> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        builder=new AlertDialog.Builder(ctx);
-        builder.setTitle("Login Information");
+        //builder=new AlertDialog.Builder(ctx);
+        //builder.setTitle("Login Information");
     }
     @Override
     protected String doInBackground(String... params) {
@@ -122,26 +122,34 @@ public class BackgroundTask extends AsyncTask<String,String,String> {
     @Override
     protected void onPostExecute(String result) {
         if(result.equals("Registration Success")){
+            Intent intent=new Intent(activity,EditProfile.class);
+            intent.putExtra("userId",userId);
+            activity.startActivity(intent);
             Toast.makeText(ctx, result, Toast.LENGTH_SHORT).show();
         }else{
-            builder.setPositiveButton("Notifications", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    Intent intent = new Intent(ctx,Notifications.class);
-                    intent.putExtra("userId",userId);
-                    ctx.startActivity(intent);
-                }
-            });
-            builder.setNegativeButton("Friends", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    Intent intent = new Intent(ctx,Friends.class);
-                    intent.putExtra("userId",userId);
-                    ctx.startActivity(intent);
-                }
-            });
-            alertDialog = builder.create();
-            alertDialog.show();
+//            builder.setPositiveButton("Notifications", new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialogInterface, int i) {
+//                    Intent intent = new Intent(ctx,Notifications.class);
+//                    intent.putExtra("userId",userId);
+//                    ctx.startActivity(intent);
+//                }
+//            });
+//            builder.setNegativeButton("Friends", new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialogInterface, int i) {
+//                    Intent intent = new Intent(ctx,Friends.class);
+//                    intent.putExtra("userId",userId);
+//                    ctx.startActivity(intent);
+//                }
+//            });
+//            alertDialog = builder.create();
+//            alertDialog.show();
+            //TODO currently being redirected to friends page,,,, chnage this to news feed page
+            Intent intent=new Intent(activity,Friends.class);
+            intent.putExtra("userId",userId);
+            activity.startActivity(intent);
+            //Toast.makeText(ctx, result, Toast.LENGTH_SHORT).show();
         }
     }
 
