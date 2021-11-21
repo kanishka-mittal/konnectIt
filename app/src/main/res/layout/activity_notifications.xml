@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Notifications">
+    tools:context=".Notifications"
+    android:background="@color/black">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,20 +25,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/edtSearch"
-            android:hint="Seach for people"
-            android:textColorHint="@color/yellow2"/>
+            android:hint="Search for people"
+            android:textColorHint="@color/yellow2"
+            android:textColor="@color/yellow"/>
     </LinearLayout>
-<!--    <TextView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@+id/searchLinearLayout"-->
-<!--        android:id="@+id/notifHeader"-->
-<!--        android:text="Notifications"-->
-<!--        android:gravity="center_horizontal"-->
-<!--        android:paddingTop="10dp"-->
-<!--        android:paddingBottom="10dp"-->
-<!--        android:textSize="25dp"-->
-<!--        />-->
     <androidx.recyclerview.widget.RecyclerView
         android:layout_below="@+id/searchLinearLayout"
         android:layout_width="match_parent"

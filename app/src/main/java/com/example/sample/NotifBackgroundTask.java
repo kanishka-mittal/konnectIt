@@ -78,15 +78,17 @@ public class NotifBackgroundTask extends AsyncTask<String, Notification, Void> {
                     stringBuilder.append(line+"\n");
                 }
                 String jsonString=stringBuilder.toString().trim();
-                System.out.println(jsonString);
-                JSONObject jsonObject=new JSONObject(jsonString);
-                JSONArray jsonArray=jsonObject.getJSONArray("notifications");
-                int count=0;
-                while(count<jsonArray.length()){
-                    JSONObject notifObject=jsonArray.getJSONObject(count);
-                    count++;
-                    Notification notification=new Notification(notifObject.getString("notifText"),notifObject.getString("userName"),notifObject.getInt("id"));
-                    publishProgress(notification);
+                //System.out.println(jsonString);
+                if(!jsonString.equals("")){
+                    JSONObject jsonObject=new JSONObject(jsonString);
+                    JSONArray jsonArray=jsonObject.getJSONArray("notifications");
+                    int count=0;
+                    while(count<jsonArray.length()){
+                        JSONObject notifObject=jsonArray.getJSONObject(count);
+                        count++;
+                        Notification notification=new Notification(notifObject.getString("notifText"),notifObject.getString("userName"),notifObject.getInt("id"));
+                        publishProgress(notification);
+                    }
                 }
                 bufferedReader.close();
                 is.close();

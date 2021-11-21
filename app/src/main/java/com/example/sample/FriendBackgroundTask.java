@@ -76,17 +76,20 @@ public class FriendBackgroundTask extends AsyncTask<String,Friend,Void> {
                     stringBuilder.append(line+"\n");
                 }
                 String jsonString=stringBuilder.toString().trim();
-                System.out.println(jsonString);
-                JSONObject jsonObject=new JSONObject(jsonString);
-                JSONArray jsonArray=jsonObject.getJSONArray("friends");
-                System.out.println(jsonArray);
-                int count=0;
-                while(count<jsonArray.length()){
-                    JSONObject friendObject=jsonArray.getJSONObject(count);
-                    count++;
-                    Friend friend=new Friend(friendObject.getString("userName"),friendObject.getString("firstName"),friendObject.getInt("user_id"));
-                    publishProgress(friend);
+                //System.out.println(jsonString);
+                if(!jsonString.equals("")){
+                    JSONObject jsonObject=new JSONObject(jsonString);
+                    JSONArray jsonArray=jsonObject.getJSONArray("friends");
+                    System.out.println(jsonArray);
+                    int count=0;
+                    while(count<jsonArray.length()){
+                        JSONObject friendObject=jsonArray.getJSONObject(count);
+                        count++;
+                        Friend friend=new Friend(friendObject.getString("userName"),friendObject.getString("firstName"),friendObject.getInt("user_id"));
+                        publishProgress(friend);
+                    }
                 }
+
                 bufferedReader.close();
                 is.close();
                 httpURLConnection.disconnect();

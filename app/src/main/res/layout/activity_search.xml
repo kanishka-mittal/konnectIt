@@ -5,24 +5,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Search"
-    android:padding="5dp">
+    android:background="@color/black">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:id="@+id/searchLinearLayout">
+        android:id="@+id/searchLinearLayout"
+        android:padding="5dp"
+        android:background="@color/black">
         <ImageButton
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@mipmap/ic_search"
-            android:backgroundTint="@color/grey"
             android:id="@+id/btnSearch"
+            android:backgroundTint="@color/black"
             />
-
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/edtSearch"
-            android:hint="Seach for people"/>
+            android:hint="Search for people"
+            android:textColorHint="@color/yellow2"
+            android:textColor="@color/yellow"/>
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/searchLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchFriendsRecView"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/searchFriendsRecView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchUsersRecView"/>
 </RelativeLayout>
