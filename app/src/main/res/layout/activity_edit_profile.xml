@@ -71,7 +71,6 @@
         app:boxCornerRadiusTopEnd="15dp"
         app:boxCornerRadiusTopStart="15dp"
         app:hintTextColor="@color/black">
-
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -124,7 +123,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/submitBtn"
+        android:id="@+id/btnSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
