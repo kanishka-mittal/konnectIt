@@ -123,6 +123,10 @@ public class FriendBackgroundTask extends AsyncTask<String,Friend,Void> {
                 bufferedReader.close();
                 is.close();
                 httpURLConnection.disconnect();
+                Intent intent=new Intent(activity,Friends.class);
+                intent.putExtra("userId",userId);
+                activity.startActivity(intent);
+                activity.finish();
                 return null;
             }catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -141,5 +145,4 @@ public class FriendBackgroundTask extends AsyncTask<String,Friend,Void> {
         friends.add(values[0]);
         friendRecViewAdapter.notifyDataSetChanged();
     }
-
 }

@@ -125,6 +125,7 @@ public class BackgroundTask extends AsyncTask<String,String,String> {
             Intent intent=new Intent(activity,EditProfile.class);
             intent.putExtra("userId",userId);
             activity.startActivity(intent);
+            activity.finish();
             Toast.makeText(ctx, result, Toast.LENGTH_SHORT).show();
         }else{
 //            builder.setPositiveButton("Notifications", new DialogInterface.OnClickListener() {
@@ -146,9 +147,10 @@ public class BackgroundTask extends AsyncTask<String,String,String> {
 //            alertDialog = builder.create();
 //            alertDialog.show();
             //TODO currently being redirected to friends page,,,, chnage this to news feed page
-            Intent intent=new Intent(activity,Friends.class);
+            Intent intent=new Intent(activity,Notifications.class);
             intent.putExtra("userId",userId);
             activity.startActivity(intent);
+            activity.finish();
             //Toast.makeText(ctx, result, Toast.LENGTH_SHORT).show();
         }
     }

@@ -1,5 +1,6 @@
 package com.example.sample;
 
+import android.app.Activity;
 import android.content.Context;
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
@@ -45,13 +46,15 @@ public class NotifRecViewAdapter extends RecyclerView.Adapter<NotifRecViewAdapte
         holder.notifLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TransitionManager.beginDelayedTransition(holder.cardLinearLayout,new AutoTransition());
+                //TransitionManager.beginDelayedTransition(holder.cardLinearLayout,new AutoTransition());
                 if(holder.profilepic.getVisibility()==View.GONE){
                     holder.profilepic.setVisibility(View.VISIBLE);
                     holder.dustbin.setVisibility(View.GONE);
+                    holder.userName.setTextColor(((Activity)context).getResources().getColor(R.color.yellow));
                 }else{
                     holder.profilepic.setVisibility(View.GONE);
                     holder.dustbin.setVisibility(View.VISIBLE);
+                    holder.userName.setTextColor(((Activity)context).getResources().getColor(R.color.red));
                 }
             }
         });

@@ -122,6 +122,10 @@ public class NotifBackgroundTask extends AsyncTask<String, Notification, Void> {
                 bufferedReader.close();
                 is.close();
                 httpURLConnection.disconnect();
+                Intent intent=new Intent(activity,Notifications.class);
+                intent.putExtra("userId",userId);
+                activity.startActivity(intent);
+                activity.finish();
                 return null;
             }catch (MalformedURLException e) {
                 e.printStackTrace();
