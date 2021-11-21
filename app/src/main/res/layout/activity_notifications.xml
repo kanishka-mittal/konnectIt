@@ -4,40 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Notifications"
-    android:padding="5dp">
+    tools:context=".Notifications">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:id="@+id/searchLinearLayout">
+        android:id="@+id/searchLinearLayout"
+        android:padding="5dp"
+        android:background="@color/black">
         <ImageButton
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/ic_search"
-            android:backgroundTint="@color/grey"
+            android:src="@mipmap/ic_search"
             android:id="@+id/btnSearch"
+            android:backgroundTint="@color/black"
             />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/edtSearch"
-            android:hint="Seach for people"/>
+            android:hint="Seach for people"
+            android:textColorHint="@color/yellow2"/>
     </LinearLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/searchLinearLayout"
-        android:id="@+id/notifHeader"
-        android:text="Notifications"
-        android:gravity="center_horizontal"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:textSize="25dp"
-        />
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/searchLinearLayout"-->
+<!--        android:id="@+id/notifHeader"-->
+<!--        android:text="Notifications"-->
+<!--        android:gravity="center_horizontal"-->
+<!--        android:paddingTop="10dp"-->
+<!--        android:paddingBottom="10dp"-->
+<!--        android:textSize="25dp"-->
+<!--        />-->
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@+id/notifHeader"
+        android:layout_below="@+id/searchLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/notifsRecView"/>
