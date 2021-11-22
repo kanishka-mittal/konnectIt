@@ -30,7 +30,7 @@
                     android:layout_height="60dp"
                     android:src="@mipmap/ic_user"
                     android:layout_weight="0"
-
+                    android:background="@color/black"
                     />
             </com.google.android.material.card.MaterialCardView>
 
