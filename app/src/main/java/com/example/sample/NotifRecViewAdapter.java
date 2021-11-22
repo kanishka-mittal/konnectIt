@@ -45,7 +45,7 @@ public class NotifRecViewAdapter extends RecyclerView.Adapter<NotifRecViewAdapte
         int id=notifications.get(position).getId();
         holder.notification.setText(notifications.get(position).getNotif());
         holder.userName.setText(notifications.get(position).getSendUser());
-        //Glide.with(context).asBitmap().load("http://127.0.0.1/konnectIt/profilepics/61.png\n").into(holder.profilepic);
+        Glide.with(context).asBitmap().load("http://10.0.2.2/konnectIt/profilepics/61.png").into(holder.profilepic);
         holder.notifLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

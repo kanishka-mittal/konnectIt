@@ -153,8 +153,8 @@ public class BackgroundTask extends AsyncTask<String,String,String> {
 //            });
 //            alertDialog = builder.create();
 //            alertDialog.show();
-            //TODO currently being redirected to friends page,,,, chnage this to news feed page
-            Intent intent=new Intent(activity,Notifications.class);
+            //TODO currently being redirected to friends page,,,, change this to news feed page
+            Intent intent=new Intent(activity,Friends.class);
             intent.putExtra("userId",userId);
             activity.startActivity(intent);
             activity.finish();

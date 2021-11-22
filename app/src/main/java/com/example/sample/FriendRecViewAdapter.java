@@ -7,12 +7,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -42,6 +45,7 @@ public class FriendRecViewAdapter extends RecyclerView.Adapter<FriendRecViewAdap
         holder.firstName.setText(friends.get(position).getFirstName());
         holder.userName.setText(friends.get(position).getUserName());
         int friendId=friends.get(position).getUserId();
+        Glide.with(ctx).asBitmap().error(R.mipmap.ic_user).load("http://10.0.2.2/konnectit/profilepics/"+Integer.toString(friendId)+".png").into(holder.profilepic);
         holder.remBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,12 +69,14 @@ public class FriendRecViewAdapter extends RecyclerView.Adapter<FriendRecViewAdap
         private TextView userName,firstName;
         private RelativeLayout friendListItemParent;
         private Button remBtn;
+        private ImageView profilepic;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             userName=itemView.findViewById(R.id.userName);
             firstName=itemView.findViewById(R.id.firstName);
             friendListItemParent=itemView.findViewById(R.id.friendListItemParent);
             remBtn=itemView.findViewById(R.id.remBtn);
+            profilepic=itemView.findViewById(R.id.profilepic);
         }
     }
 
