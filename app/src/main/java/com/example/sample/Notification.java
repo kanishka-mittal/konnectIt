@@ -3,12 +3,17 @@ package com.example.sample;
 public class Notification {
     private String notif;
     private String sendUser;
-    private int id;
+    private int id,sendUserId;
 
-    public Notification(String notif, String sendUser, int id) {
+    public Notification(String notif, String sendUser, int id,int sendUserId) {
         this.notif = notif;
         this.sendUser = sendUser;
         this.id = id;
+        this.sendUserId=sendUserId;
+    }
+
+    public int getSendUserId() {
+        return sendUserId;
     }
 
     public int getId() {

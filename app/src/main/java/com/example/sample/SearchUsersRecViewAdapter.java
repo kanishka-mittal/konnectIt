@@ -6,12 +6,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -40,6 +43,7 @@ public class SearchUsersRecViewAdapter extends RecyclerView.Adapter<SearchUsersR
     public void onBindViewHolder(@NonNull SearchUsersRecViewAdapter.ViewHolder holder, int position) {
         holder.firstName.setText(users.get(position).getFirstName());
         holder.userName.setText(users.get(position).getUserName());
+        Glide.with(ctx).asBitmap().placeholder(R.mipmap.ic_user).error(R.mipmap.ic_user).load("http://10.0.2.2/konnectit/profilepics/"+Integer.toString(users.get(position).getUserId())+".png").into(holder.profilepic);
         holder.addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,12 +65,14 @@ public class SearchUsersRecViewAdapter extends RecyclerView.Adapter<SearchUsersR
         private TextView userName,firstName;
         private RelativeLayout userListItemParent;
         private Button addBtn;
+        private ImageView profilepic;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             userName=itemView.findViewById(R.id.userName);
             firstName=itemView.findViewById(R.id.firstName);
             userListItemParent=itemView.findViewById(R.id.userListItemParent);
             addBtn=itemView.findViewById(R.id.addBtn);
+            profilepic=itemView.findViewById(R.id.profilepic);
         }
     }
 

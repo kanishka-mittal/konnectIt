@@ -29,7 +29,7 @@
                     android:id="@+id/profilepic"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:src="@mipmap/i61"
+                    android:src="@mipmap/ic_user"
                     android:layout_weight="0"
                     />
             </com.google.android.material.card.MaterialCardView>
