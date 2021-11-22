@@ -18,4 +18,5 @@
     <string name="remNotifUrl">http://10.0.2.2//konnectit/remNotifs.php</string>
     <string name="searchFriendsUrl">http://10.0.2.2//konnectit/searchFriends.php</string>
     <string name="searchUsersUrl">http://10.0.2.2//konnectit/searchUsers.php</string>
+    <string name="uploadUrl">http://10.0.2.2//konnectit/upload.php</string>
 </resources>

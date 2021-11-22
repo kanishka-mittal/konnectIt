@@ -18,6 +18,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 public class NotifRecViewAdapter extends RecyclerView.Adapter<NotifRecViewAdapter.ViewHolder>{
@@ -43,6 +45,7 @@ public class NotifRecViewAdapter extends RecyclerView.Adapter<NotifRecViewAdapte
         int id=notifications.get(position).getId();
         holder.notification.setText(notifications.get(position).getNotif());
         holder.userName.setText(notifications.get(position).getSendUser());
+        //Glide.with(context).asBitmap().load("http://127.0.0.1/konnectIt/profilepics/61.png\n").into(holder.profilepic);
         holder.notifLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -170,6 +170,7 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:src="@mipmap/ic_user"
+            android:id="@+id/uploadProfilePic"
             />
     </com.google.android.material.card.MaterialCardView>
 

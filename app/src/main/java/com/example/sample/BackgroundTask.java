@@ -31,6 +31,7 @@ import java.net.URLEncoder;
 public class BackgroundTask extends AsyncTask<String,String,String> {
     Context ctx;
     Activity activity;
+    String method;
 //    AlertDialog.Builder builder;
 //    AlertDialog alertDialog;
     int userId;
@@ -48,7 +49,7 @@ public class BackgroundTask extends AsyncTask<String,String,String> {
     protected String doInBackground(String... params) {
         String regUrl="http://10.0.2.2//konnectit/register.php";
         String logInUrl="http://10.0.2.2//konnectit/login.php";
-        String method=params[0];
+        method=params[0];
         if(method.equals("register")) {
             String username = params[1];
             String fName = params[2];
@@ -67,9 +68,15 @@ public class BackgroundTask extends AsyncTask<String,String,String> {
                 bufferedWriter.close();
                 os.close();
                 InputStream is = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(is));
+                String response="";
+                String line="";
+                while((line=bufferedReader.readLine())!=null){
+                    response+=line;
+                }
                 is.close();
                 httpURLConnection.disconnect();
-                return "Registration Success";
+                return response;
             } catch (MalformedURLException | ProtocolException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -121,12 +128,12 @@ public class BackgroundTask extends AsyncTask<String,String,String> {
 
     @Override
     protected void onPostExecute(String result) {
-        if(result.equals("Registration Success")){
+        if(method.equals("register")){
             Intent intent=new Intent(activity,EditProfile.class);
-            intent.putExtra("userId",userId);
+            intent.putExtra("userId",Integer.valueOf(result));
             activity.startActivity(intent);
             activity.finish();
-            Toast.makeText(ctx, result, Toast.LENGTH_SHORT).show();
+            Toast.makeText(ctx, "Registration Success", Toast.LENGTH_SHORT).show();
         }else{
 //            builder.setPositiveButton("Notifications", new DialogInterface.OnClickListener() {
 //                @Override
