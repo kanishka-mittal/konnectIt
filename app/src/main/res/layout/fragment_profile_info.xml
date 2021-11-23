@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Profile_info"
+    android:background="@color/black">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:id="@+id/age"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Age: NA"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/mobile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="Mobile: NA"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_below="@+id/age"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="Email: NA"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_below="@+id/mobile"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/gender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="Gender: NA"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_below="@+id/email"
+        android:layout_marginTop="10dp"/>
+    <TextView
+        android:id="@+id/bio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="Bio: NA"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_below="@+id/gender"
+        android:layout_marginTop="10dp"/>
+
+
+</RelativeLayout>
