@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Sample</string>
+    <string name="my_account">My Account</string>
+    <string name="login">Login</string>
+    <string name="icon1">icon1</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign In</string>
+    <string name="icon3">icon3</string>
+    <string name="icon2">icon2</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_up_text">SIGN UP</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="first_name">First Name</string>
+    <string name="friendUrl">http://10.0.2.2//konnectit/friends.php</string>
+    <string name="remFriendUrl">http://10.0.2.2//konnectit/remFriends.php</string>
+    <string name="notifUrl">http://10.0.2.2//konnectit/notifications.php</string>
+    <string name="remNotifUrl">http://10.0.2.2//konnectit/remNotifs.php</string>
+    <string name="searchFriendsUrl">http://10.0.2.2//konnectit/searchFriends.php</string>
+    <string name="searchUsersUrl">http://10.0.2.2//konnectit/searchUsers.php</string>
+</resources>
