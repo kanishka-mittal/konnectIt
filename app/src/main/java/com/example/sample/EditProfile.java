@@ -8,7 +8,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 
@@ -17,6 +19,8 @@ import java.io.IOException;
 public class EditProfile extends AppCompatActivity {
     private MaterialButton btnSubmit;
     private int userId;
+    EditText lastName,Bio,Gender,mobNum,Age;
+    String lastname,bio,gender,mobnum,age;
     ImageView uploadProfilePic;
     private Bitmap bitmap;
     @Override
@@ -30,21 +34,37 @@ public class EditProfile extends AppCompatActivity {
             System.out.println(userId);
             System.out.println("Yo");
         }
+        Gender=findViewById(R.id.edtGender1);
+        mobNum=findViewById(R.id.edtMobile1);
+        Bio=findViewById(R.id.edtBio1);
+        lastName=findViewById(R.id.edtLastName1);
+        Age=findViewById(R.id.edtAge1);
+
         btnSubmit=findViewById(R.id.btnSubmit);
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditProfileBackgroundTask editProfileBackgroundTask=new EditProfileBackgroundTask(userId,EditProfile.this,bitmap);
-                editProfileBackgroundTask.execute();
-                finish();
-                Intent intent=new Intent(EditProfile.this,Notifications.class);
-                intent.putExtra("userId",userId);
-                startActivity(intent);
+                gender=Gender.getText().toString();
+                mobnum=mobNum.getText().toString();
+                bio=Bio.getText().toString();
+                lastname=lastName.getText().toString();
+                age=Age.getText().toString();
 
+                if(lastname.equals("")&&age.equals("")&&gender.equals("")&&mobnum.equals("")&&bio.equals("")){
+                    Toast.makeText(EditProfile.this, "Please fill atleast one field!", Toast.LENGTH_SHORT).show();
+                }else{
+                    EditProfileBackgroundTask editProfileBackgroundTask=new EditProfileBackgroundTask(userId,EditProfile.this,bitmap,gender,mobnum,bio, lastname,age);
+                    editProfileBackgroundTask.execute();
+                    finish();
+                    Intent intent=new Intent(EditProfile.this,Notifications.class);
+                    intent.putExtra("userId",userId);
+                    startActivity(intent);
+                }
             }
         });
         uploadProfilePic=findViewById(R.id.uploadProfilePic);
         uploadProfilePic.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent();
@@ -53,6 +73,13 @@ public class EditProfile extends AppCompatActivity {
                 startActivityForResult(Intent.createChooser(intent, "Select Image From Gallery"), 1);
             }
         });
+    }
+
+    public void nextScreen(View view){
+        finish();
+        Intent intent=new Intent(EditProfile.this,Notifications.class);
+        intent.putExtra("userId",userId);
+        startActivity(intent);
     }
     //TODO read
     @Override

@@ -28,13 +28,14 @@
         app:hintTextColor="@color/black">
 
         <EditText
+            android:id="@+id/edtLastName1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Last Name" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edtMobile"
+        android:id="@+id/edtBio"
         android:layout_width="275dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
@@ -51,34 +52,14 @@
         app:hintTextColor="@color/black">
 
         <EditText
+            android:id="@+id/edtBio1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Say something about yourself" />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edtBio"
+        android:id="@+id/edtMobile"
         android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="30dp"
-        app:boxStrokeColor="@color/black"
-        app:boxStrokeWidth="3dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edtMobile"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:boxCornerRadiusBottomEnd="15dp"
-        app:boxCornerRadiusBottomStart="15dp"
-        app:boxCornerRadiusTopEnd="15dp"
-        app:boxCornerRadiusTopStart="15dp"
-        app:hintTextColor="@color/black">
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Contact Number" />
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edtAge"
-        android:layout_width="225dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="30dp"
@@ -92,8 +73,31 @@
         app:boxCornerRadiusTopEnd="15dp"
         app:boxCornerRadiusTopStart="15dp"
         app:hintTextColor="@color/black">
+        <EditText
+            android:id="@+id/edtMobile1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Contact Number" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edtAge"
+        android:layout_width="225dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="30dp"
+        app:boxStrokeColor="@color/black"
+        app:boxStrokeWidth="3dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edtMobile"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxCornerRadiusBottomEnd="15dp"
+        app:boxCornerRadiusBottomStart="15dp"
+        app:boxCornerRadiusTopEnd="15dp"
+        app:boxCornerRadiusTopStart="15dp"
+        app:hintTextColor="@color/black">
 
         <EditText
+            android:id="@+id/edtAge1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Age" />
@@ -116,6 +120,7 @@
         app:hintTextColor="@color/black">
 
         <EditText
+            android:id="@+id/edtGender1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Gender" />
@@ -173,6 +178,21 @@
             android:id="@+id/uploadProfilePic"
             />
     </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:onClick="nextScreen"
+        android:text="or Skip"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/uploadImage"
+        app:layout_constraintHorizontal_bias="0.202"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSubmit"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

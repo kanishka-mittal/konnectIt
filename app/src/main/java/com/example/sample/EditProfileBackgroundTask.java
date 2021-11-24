@@ -23,6 +23,7 @@ import java.net.URLEncoder;
 
 public class EditProfileBackgroundTask extends AsyncTask<Void,Void,String> {
     int userId;
+    String lastname,bio,gender,mobnum,age;
     Context ctx;
     Activity activity;
     Bitmap bitmap;
@@ -31,6 +32,22 @@ public class EditProfileBackgroundTask extends AsyncTask<Void,Void,String> {
     final String convertImage;
     public EditProfileBackgroundTask(int userId, Context ctx, Bitmap bitmap) {
         this.userId = userId;
+        this.ctx = ctx;
+        this.bitmap = bitmap;
+        activity=(Activity) ctx;
+        byteArrayOutputStream=new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
+        byteArrayVar=byteArrayOutputStream.toByteArray();
+        convertImage= Base64.encodeToString(byteArrayVar,Base64.DEFAULT);
+    }
+
+    public EditProfileBackgroundTask(int userId, Context ctx, Bitmap bitmap,String Gender,String mobNum,String Bio,String lastName,String Age) {
+        this.userId = userId;
+        this.gender=Gender;
+        this.age=Age;
+        this.lastname=lastName;
+        this.bio=Bio;
+        this.mobnum=mobNum;
         this.ctx = ctx;
         this.bitmap = bitmap;
         activity=(Activity) ctx;
@@ -62,7 +79,7 @@ public class EditProfileBackgroundTask extends AsyncTask<Void,Void,String> {
             httpURLConnection.setDoOutput(true);
             httpURLConnection.setDoInput(true);
             bufferedWriter=new BufferedWriter(new OutputStreamWriter(httpURLConnection.getOutputStream(),"UTF-8"));
-            String data= URLEncoder.encode("userId", "UTF-8") + "=" + URLEncoder.encode(Integer.toString(userId), "UTF-8") + "&" + URLEncoder.encode("image_path", "UTF-8") + "=" + URLEncoder.encode(convertImage, "UTF-8");
+            String data= URLEncoder.encode("userId", "UTF-8") + "=" + URLEncoder.encode(Integer.toString(userId), "UTF-8") + "&" + URLEncoder.encode("image_path", "UTF-8") + "=" + URLEncoder.encode(convertImage, "UTF-8")+ "&" + URLEncoder.encode("lastName", "UTF-8") + "=" + URLEncoder.encode(lastname, "UTF-8")+ "&" + URLEncoder.encode("Bio", "UTF-8") + "=" + URLEncoder.encode(bio, "UTF-8")+ "&" + URLEncoder.encode("mobNum", "UTF-8") + "=" + URLEncoder.encode(mobnum, "UTF-8")+ "&" + URLEncoder.encode("Age", "UTF-8") + "=" + URLEncoder.encode(age, "UTF-8")+ "&" + URLEncoder.encode("Gender", "UTF-8") + "=" + URLEncoder.encode(gender, "UTF-8");
             System.out.println(userId);
             bufferedWriter.write(data);
             bufferedWriter.flush();
