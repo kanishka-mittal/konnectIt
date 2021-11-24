@@ -39,6 +39,7 @@
         <entry key="app/src/main/res/drawable/round.xml" value="0.21354166666666666" />
         <entry key="app/src/main/res/drawable/round2.xml" value="0.21354166666666666" />
         <entry key="app/src/main/res/drawable/round3.xml" value="0.21354166666666666" />
+        <entry key="app/src/main/res/drawable/settings.xml" value="0.22395833333333334" />
         <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/layout/activity_friends.xml" value="0.2078125" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.363145826207992" />
@@ -50,6 +51,7 @@
         <entry key="app/src/main/res/layout/fragment_profile_info.xml" value="0.2078125" />
         <entry key="app/src/main/res/layout/fragment_profile_post.xml" value="0.20729166666666668" />
         <entry key="app/src/main/res/layout/friends_list_item.xml" value="0.21666666666666667" />
+        <entry key="app/src/main/res/menu/profilemenu.xml" value="0.2078125" />
       </map>
     </option>
   </component>
