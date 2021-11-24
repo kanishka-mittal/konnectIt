@@ -128,7 +128,7 @@ public class FriendBackgroundTask extends AsyncTask<String,Friend,Void> {
                 activity.startActivity(intent);
                 activity.finish();
                 return null;
-            }catch (MalformedURLException e) {
+            } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (ProtocolException e) {
                 e.printStackTrace();

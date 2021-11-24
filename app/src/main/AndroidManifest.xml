@@ -17,6 +17,15 @@
             android:name=".Profile"
             android:exported="false" />
         <activity
+            android:name=".Post"
+            android:exported="true" />
+        <activity
+            android:name=".NewsFeedAdd"
+            android:exported="true" />
+        <activity
+            android:name=".NewsFeed"
+            android:exported="true" />
+        <activity
             android:name=".EditProfile"
             android:exported="true" />
         <activity
