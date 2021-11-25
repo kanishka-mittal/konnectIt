@@ -158,7 +158,6 @@ public class BackgroundTask extends AsyncTask<String,String,String> {
             intent.putExtra("userId",userId);
             activity.startActivity(intent);
             activity.finish();
-            //Toast.makeText(ctx, result, Toast.LENGTH_SHORT).show();
         }
     }
 

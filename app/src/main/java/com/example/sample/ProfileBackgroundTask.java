@@ -54,7 +54,6 @@ public class ProfileBackgroundTask extends AsyncTask<Void, Void, String>{
 
     @Override
     protected void onPostExecute(String info) {
-        super.onPreExecute();
 
         try{
             JSONArray array = new JSONArray(info);
@@ -72,10 +71,10 @@ public class ProfileBackgroundTask extends AsyncTask<Void, Void, String>{
                 bio = profileinfo.getString("bio");
                 String fn;
                 if(lastName=="null"){
-                     fn = firstName;
+                    fn = firstName;
                 }
                 else {
-                     fn = firstName + " " +lastName;
+                    fn = firstName + " " +lastName;
                 }
                 fullname.setText(fn);
                 Username.setText(username);
@@ -137,5 +136,4 @@ public class ProfileBackgroundTask extends AsyncTask<Void, Void, String>{
         return info;
     }
 }
-
 

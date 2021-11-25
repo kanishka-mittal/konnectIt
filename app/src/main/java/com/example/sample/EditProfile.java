@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 public class EditProfile extends AppCompatActivity {
@@ -23,6 +25,9 @@ public class EditProfile extends AppCompatActivity {
     String lastname,bio,gender,mobnum,age;
     ImageView uploadProfilePic;
     private Bitmap bitmap;
+    ByteArrayOutputStream byteArrayOutputStream;
+    byte[] byteArrayVar;
+    String convertImage="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +58,7 @@ public class EditProfile extends AppCompatActivity {
                 if(lastname.equals("")&&age.equals("")&&gender.equals("")&&mobnum.equals("")&&bio.equals("")){
                     Toast.makeText(EditProfile.this, "Please fill atleast one field!", Toast.LENGTH_SHORT).show();
                 }else{
-                    EditProfileBackgroundTask editProfileBackgroundTask=new EditProfileBackgroundTask(userId,EditProfile.this,bitmap,gender,mobnum,bio, lastname,age);
+                    EditProfileBackgroundTask editProfileBackgroundTask=new EditProfileBackgroundTask(userId,EditProfile.this,convertImage,gender,mobnum,bio, lastname,age);
                     editProfileBackgroundTask.execute();
                     finish();
                     Intent intent=new Intent(EditProfile.this,Notifications.class);
@@ -90,6 +95,10 @@ public class EditProfile extends AppCompatActivity {
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
                 uploadProfilePic.setImageBitmap(bitmap);
+                byteArrayOutputStream=new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
+                byteArrayVar=byteArrayOutputStream.toByteArray();
+                convertImage= Base64.encodeToString(byteArrayVar,Base64.DEFAULT);
             } catch (IOException e) {
                 e.printStackTrace();
             }

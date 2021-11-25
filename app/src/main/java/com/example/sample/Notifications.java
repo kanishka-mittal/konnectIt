@@ -17,6 +17,7 @@ public class Notifications extends AppCompatActivity {
     private ImageButton btnSearch;
     private String searchTxt;
     private EditText edtSearch;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -3,7 +3,8 @@ package com.example.sample;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class Friends extends AppCompatActivity {
+public class
+Friends extends AppCompatActivity {
     private int userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

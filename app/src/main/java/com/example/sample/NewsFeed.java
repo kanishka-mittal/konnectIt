@@ -18,7 +18,6 @@ import java.io.IOException;
 public class NewsFeed extends AppCompatActivity {
     private int userId;
     private Button btnAddPost;
-    private Button btnopenPost;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,26 +29,15 @@ public class NewsFeed extends AppCompatActivity {
             System.out.println(userId);
             System.out.println("Yo");
         }
-        btnAddPost=findViewById(R.id.btnaddpost);
+        NewsFeedBackgroundTask bgTask=new NewsFeedBackgroundTask(this,userId);
+        bgTask.execute();
+        btnAddPost=findViewById(R.id.btnAddPost);
         btnAddPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(NewsFeed.this,NewsFeedAdd.class);
                 intent.putExtra("userId",userId);
                 startActivity(intent);
-
-            }
-        });
-        btnopenPost=findViewById(R.id.btnopenpost);
-        btnopenPost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int postId=1;
-                Intent intent=new Intent(NewsFeed.this,Post.class);
-                intent.putExtra("postId",postId);
-                intent.putExtra("userId",userId);
-                startActivity(intent);
-
             }
         });
 
