@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 public class NewsFeedAdd extends AppCompatActivity {
@@ -24,6 +26,9 @@ public class NewsFeedAdd extends AppCompatActivity {
     private int userId;
     ImageView uploadPostPic;
     private Bitmap bitmap;
+    ByteArrayOutputStream byteArrayOutputStream;
+    byte[] byteArrayVar;
+    String convertImage="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +51,7 @@ public class NewsFeedAdd extends AppCompatActivity {
                 }
                 else{
                     //String method="post";
-                    Newsfeedpostbgtasks newsfeedpostbgtasks=new Newsfeedpostbgtasks(userId,NewsFeedAdd.this,bitmap,postText);
+                    Newsfeedpostbgtasks newsfeedpostbgtasks=new Newsfeedpostbgtasks(userId,NewsFeedAdd.this,convertImage,postText);
                     newsfeedpostbgtasks.execute();
                     finish();
 
@@ -78,6 +83,10 @@ public class NewsFeedAdd extends AppCompatActivity {
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
                 uploadPostPic.setImageBitmap(bitmap);
+                byteArrayOutputStream=new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
+                byteArrayVar=byteArrayOutputStream.toByteArray();
+                convertImage= Base64.encodeToString(byteArrayVar,Base64.DEFAULT);
             } catch (IOException e) {
                 e.printStackTrace();
             }

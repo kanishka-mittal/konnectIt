@@ -52,8 +52,8 @@ public class PostRecViewAdapter extends RecyclerView.Adapter<PostRecViewAdapter.
         holder.userName.setText(post.getUserName());
         holder.numLikes.setText(Integer.toString(post.getNumLikes()));
         holder.numComments.setText(Integer.toString(post.getNumComments()));
-        Glide.with(ctx).asBitmap().error(R.drawable.ic_user).load("http://10.0.2.2/konnectit/profilepics/"+Integer.toString(post.getUserId())+".png").into(holder.profilepic);
-        Glide.with(ctx).asBitmap().error(R.drawable.boy).load("http://10.0.2.2/konnectit/posts_image/"+Integer.toString(post.getUserId())+".png").into(holder.postImage);
+//        Glide.with(ctx).asBitmap().error(R.drawable.ic_user).load("http://10.0.2.2/konnectit/profilepics/"+Integer.toString(post.getUserId())+".png").into(holder.profilepic);
+//        Glide.with(ctx).asBitmap().error(R.drawable.boy).load("http://10.0.2.2/konnectit/posts_image/"+Integer.toString(post.getUserId())+".png").into(holder.postImage);
         holder.dislike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

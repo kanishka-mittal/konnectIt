@@ -27,22 +27,16 @@ public class Newsfeedpostbgtasks extends AsyncTask<Void,Void,String> {
     int userId;
     Context ctx;
     Activity activity;
-    Bitmap bitmap;
-    ByteArrayOutputStream byteArrayOutputStream;
-    byte[] byteArrayVar;
     final String convertImage;
 
-    public Newsfeedpostbgtasks(int userId, Context ctx, Bitmap bitmap,String posttext) {
+    public Newsfeedpostbgtasks(int userId, Context ctx, String convertImage,String posttext) {
 
         this.postText=posttext;
         this.userId = userId;
         this.ctx = ctx;
-        this.bitmap = bitmap;
+        this.convertImage=convertImage;
         activity=(Activity) ctx;
-        byteArrayOutputStream=new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG,100,byteArrayOutputStream);
-        byteArrayVar=byteArrayOutputStream.toByteArray();
-        convertImage= Base64.encodeToString(byteArrayVar,Base64.DEFAULT);
+
 
     }
 
@@ -54,7 +48,8 @@ public class Newsfeedpostbgtasks extends AsyncTask<Void,Void,String> {
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-        Toast.makeText(ctx,"Posted Successfully!",Toast.LENGTH_LONG).show();
+        System.out.println(s);
+        Toast.makeText(ctx,s,Toast.LENGTH_LONG).show();
     }
 
     @Override
