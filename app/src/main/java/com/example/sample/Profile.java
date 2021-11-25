@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 import org.w3c.dom.Text;
@@ -39,8 +40,8 @@ public class Profile extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Profile");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("My Profile");
+       // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //Tabbed Activity
         tabLayout = findViewById(R.id.tablayout);
@@ -63,6 +64,36 @@ public class Profile extends AppCompatActivity {
         TextView Username = findViewById(R.id.username);
         ProfileBackgroundTask bgTask=new ProfileBackgroundTask(this,userId, Fullname, Username, infopage);
         bgTask.execute(method);
+
+
+        //BOTTOMBAR NAVIGATION
+        BottomNavigationView bottomNavigationView = findViewById(R.id.dashboard);
+
+        bottomNavigationView.setSelectedItemId(R.id.myprofile);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()){
+                    case R.id.news:
+                        Intent intent=new Intent(getApplicationContext(),NewsFeed.class);
+                        intent.putExtra("userId",userId);
+                        startActivity(intent);
+
+                        overridePendingTransition(0,0);
+                        return true;
+                }switch (item.getItemId()){
+                    case R.id.notifs:
+                        Intent intent=new Intent(getApplicationContext(),Notifications.class);
+                        intent.putExtra("userId",userId);
+                        startActivity(intent);
+
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+                return false;
+            }
+        });
     }
 
     @SuppressLint("RestrictedApi")

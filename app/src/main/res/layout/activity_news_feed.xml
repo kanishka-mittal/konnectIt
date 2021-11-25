@@ -11,10 +11,10 @@
         android:id="@+id/btnAddPost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:icon="@drawable/ic_add"
-        android:backgroundTint="@color/yellow"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:backgroundTint="@color/primaryyellow"
+        app:icon="@drawable/ic_add"
 
         />
 
@@ -23,4 +23,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/dashboard"
+        android:background="@color/primaryyellow"
+        app:itemTextColor="@drawable/selector"
+        app:itemIconTint="@drawable/selector"
+        app:menu="@menu/navmenu"
+        android:layout_alignParentBottom="true"/>
 </RelativeLayout>
