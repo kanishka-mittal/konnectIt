@@ -1,17 +1,35 @@
 package com.example.sample;
 
 public class PostModel {
-    String userName,firstName;
+    String userName,firstName,postText,postImageURL;
     int postId,userId;
     int numLikes,numComments;
 
-    public PostModel(String userName, String firstName, int postId, int userId, int numLikes, int numComments) {
+    public PostModel(String userName, String firstName, int postId, int userId, int numLikes, int numComments,String postText,String postImageURL) {
         this.userName = userName;
         this.firstName = firstName;
         this.postId = postId;
         this.userId = userId;
         this.numLikes = numLikes;
         this.numComments = numComments;
+        this.postText=postText;
+        this.postImageURL=postImageURL;
+    }
+
+    public String getPostImageURL() {
+        return postImageURL;
+    }
+
+    public void setPostImageURL(String postImageURL) {
+        this.postImageURL = postImageURL;
+    }
+
+    public String getPostText() {
+        return postText;
+    }
+
+    public void setPostText(String postText) {
+        this.postText = postText;
     }
 
     public int getUserId() {

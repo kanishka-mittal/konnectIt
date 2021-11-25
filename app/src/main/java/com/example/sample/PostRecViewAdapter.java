@@ -52,8 +52,16 @@ public class PostRecViewAdapter extends RecyclerView.Adapter<PostRecViewAdapter.
         holder.userName.setText(post.getUserName());
         holder.numLikes.setText(Integer.toString(post.getNumLikes()));
         holder.numComments.setText(Integer.toString(post.getNumComments()));
-//        Glide.with(ctx).asBitmap().error(R.drawable.ic_user).load("http://10.0.2.2/konnectit/profilepics/"+Integer.toString(post.getUserId())+".png").into(holder.profilepic);
+        if((post.getPostImageURL()).equals("null")){
+            System.out.println("No Image");
+            holder.postImage.setVisibility(View.GONE);
+        }else{
+            Glide.with(ctx).asBitmap().error(R.drawable.boy).load(post.getPostImageURL()).into(holder.postImage);
+        }
+        //System.out.println(post.getPostImageURL());
+        Glide.with(ctx).asBitmap().error(R.drawable.ic_user).load("http://10.0.2.2/konnectit/profilepics/"+Integer.toString(post.getUserId())+".png").into(holder.profilepic);
 //        Glide.with(ctx).asBitmap().error(R.drawable.boy).load("http://10.0.2.2/konnectit/posts_image/"+Integer.toString(post.getUserId())+".png").into(holder.postImage);
+        holder.postText.setText(post.getPostText());
         holder.dislike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,7 +83,7 @@ public class PostRecViewAdapter extends RecyclerView.Adapter<PostRecViewAdapter.
         return posts.size();
     }
     public class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView userName,firstName,numLikes,numComments;
+        private TextView userName,firstName,numLikes,numComments,postText;
         private RelativeLayout postListItemParent;
         private ImageView like,dislike,postImage,profilepic;
         public ViewHolder(@NonNull View itemView) {
@@ -89,6 +97,7 @@ public class PostRecViewAdapter extends RecyclerView.Adapter<PostRecViewAdapter.
             numComments=itemView.findViewById(R.id.numComments);
             numLikes=itemView.findViewById(R.id.numLikes);
             profilepic=itemView.findViewById(R.id.profilepic);
+            postText=itemView.findViewById(R.id.postText);
         }
     }
 }
