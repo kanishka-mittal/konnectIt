@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "420705265768",
+    "project_id": "konnectit-4ef05",
+    "storage_bucket": "konnectit-4ef05.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:420705265768:android:389a8e424340d589cbb3dd",
+        "android_client_info": {
+          "package_name": "com.example.sample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "420705265768-3hkm4b7fes5cfcfvdk0tujala7eq1ghl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sample",
+            "certificate_hash": "b8c922359b655ac647283c38d2f93f1926221b96"
+          }
+        },
+        {
+          "client_id": "420705265768-108can147lj1ee0q8u4tevhhlfcdu054.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSACplWxO12CpbkwL8Qh23JsZRxrHJtng"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "420705265768-108can147lj1ee0q8u4tevhhlfcdu054.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/friendListItemParent"
+    android:gravity="center_vertical">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
+        app:cardCornerRadius="0dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            >
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="50dp"
+                app:strokeColor="@color/yellow"
+                app:strokeWidth="1dp"
+                android:layout_marginEnd="10dp">
+                <ImageView
+                    android:id="@+id/profilepic"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@mipmap/ic_user"
+                    android:layout_weight="0"
+                    android:background="@color/black"
+                    />
+            </com.google.android.material.card.MaterialCardView>
+
+
+
+
+            <LinearLayout
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center_vertical"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="User Name"
+                    android:layout_weight="1"
+                    android:id="@+id/userName"
+                    android:textStyle="bold"
+                    android:textColor="@color/yellow"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="First Name "
+                    android:layout_weight="1"
+                    android:id="@+id/firstName"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Remove"
+                android:backgroundTint="@color/black"
+                android:elevation="0dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/yellow"
+                android:textSize="12dp"
+                android:id="@+id/remBtn"
+                app:strokeColor="@color/yellow"
+                app:strokeWidth="2dp"/>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
