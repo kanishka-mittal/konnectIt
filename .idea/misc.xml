@@ -19,11 +19,14 @@
         <entry key="..\:/Users/kanishka/AndroidStudioProjects/KonnectIt-master/app/src/main/res/layout/notifs_list_item.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/kanishka/AndroidStudioProjects/KonnectIt-master/app/src/main/res/mipmap-anydpi-v26/delete.xml" value="0.2703125" />
         <entry key="..\:/Users/kanishka/AndroidStudioProjects/konnectIt/app/src/main/res/drawable-anydpi/ic_user.xml" value="0.2703125" />
+        <entry key="..\:/Users/kanishka/AndroidStudioProjects/konnectIt/app/src/main/res/drawable/edit.xml" value="0.2703125" />
         <entry key="..\:/Users/kanishka/AndroidStudioProjects/konnectIt/app/src/main/res/drawable/info.xml" value="0.2703125" />
         <entry key="..\:/Users/kanishka/AndroidStudioProjects/konnectIt/app/src/main/res/drawable/posticon.xml" value="0.2703125" />
         <entry key="..\:/Users/kanishka/AndroidStudioProjects/konnectIt/app/src/main/res/drawable/round.xml" value="0.2703125" />
         <entry key="..\:/Users/kanishka/AndroidStudioProjects/konnectIt/app/src/main/res/drawable/round2.xml" value="0.2703125" />
         <entry key="..\:/Users/kanishka/AndroidStudioProjects/konnectIt/app/src/main/res/drawable/round3.xml" value="0.2703125" />
+        <entry key="..\:/Users/kanishka/AndroidStudioProjects/konnectIt/app/src/main/res/drawable/settings.xml" value="0.2703125" />
+        <entry key="..\:/Users/kanishka/AndroidStudioProjects/konnectIt/app/src/main/res/drawable/three.xml" value="0.2703125" />
         <entry key="..\:/Users/kanishka/AndroidStudioProjects/konnectIt/app/src/main/res/layout/activity_dashboard.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/kanishka/AndroidStudioProjects/konnectIt/app/src/main/res/layout/activity_edit_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/kanishka/AndroidStudioProjects/konnectIt/app/src/main/res/layout/activity_friends.xml" value="0.25416666666666665" />
@@ -39,6 +42,7 @@
         <entry key="..\:/Users/kanishka/AndroidStudioProjects/konnectIt/app/src/main/res/layout/notifs_list_item.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/kanishka/AndroidStudioProjects/konnectIt/app/src/main/res/layout/post_list_item.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/kanishka/AndroidStudioProjects/konnectIt/app/src/main/res/layout/search_list_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/kanishka/AndroidStudioProjects/konnectIt/app/src/main/res/menu/profilemenu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/kanishka/AndroidStudioProjects/secondkonnectit/app/src/main/res/layout/activity_friends.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/kanishka/AndroidStudioProjects/secondkonnectit/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/kanishka/AndroidStudioProjects/secondkonnectit/app/src/main/res/layout/activity_notifications.xml" value="0.25416666666666665" />
