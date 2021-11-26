@@ -44,6 +44,12 @@ public class SearchUsersRecViewAdapter extends RecyclerView.Adapter<SearchUsersR
         holder.firstName.setText(users.get(position).getFirstName());
         holder.userName.setText(users.get(position).getUserName());
         Glide.with(ctx).asBitmap().placeholder(R.mipmap.ic_user).error(R.mipmap.ic_user).load("http://10.0.2.2/konnectit/profilepics/"+Integer.toString(users.get(position).getUserId())+".png").into(holder.profilepic);
+        holder.profilepic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(ctx, "Send friend request to be able to see profile", Toast.LENGTH_LONG).show();
+            }
+        });
         holder.addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

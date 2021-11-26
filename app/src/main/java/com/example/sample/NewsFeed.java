@@ -66,8 +66,8 @@ public class NewsFeed extends AppCompatActivity {
                     case R.id.notifs:
                         Intent intent=new Intent(getApplicationContext(),Notifications.class);
                         intent.putExtra("userId",userId);
+                        intent.putExtra("accessedByUser",userId);
                         startActivity(intent);
-
                         overridePendingTransition(0,0);
                         return true;
                 }

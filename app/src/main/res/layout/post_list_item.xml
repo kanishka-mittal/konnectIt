@@ -72,10 +72,11 @@
                     android:id="@+id/postImage"
                     android:background="#222222"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:scaleType="fitXY"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/boy"/>
+                    android:src="@drawable/boy"
+                    />
             </com.google.android.material.card.MaterialCardView>
             <TextView
                 android:layout_width="match_parent"

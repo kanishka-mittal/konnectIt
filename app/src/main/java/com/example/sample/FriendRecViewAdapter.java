@@ -53,6 +53,15 @@ public class FriendRecViewAdapter extends RecyclerView.Adapter<FriendRecViewAdap
                 bgTask.execute("remFriend",Integer.toString(friendId));
             }
         });
+        holder.profilepic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(ctx,Profile.class);
+                intent.putExtra("userId",friendId);
+                intent.putExtra("accessedByUser",userId);
+                ctx.startActivity(intent);
+            }
+        });
     }
 
     @Override
