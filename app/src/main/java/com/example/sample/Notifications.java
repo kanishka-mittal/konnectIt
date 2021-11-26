@@ -63,7 +63,7 @@ public class Notifications extends AppCompatActivity {
                 }
                 switch (item.getItemId()){
                     case R.id.news:
-                        Intent intent=new Intent(getApplicationContext(),Dashboard.class);
+                        Intent intent=new Intent(getApplicationContext(),NewsFeed.class);
                         intent.putExtra("userId",userId);
                         startActivity(intent);
 
