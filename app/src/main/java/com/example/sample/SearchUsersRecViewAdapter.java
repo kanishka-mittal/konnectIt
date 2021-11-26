@@ -43,11 +43,21 @@ public class SearchUsersRecViewAdapter extends RecyclerView.Adapter<SearchUsersR
     public void onBindViewHolder(@NonNull SearchUsersRecViewAdapter.ViewHolder holder, int position) {
         holder.firstName.setText(users.get(position).getFirstName());
         holder.userName.setText(users.get(position).getUserName());
-        Glide.with(ctx).asBitmap().placeholder(R.mipmap.ic_user).error(R.mipmap.ic_user).load("http://10.0.2.2/konnectit/profilepics/"+Integer.toString(users.get(position).getUserId())+".png").into(holder.profilepic);
+        int otherUserId=users.get(position).getUserId();
+        if(!(users.get(position).getImageUrl().equals("null"))){
+            Glide.with(ctx).asBitmap().placeholder(R.mipmap.ic_user).error(R.mipmap.ic_user).load("http://10.0.2.2/konnectit/profilepics/"+Integer.toString(users.get(position).getUserId())+".png").into(holder.profilepic);
+        }
+        holder.profilepic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(ctx, "Send friend request to be able to see profile", Toast.LENGTH_LONG).show();
+            }
+        });
         holder.addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(ctx, "this button will add this person as a friend...functionality not added yet", Toast.LENGTH_SHORT).show();
+                SearchUsersBackgroundTask bgSearchTask=new SearchUsersBackgroundTask(ctx,userId,"");
+                bgSearchTask.execute("addFriend",Integer.toString(otherUserId));
             }
         });
     }

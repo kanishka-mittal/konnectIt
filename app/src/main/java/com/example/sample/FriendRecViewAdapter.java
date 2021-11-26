@@ -45,12 +45,25 @@ public class FriendRecViewAdapter extends RecyclerView.Adapter<FriendRecViewAdap
         holder.firstName.setText(friends.get(position).getFirstName());
         holder.userName.setText(friends.get(position).getUserName());
         int friendId=friends.get(position).getUserId();
-        Glide.with(ctx).asBitmap().error(R.mipmap.ic_user).load("http://10.0.2.2/konnectit/profilepics/"+Integer.toString(friendId)+".png").into(holder.profilepic);
+        if(!(friends.get(position).getImageUrl().equals("null"))){
+            Glide.with(ctx).asBitmap().error(R.mipmap.ic_user).load("http://10.0.2.2/konnectit/profilepics/"+Integer.toString(friendId)+".png").into(holder.profilepic);
+        }
         holder.remBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FriendBackgroundTask bgTask=new FriendBackgroundTask(ctx,userId);
                 bgTask.execute("remFriend",Integer.toString(friendId));
+                friends.remove(holder.getAdapterPosition());
+                notifyDataSetChanged();
+            }
+        });
+        holder.profilepic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(ctx,Profile.class);
+                intent.putExtra("userId",friendId);
+                intent.putExtra("accessedByUser",userId);
+                ctx.startActivity(intent);
             }
         });
     }

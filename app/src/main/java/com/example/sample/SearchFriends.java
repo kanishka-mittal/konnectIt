@@ -8,33 +8,34 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-public class
-Friends extends AppCompatActivity {
-    private int userId;
+public class SearchFriends extends AppCompatActivity {
     private ImageButton btnSearch;
-    String searchTxt;
-    EditText edtSearch;
+    private String searchTxt;
+    private EditText edtSearch;
+    private int userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_friends);
+        setContentView(R.layout.activity_search_friends);
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            userId = extras.getInt("userId");
+            searchTxt = extras.getString("searchTxt");
+            userId=extras.getInt("userId");
         }
-        String method="load";
-        FriendBackgroundTask bgTask=new FriendBackgroundTask(this,userId);
-        bgTask.execute(method);
         btnSearch=findViewById(R.id.btnSearch);
         edtSearch=findViewById(R.id.edtSearch);
+        edtSearch.setText(searchTxt);
+        SearchFriendsBackgroundTask bgTask=new SearchFriendsBackgroundTask(this,userId,searchTxt);
+        bgTask.execute();
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 searchTxt=edtSearch.getText().toString();
-                Intent intent = new Intent(Friends.this,SearchFriends.class);
+                Intent intent = new Intent(SearchFriends.this,SearchFriends.class);
                 intent.putExtra("searchTxt",searchTxt);
                 intent.putExtra("userId",userId);
                 startActivity(intent);
+                finish();
             }
         });
     }

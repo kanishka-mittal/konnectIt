@@ -1,7 +1,6 @@
 package com.example.sample;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-public class Search extends AppCompatActivity {
+public class SearchUsers extends AppCompatActivity {
     private ImageButton btnSearch;
     private String searchTxt;
     private EditText edtSearch;
@@ -26,18 +25,17 @@ public class Search extends AppCompatActivity {
         btnSearch=findViewById(R.id.btnSearch);
         edtSearch=findViewById(R.id.edtSearch);
         edtSearch.setText(searchTxt);
-        SearchBackgroundTask bgTask=new SearchBackgroundTask(this,userId,searchTxt);
-        bgTask.execute();
         SearchUsersBackgroundTask bgSearchTask=new SearchUsersBackgroundTask(this,userId,searchTxt);
-        bgSearchTask.execute();
+        bgSearchTask.execute("load");
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 searchTxt=edtSearch.getText().toString();
-                Intent intent = new Intent(Search.this,Search.class);
+                Intent intent = new Intent(SearchUsers.this, SearchUsers.class);
                 intent.putExtra("searchTxt",searchTxt);
                 intent.putExtra("userId",userId);
                 startActivity(intent);
+                finish();
             }
         });
     }

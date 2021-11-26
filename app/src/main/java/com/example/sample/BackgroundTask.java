@@ -74,6 +74,7 @@ public class BackgroundTask extends AsyncTask<String,String,String> {
                 while((line=bufferedReader.readLine())!=null){
                     response+=line;
                 }
+                //System.out.println(response);
                 is.close();
                 httpURLConnection.disconnect();
                 return response;

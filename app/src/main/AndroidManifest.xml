@@ -14,6 +14,12 @@
         android:theme="@style/Theme.Sample"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".SearchFriends"
+            android:exported="true" />
+        <activity
+            android:name=".FriendRequests"
+            android:exported="true" />
+        <activity
             android:name=".Profile"
             android:exported="false" />
         <activity
@@ -29,7 +35,7 @@
             android:name=".EditProfile"
             android:exported="true" />
         <activity
-            android:name=".Search"
+            android:name=".SearchUsers"
             android:exported="true" />
         <activity
             android:name=".Friends"

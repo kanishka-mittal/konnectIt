@@ -23,6 +23,10 @@
     <string name="postUrl">http://10.0.2.2//konnectit/post.php</string>
     <string name="addCommentUrl">http://10.0.2.2//konnectit/addComment.php</string>
     <string name="postloadUrl">http://10.0.2.2//konnectit/postload.php</string>
+    <string name="addFriendUrl">http://10.0.2.2//konnectit/addFriend.php</string>
+    <string name="acceptFrUrl">http://10.0.2.2//konnectit/acceptFr.php</string>
+    <string name="deleteFrUrl">http://10.0.2.2//konnectit/deleteFr.php</string>
+    <string name="frLoadUrl">http://10.0.2.2//konnectit/loadFr.php</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="newsFeedLoadUrl">http://10.0.2.2//konnectit/newsFeedLoad.php</string>

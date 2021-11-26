@@ -4,51 +4,27 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.button.MaterialButton;
 
-import java.io.IOException;
-
-public class NewsFeed extends AppCompatActivity {
+public class FriendRequests extends AppCompatActivity {
     private int userId;
-    private Button btnAddPost;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_news_feed);
+        setContentView(R.layout.activity_friend_requests);
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             userId = extras.getInt("userId");
-            System.out.println("Yo");
-            System.out.println(userId);
-            System.out.println("Yo");
         }
-        NewsFeedBackgroundTask bgTask=new NewsFeedBackgroundTask(this,userId);
-        bgTask.execute();
-        btnAddPost=findViewById(R.id.btnAddPost);
-        btnAddPost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(NewsFeed.this,NewsFeedAdd.class);
-                intent.putExtra("userId",userId);
-                startActivity(intent);
-            }
-        });
-
-
+        FrBackgroundTask bgTask=new FrBackgroundTask(this,userId);
+        bgTask.execute("load");
         //BOTTOMBAR NAVIGATION
         BottomNavigationView bottomNavigationView = findViewById(R.id.dashboard);
 
-        bottomNavigationView.setSelectedItemId(R.id.news);
+        bottomNavigationView.setSelectedItemId(R.id.notifs);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -58,23 +34,20 @@ public class NewsFeed extends AppCompatActivity {
                         intent.putExtra("userId",userId);
                         intent.putExtra("accessedByUser",userId);
                         startActivity(intent);
-
                         overridePendingTransition(0,0);
                         return true;
                 }
-
                 switch (item.getItemId()){
-                    case R.id.notifs:
-                        Intent intent=new Intent(getApplicationContext(),Notifications.class);
+                    case R.id.news:
+                        Intent intent=new Intent(getApplicationContext(),NewsFeed.class);
                         intent.putExtra("userId",userId);
-                        intent.putExtra("accessedByUser",userId);
                         startActivity(intent);
                         overridePendingTransition(0,0);
                         return true;
                 }
                 switch (item.getItemId()){
-                    case R.id.friendRequests:
-                        Intent intent=new Intent(getApplicationContext(),FriendRequests.class);
+                    case R.id.notifs:
+                        Intent intent=new Intent(getApplicationContext(),Notifications.class);
                         intent.putExtra("userId",userId);
                         startActivity(intent);
 
@@ -85,7 +58,5 @@ public class NewsFeed extends AppCompatActivity {
                 return false;
             }
         });
-
     }
-
 }

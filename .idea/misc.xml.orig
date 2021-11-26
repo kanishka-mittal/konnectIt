@@ -52,15 +52,12 @@
         <entry key="..\:/Users/kanishka/AndroidStudioProjects/secondkonnectit/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/kanishka/AndroidStudioProjects/secondkonnectit/app/src/main/res/layout/activity_notifications.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/kanishka/AndroidStudioProjects/secondkonnectit/app/src/main/res/layout/friends_list_item.xml" value="0.25416666666666665" />
-        <entry key="app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.21354166666666666" />
         <entry key="app/src/main/res/drawable/round.xml" value="0.21354166666666666" />
         <entry key="app/src/main/res/drawable/round2.xml" value="0.21354166666666666" />
         <entry key="app/src/main/res/drawable/round3.xml" value="0.21354166666666666" />
-        <entry key="app/src/main/res/drawable/selector.xml" value="0.21354166666666666" />
         <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/layout/activity_friends.xml" value="0.2078125" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.363145826207992" />
-        <entry key="app/src/main/res/layout/activity_news_feed.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/layout/activity_notifications.xml" value="0.1890625" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.175" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.2618806571951347" />
@@ -69,9 +66,12 @@
         <entry key="app/src/main/res/layout/fragment_profile_info.xml" value="0.2078125" />
         <entry key="app/src/main/res/layout/fragment_profile_post.xml" value="0.20729166666666668" />
         <entry key="app/src/main/res/layout/friends_list_item.xml" value="0.21666666666666667" />
+<<<<<<< HEAD
         <entry key="app/src/main/res/menu/navmenu.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/menu/profilemenu.xml" value="0.19739583333333333" />
         <entry key="app/src/main/res/xml/root_preferences.xml" value="0.19739583333333333" />
+=======
+>>>>>>> 72ffdd766acc419abf0d8f06ea08d781ef85f540
       </map>
     </option>
   </component>

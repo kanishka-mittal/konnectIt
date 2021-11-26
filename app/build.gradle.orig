@@ -42,10 +42,13 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
+<<<<<<< HEAD
     def nav_version = "2.3.0"
 
     // Navigation Components
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
+=======
+>>>>>>> 72ffdd766acc419abf0d8f06ea08d781ef85f540
 }

@@ -8,8 +8,31 @@
     tools:context=".Friends"
     android:background="@color/black"
     android:paddingTop="10dp">
+    <LinearLayout
+        android:id="@+id/searchLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:orientation="horizontal"
+        android:padding="5dp">
 
+        <ImageButton
+            android:id="@+id/btnSearch"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/black"
+            android:src="@mipmap/ic_search" />
+
+        <EditText
+            android:id="@+id/edtSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Search in friends"
+            android:textColor="@color/yellow"
+            android:textColorHint="@color/yellow2" />
+    </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/searchLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/friendsRecView"

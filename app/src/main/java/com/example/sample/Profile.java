@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,10 +24,11 @@ import com.google.android.material.tabs.TabLayout;
 import org.w3c.dom.Text;
 
 public class Profile extends AppCompatActivity {
-    private int userId;
+    private int userId,accessedByUser;
     private ProfileViewsAdapter viewPagerAdapter;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private Button btnFriendsList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -34,8 +37,17 @@ public class Profile extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             userId=extras.getInt("userId");
+            accessedByUser=extras.getInt("accessedByUser");
         }
-
+        btnFriendsList=findViewById(R.id.btnFriendsList);
+        btnFriendsList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Profile.this,Friends.class);
+                intent.putExtra("userId",userId);
+                startActivity(intent);
+            }
+        });
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -64,36 +76,49 @@ public class Profile extends AppCompatActivity {
         TextView Username = findViewById(R.id.username);
         ProfileBackgroundTask bgTask=new ProfileBackgroundTask(this,userId, Fullname, Username, infopage);
         bgTask.execute(method);
-
-
-        //BOTTOMBAR NAVIGATION
         BottomNavigationView bottomNavigationView = findViewById(R.id.dashboard);
+        if(accessedByUser==userId){
+            //BOTTOMBAR NAVIGATION
 
-        bottomNavigationView.setSelectedItemId(R.id.myprofile);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                switch (item.getItemId()){
-                    case R.id.news:
-                        Intent intent=new Intent(getApplicationContext(),NewsFeed.class);
-                        intent.putExtra("userId",userId);
-                        startActivity(intent);
+            bottomNavigationView.setSelectedItemId(R.id.myprofile);
+            bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                        overridePendingTransition(0,0);
-                        return true;
-                }switch (item.getItemId()){
-                    case R.id.notifs:
-                        Intent intent=new Intent(getApplicationContext(),Notifications.class);
-                        intent.putExtra("userId",userId);
-                        startActivity(intent);
+                    switch (item.getItemId()){
+                        case R.id.news:
+                            Intent intent=new Intent(getApplicationContext(),NewsFeed.class);
+                            intent.putExtra("userId",userId);
+                            startActivity(intent);
 
-                        overridePendingTransition(0,0);
-                        return true;
+                            overridePendingTransition(0,0);
+                            return true;
+                    }switch (item.getItemId()){
+                        case R.id.notifs:
+                            Intent intent=new Intent(getApplicationContext(),Notifications.class);
+                            intent.putExtra("userId",userId);
+                            startActivity(intent);
+
+                            overridePendingTransition(0,0);
+                            return true;
+
+                    }switch (item.getItemId()){
+                        case R.id.friendRequests:
+                            Intent intent=new Intent(getApplicationContext(),FriendRequests.class);
+                            intent.putExtra("userId",userId);
+                            startActivity(intent);
+
+                            overridePendingTransition(0,0);
+                            return true;
+
+                    }
+                    return false;
                 }
-                return false;
-            }
-        });
+            });
+        }else{
+            bottomNavigationView.setVisibility(View.GONE);
+        }
     }
 
     @SuppressLint("RestrictedApi")

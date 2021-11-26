@@ -45,7 +45,9 @@ public class NotifRecViewAdapter extends RecyclerView.Adapter<NotifRecViewAdapte
         int id=notifications.get(position).getId();
         holder.notification.setText(notifications.get(position).getNotif());
         holder.userName.setText(notifications.get(position).getSendUser());
-        Glide.with(context).asBitmap().placeholder(R.mipmap.ic_user).error(R.mipmap.ic_user).load("http://10.0.2.2/konnectit/profilepics/"+Integer.toString(notifications.get(position).getSendUserId())+".png").into(holder.profilepic);
+        if(!(notifications.get(position).getImageUrl().equals("null"))){
+            Glide.with(context).asBitmap().placeholder(R.mipmap.ic_user).error(R.mipmap.ic_user).load("http://10.0.2.2/konnectit/profilepics/"+Integer.toString(notifications.get(position).getSendUserId())+".png").into(holder.profilepic);
+        }
         holder.notifLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,6 +68,8 @@ public class NotifRecViewAdapter extends RecyclerView.Adapter<NotifRecViewAdapte
             public void onClick(View view) {
                 NotifBackgroundTask bgTask=new NotifBackgroundTask(context,userId);
                 bgTask.execute("remove",Integer.toString(id));
+                notifications.remove(holder.getAdapterPosition());
+                notifyDataSetChanged();
             }
         });
     }
