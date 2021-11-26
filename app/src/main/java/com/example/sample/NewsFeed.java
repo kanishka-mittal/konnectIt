@@ -72,6 +72,16 @@ public class NewsFeed extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                 }
+                switch (item.getItemId()){
+                    case R.id.friendRequests:
+                        Intent intent=new Intent(getApplicationContext(),FriendRequests.class);
+                        intent.putExtra("userId",userId);
+                        startActivity(intent);
+
+                        overridePendingTransition(0,0);
+                        return true;
+
+                }
                 return false;
             }
         });
