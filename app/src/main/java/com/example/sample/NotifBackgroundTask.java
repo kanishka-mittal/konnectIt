@@ -46,11 +46,6 @@ public class NotifBackgroundTask extends AsyncTask<String, Notification, Void> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        notifsRecView=activity.findViewById(R.id.notifsRecView);
-        notifications=new ArrayList<>();
-        notifsRecView.setLayoutManager(new LinearLayoutManager(ctx));
-        notifRecViewAdapter=new NotifRecViewAdapter(notifications, ctx,userId);
-        notifsRecView.setAdapter(notifRecViewAdapter);
     }
 
 
@@ -59,6 +54,11 @@ public class NotifBackgroundTask extends AsyncTask<String, Notification, Void> {
         //String notifUrl="http://10.0.2.2//konnectit/notifications.php";
         if(params[0].equals("load")){
             try {
+                notifsRecView=activity.findViewById(R.id.notifsRecView);
+                notifications=new ArrayList<>();
+                notifsRecView.setLayoutManager(new LinearLayoutManager(ctx));
+                notifRecViewAdapter=new NotifRecViewAdapter(notifications, ctx,userId);
+                notifsRecView.setAdapter(notifRecViewAdapter);
                 URL url = new URL(activity.getString(R.string.notifUrl));
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
@@ -122,10 +122,6 @@ public class NotifBackgroundTask extends AsyncTask<String, Notification, Void> {
                 bufferedReader.close();
                 is.close();
                 httpURLConnection.disconnect();
-                Intent intent=new Intent(activity,Notifications.class);
-                intent.putExtra("userId",userId);
-                activity.startActivity(intent);
-                activity.finish();
                 return null;
             }catch (MalformedURLException e) {
                 e.printStackTrace();

@@ -51,6 +51,8 @@ public class FriendRecViewAdapter extends RecyclerView.Adapter<FriendRecViewAdap
             public void onClick(View view) {
                 FriendBackgroundTask bgTask=new FriendBackgroundTask(ctx,userId);
                 bgTask.execute("remFriend",Integer.toString(friendId));
+                friends.remove(holder.getAdapterPosition());
+                notifyDataSetChanged();
             }
         });
         holder.profilepic.setOnClickListener(new View.OnClickListener() {

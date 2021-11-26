@@ -66,6 +66,8 @@ public class NotifRecViewAdapter extends RecyclerView.Adapter<NotifRecViewAdapte
             public void onClick(View view) {
                 NotifBackgroundTask bgTask=new NotifBackgroundTask(context,userId);
                 bgTask.execute("remove",Integer.toString(id));
+                notifications.remove(holder.getAdapterPosition());
+                notifyDataSetChanged();
             }
         });
     }

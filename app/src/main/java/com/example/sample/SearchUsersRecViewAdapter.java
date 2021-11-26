@@ -43,6 +43,7 @@ public class SearchUsersRecViewAdapter extends RecyclerView.Adapter<SearchUsersR
     public void onBindViewHolder(@NonNull SearchUsersRecViewAdapter.ViewHolder holder, int position) {
         holder.firstName.setText(users.get(position).getFirstName());
         holder.userName.setText(users.get(position).getUserName());
+        int otherUserId=users.get(position).getUserId();
         Glide.with(ctx).asBitmap().placeholder(R.mipmap.ic_user).error(R.mipmap.ic_user).load("http://10.0.2.2/konnectit/profilepics/"+Integer.toString(users.get(position).getUserId())+".png").into(holder.profilepic);
         holder.profilepic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,8 +55,7 @@ public class SearchUsersRecViewAdapter extends RecyclerView.Adapter<SearchUsersR
             @Override
             public void onClick(View view) {
                 SearchUsersBackgroundTask bgSearchTask=new SearchUsersBackgroundTask(ctx,userId,"");
-                bgSearchTask.execute("addFriend");
-
+                bgSearchTask.execute("addFriend",Integer.toString(otherUserId));
             }
         });
     }
