@@ -57,26 +57,8 @@
             android:layout_toRightOf="@+id/userpic"
             android:layout_marginStart="20dp"
             />
-        <com.google.android.material.button.MaterialButton
-            android:layout_toEndOf="@id/fullname"
-            android:id="@+id/btnFriendsList"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:backgroundTint="@color/black"
-            android:elevation="0dp"
-            android:minWidth="0dp"
-            android:minHeight="0dp"
-            android:text="Friends"
-            android:textColor="@color/yellow"
-            android:textSize="15dp"
-            app:strokeColor="@color/yellow"
-            app:strokeWidth="2dp"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp"
-            android:paddingTop="17dp"
-            android:paddingBottom="17dp"
-            android:layout_centerVertical="true"/>
+
+        
     </RelativeLayout>
 
     <com.google.android.material.appbar.AppBarLayout

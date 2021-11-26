@@ -20,6 +20,12 @@
             android:title="Settings"
             app:showAsAction="never"/>
     </item>
+    <item
+        app:showAsAction="always"
+        android:title=""
+        android:icon="@drawable/friends"
+        android:id="@+id/friendicon"/>
+
 
 
 </menu>

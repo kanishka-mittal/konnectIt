@@ -39,15 +39,6 @@ public class Profile extends AppCompatActivity {
             userId=extras.getInt("userId");
             accessedByUser=extras.getInt("accessedByUser");
         }
-        btnFriendsList=findViewById(R.id.btnFriendsList);
-        btnFriendsList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(Profile.this,Friends.class);
-                intent.putExtra("userId",userId);
-                startActivity(intent);
-            }
-        });
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -146,6 +137,13 @@ public class Profile extends AppCompatActivity {
             ProfileBackgroundTask bgTask=new ProfileBackgroundTask(this,userId, Fullname, Username, infopage);
             bgTask.execute(method2);
         }
+
+        if(item_id == R.id.friendicon){
+            Intent intent=new Intent(Profile.this,Friends.class);
+            intent.putExtra("userId",userId);
+            startActivity(intent);
+        }
+
         return true;
     }
 }
