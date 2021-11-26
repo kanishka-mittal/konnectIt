@@ -25,7 +25,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-public class SearchUsersBackgroundTask extends AsyncTask<Void,User,Void> {
+public class SearchUsersBackgroundTask extends AsyncTask<String,User,Void> {
     Context ctx;
     Activity activity;
     int userId;
@@ -33,6 +33,7 @@ public class SearchUsersBackgroundTask extends AsyncTask<Void,User,Void> {
     RecyclerView searchUsersRecView;
     SearchUsersRecViewAdapter searchUsersRecViewAdapter;
     ArrayList<User> users;
+    String method;
 
     public SearchUsersBackgroundTask(Context ctx, int userId, String searchTxt) {
         this.ctx = ctx;
@@ -52,54 +53,59 @@ public class SearchUsersBackgroundTask extends AsyncTask<Void,User,Void> {
     }
 
     @Override
-    protected Void doInBackground(Void... voids) {
-        try{
-            URL url=new URL(activity.getString(R.string.searchUsersUrl));
-            HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
-            httpURLConnection.setRequestMethod("POST");
-            httpURLConnection.setDoOutput(true);
-            httpURLConnection.setDoInput(true);
-            OutputStream os = httpURLConnection.getOutputStream();
-            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(os));
-            String data=URLEncoder.encode("userId", "UTF-8") + "=" + URLEncoder.encode(Integer.toString(userId), "UTF-8") + "&" + URLEncoder.encode("searchTxt", "UTF-8") + "=" + URLEncoder.encode(searchTxt, "UTF-8");
-            //String data=URLEncoder.encode("userId", "UTF-8") + "=" + URLEncoder.encode(Integer.toString(userId), "UTF-8");
-            //System.out.println(userId);
-            bufferedWriter.write(data);
-            bufferedWriter.flush();
-            bufferedWriter.close();
-            InputStream is = httpURLConnection.getInputStream();
-            BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(is));
-            StringBuilder stringBuilder=new StringBuilder();
-            String line;
-            while((line=bufferedReader.readLine())!=null){
-                stringBuilder.append(line+"\n");
-            }
-            String jsonString=stringBuilder.toString().trim();
-            System.out.println(jsonString);
-            if(!(jsonString.equals(""))){
-                System.out.println(jsonString);
-                JSONObject jsonObject=new JSONObject(jsonString);
-                JSONArray jsonArray=jsonObject.getJSONArray("users");
-                int count=0;
-                while(count<jsonArray.length()){
-                    JSONObject friendObject=jsonArray.getJSONObject(count);
-                    count++;
-                    User user=new User(friendObject.getString("userName"),friendObject.getString("firstName"),friendObject.getInt("user_id"));
-                    publishProgress(user);
+    protected Void doInBackground(String... params) {
+        method=params[0];
+        if(method.equals("load")){
+            try{
+                URL url=new URL(activity.getString(R.string.searchUsersUrl));
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream os = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(os));
+                String data=URLEncoder.encode("userId", "UTF-8") + "=" + URLEncoder.encode(Integer.toString(userId), "UTF-8") + "&" + URLEncoder.encode("searchTxt", "UTF-8") + "=" + URLEncoder.encode(searchTxt, "UTF-8");
+                //String data=URLEncoder.encode("userId", "UTF-8") + "=" + URLEncoder.encode(Integer.toString(userId), "UTF-8");
+                //System.out.println(userId);
+                bufferedWriter.write(data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                InputStream is = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(is));
+                StringBuilder stringBuilder=new StringBuilder();
+                String line;
+                while((line=bufferedReader.readLine())!=null){
+                    stringBuilder.append(line+"\n");
                 }
-            }
+                String jsonString=stringBuilder.toString().trim();
+                System.out.println(jsonString);
+                if(!(jsonString.equals(""))){
+                    System.out.println(jsonString);
+                    JSONObject jsonObject=new JSONObject(jsonString);
+                    JSONArray jsonArray=jsonObject.getJSONArray("users");
+                    int count=0;
+                    while(count<jsonArray.length()){
+                        JSONObject friendObject=jsonArray.getJSONObject(count);
+                        count++;
+                        User user=new User(friendObject.getString("userName"),friendObject.getString("firstName"),friendObject.getInt("user_id"));
+                        publishProgress(user);
+                    }
+                }
 
-            bufferedReader.close();
-            is.close();
-            httpURLConnection.disconnect();
-        }catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (ProtocolException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }catch (JSONException e) {
-            e.printStackTrace();
+                bufferedReader.close();
+                is.close();
+                httpURLConnection.disconnect();
+            }catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (ProtocolException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }else if(method.equals("addFriend")){
+
         }
         return null;
     }

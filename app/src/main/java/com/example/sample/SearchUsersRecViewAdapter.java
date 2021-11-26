@@ -53,7 +53,9 @@ public class SearchUsersRecViewAdapter extends RecyclerView.Adapter<SearchUsersR
         holder.addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(ctx, "this button will add this person as a friend...functionality not added yet", Toast.LENGTH_SHORT).show();
+                SearchUsersBackgroundTask bgSearchTask=new SearchUsersBackgroundTask(ctx,userId,"");
+                bgSearchTask.execute("addFriend");
+
             }
         });
     }

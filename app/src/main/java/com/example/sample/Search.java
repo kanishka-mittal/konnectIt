@@ -29,7 +29,7 @@ public class Search extends AppCompatActivity {
         SearchBackgroundTask bgTask=new SearchBackgroundTask(this,userId,searchTxt);
         bgTask.execute();
         SearchUsersBackgroundTask bgSearchTask=new SearchUsersBackgroundTask(this,userId,searchTxt);
-        bgSearchTask.execute();
+        bgSearchTask.execute("load");
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

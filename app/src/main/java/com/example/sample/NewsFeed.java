@@ -56,6 +56,7 @@ public class NewsFeed extends AppCompatActivity {
                     case R.id.myprofile:
                         Intent intent=new Intent(getApplicationContext(),Profile.class);
                         intent.putExtra("userId",userId);
+                        intent.putExtra("accessedByUser",userId);
                         startActivity(intent);
 
                         overridePendingTransition(0,0);
