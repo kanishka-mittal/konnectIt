@@ -32,7 +32,7 @@ public class BackgroundTask extends AsyncTask<String,String,String> {
     Context ctx;
     Activity activity;
     String method;
-//    AlertDialog.Builder builder;
+    //    AlertDialog.Builder builder;
 //    AlertDialog alertDialog;
     int userId;
     BackgroundTask(Context ctx){
