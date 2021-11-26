@@ -29,6 +29,10 @@
     <string name="acceptFrUrl">http://10.0.2.2//konnectit/acceptFr.php</string>
     <string name="deleteFrUrl">http://10.0.2.2//konnectit/deleteFr.php</string>
     <string name="frLoadUrl">http://10.0.2.2//konnectit/loadFr.php</string>
+    <string name="sharePostUrl">http://10.0.2.2//konnectit/sharePost.php</string>
+    <string name="likeUrl">http://10.0.2.2//konnectit/like.php</string>
+    <string name="unlikeUrl">http://10.0.2.2//konnectit/unlike.php</string>
+    <string name="isLikedUrl">http://10.0.2.2//konnectit/isLiked.php</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="newsFeedLoadUrl">http://10.0.2.2//konnectit/newsFeedLoad.php</string>

@@ -133,6 +133,7 @@
                     android:layout_height="30dp"
                     android:src="@drawable/ic_share"
                     android:layout_margin="10dp"
+                    android:id="@+id/share"
                     />
             </LinearLayout>
         </LinearLayout>
