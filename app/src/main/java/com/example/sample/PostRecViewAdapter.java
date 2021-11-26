@@ -1,6 +1,7 @@
 package com.example.sample;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -47,8 +48,6 @@ public class PostRecViewAdapter extends RecyclerView.Adapter<PostRecViewAdapter.
     @Override
     public void onBindViewHolder(@NonNull PostRecViewAdapter.ViewHolder holder, int position) {
         PostModel post=posts.get(position);
-//        System.out.println("##############");
-//        System.out.println(post.getNumLikes());
         holder.firstName.setText(post.getFirstName());
         holder.userName.setText(post.getUserName());
         holder.numLikes.setText(Integer.toString(post.getNumLikes()));
@@ -65,18 +64,28 @@ public class PostRecViewAdapter extends RecyclerView.Adapter<PostRecViewAdapter.
             Glide.with(ctx).asBitmap().placeholder(R.mipmap.ic_user).error(R.mipmap.ic_user).load("http://10.0.2.2/konnectit/posts_image/"+Integer.toString(post.getPostId())+".png").into(holder.postImage);
         }
         holder.postText.setText(post.getPostText());
+        NewsFeedBackgroundTask bgTask=new NewsFeedBackgroundTask(ctx,userId,holder);
+        bgTask.execute("isLiked",Integer.toString(post.getPostId()),Integer.toString(post.getUserId()));
         holder.dislike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                NewsFeedBackgroundTask bgTask=new NewsFeedBackgroundTask(ctx,userId);
+                bgTask.execute("like",Integer.toString(post.getPostId()),Integer.toString(post.getUserId()));
                 holder.dislike.setVisibility(View.GONE);
                 holder.like.setVisibility(View.VISIBLE);
+                holder.numLikes.setText(Integer.toString(post.getNumLikes()+1));
+                post.setNumLikes(post.getNumLikes()+1);
             }
         });
         holder.like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                NewsFeedBackgroundTask bgTask=new NewsFeedBackgroundTask(ctx,userId);
+                bgTask.execute("unlike",Integer.toString(post.getPostId()),Integer.toString(post.getUserId()));
                 holder.dislike.setVisibility(View.VISIBLE);
                 holder.like.setVisibility(View.GONE);
+                holder.numLikes.setText(Integer.toString(post.getNumLikes()-1));
+                post.setNumLikes(post.getNumLikes()-1);
             }
         });
         holder.postImage.setOnClickListener(new View.OnClickListener() {
@@ -88,6 +97,16 @@ public class PostRecViewAdapter extends RecyclerView.Adapter<PostRecViewAdapter.
                 activity.startActivity(intent);
             }
         });
+        holder.share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Dialog dialog = new Dialog(ctx);
+                dialog.setContentView(R.layout.dialog_layout);
+                DialogBackgroundTask bgTask=new DialogBackgroundTask(dialog,ctx,userId,post.getPostId());
+                bgTask.execute("load");
+                dialog.show();
+            }
+        });
     }
 
     @Override
@@ -97,7 +116,7 @@ public class PostRecViewAdapter extends RecyclerView.Adapter<PostRecViewAdapter.
     public class ViewHolder extends RecyclerView.ViewHolder{
         private TextView userName,firstName,numLikes,numComments,postText;
         private RelativeLayout postListItemParent;
-        private ImageView like,dislike,postImage,profilepic;
+        ImageView like,dislike,postImage,profilepic,share;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             userName=itemView.findViewById(R.id.userName);
@@ -110,6 +129,7 @@ public class PostRecViewAdapter extends RecyclerView.Adapter<PostRecViewAdapter.
             numLikes=itemView.findViewById(R.id.numLikes);
             profilepic=itemView.findViewById(R.id.profilepic);
             postText=itemView.findViewById(R.id.postText);
+            share=itemView.findViewById(R.id.share);
         }
     }
 }

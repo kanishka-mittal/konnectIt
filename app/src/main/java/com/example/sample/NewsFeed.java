@@ -28,12 +28,9 @@ public class NewsFeed extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             userId = extras.getInt("userId");
-            System.out.println("Yo");
-            System.out.println(userId);
-            System.out.println("Yo");
         }
         NewsFeedBackgroundTask bgTask=new NewsFeedBackgroundTask(this,userId);
-        bgTask.execute();
+        bgTask.execute("load");
         btnAddPost=findViewById(R.id.btnAddPost);
         btnAddPost.setOnClickListener(new View.OnClickListener() {
             @Override

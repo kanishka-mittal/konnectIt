@@ -3,14 +3,32 @@ package com.example.sample;
 public class Notification {
     private String notif;
     private String sendUser;
-    private int id,sendUserId;
+    private int id,sendUserId,notifType,postId;
     private String imageUrl;
-    public Notification(String notif, String sendUser, int id,int sendUserId,String imageUrl) {
+    public Notification(String notif, String sendUser, int id,int sendUserId,String imageUrl,int notifType,int postId) {
         this.notif = notif;
         this.sendUser = sendUser;
         this.id = id;
         this.sendUserId=sendUserId;
         this.imageUrl=imageUrl;
+        this.notifType=notifType;
+        this.postId=postId;
+    }
+
+    public int getNotifType() {
+        return notifType;
+    }
+
+    public void setNotifType(int notifType) {
+        this.notifType = notifType;
+    }
+
+    public int getPostId() {
+        return postId;
+    }
+
+    public void setPostId(int postId) {
+        this.postId = postId;
     }
 
     public void setSendUserId(int sendUserId) {
