@@ -2,6 +2,7 @@ package com.example.sample;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,6 +77,15 @@ public class PostRecViewAdapter extends RecyclerView.Adapter<PostRecViewAdapter.
             public void onClick(View view) {
                 holder.dislike.setVisibility(View.VISIBLE);
                 holder.like.setVisibility(View.GONE);
+            }
+        });
+        holder.postImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(ctx,Post.class);
+                intent.putExtra("userId",userId);
+                intent.putExtra("postId",post.getPostId());
+                activity.startActivity(intent);
             }
         });
     }
