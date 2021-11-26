@@ -20,6 +20,9 @@
             android:name=".FriendRequests"
             android:exported="true" />
         <activity
+            android:name=".comment_reply"
+            android:exported="true" />
+        <activity
             android:name=".Profile"
             android:exported="false" />
         <activity

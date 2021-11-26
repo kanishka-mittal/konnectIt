@@ -27,57 +27,58 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-public class Post_bgTasks extends AsyncTask<String,Comments,Void> {
+public class comments_bgtasks extends AsyncTask<String,Replies,Void> {
     Context ctx;
     Activity activity;
-    RecyclerView commentsRecView;
-    Comments_Recview_Adapter CommentsRecViewAdapter;
-    ArrayList<Comments> comments;
-    int postID;
+    RecyclerView repliesRecView;
+    Replies_recview_Adapter RepliesRecViewAdapter;
+    ArrayList<Replies> replies;
+    int commentID;
     int userID;
-    String commentText;
+    String replyText;
 
-    public Post_bgTasks(Context ctx,int postID,int userID) {
+    public comments_bgtasks(Context ctx,int commentID,int userID) {
         this.ctx = ctx;
-        this.postID=postID;
+        this.commentID=commentID;
         activity=(Activity) ctx;
         this.userID=userID;
     }
 
-    public Post_bgTasks(Context ctx,int postID,int userID,String commentText) {
+    public comments_bgtasks(Context ctx,int commentID,int userID,String replyText) {
         this.ctx = ctx;
-        this.postID=postID;
+        this.commentID=commentID;
         activity=(Activity) ctx;
         this.userID=userID;
-        this.commentText=commentText;
+        this.replyText=replyText;
     }
 
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        commentsRecView=activity.findViewById(R.id.recyclerViewcomment);
-        comments=new ArrayList<>();
-        commentsRecView.setLayoutManager(new LinearLayoutManager(ctx));
-        CommentsRecViewAdapter=new Comments_Recview_Adapter(comments,ctx,postID,userID);
-        commentsRecView.setAdapter(CommentsRecViewAdapter);
+        //Doubt
+        repliesRecView=activity.findViewById(R.id.recyclerViewCommentpage);
+        replies=new ArrayList<>();
+        repliesRecView.setLayoutManager(new LinearLayoutManager(ctx));
+        RepliesRecViewAdapter=new Replies_recview_Adapter(replies,ctx,commentID);
+        repliesRecView.setAdapter(RepliesRecViewAdapter);
     }
 
 
     @Override
     protected Void doInBackground(String... params) {
         //String friendUrl="http://10.0.2.2//konnectit/friends.php";
-        if(params[0].equals("postload")){
+        if(params[0].equals("replyload")){
 
             try {
-                URL url = new URL(activity.getString(R.string.postloadUrl));
+                URL url = new URL(activity.getString(R.string.replyloadUrl));
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
                 httpURLConnection.setDoInput(true);
                 OutputStream os = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(os));
-                String data = URLEncoder.encode("postId", "UTF-8") + "=" + URLEncoder.encode(Integer.toString(postID), "UTF-8");
+                String data = URLEncoder.encode("commentId", "UTF-8") + "=" + URLEncoder.encode(Integer.toString(commentID), "UTF-8");
                 bufferedWriter.write(data);
                 bufferedWriter.flush();
                 bufferedWriter.close();
@@ -89,17 +90,17 @@ public class Post_bgTasks extends AsyncTask<String,Comments,Void> {
                     stringBuilder.append(line+"\n");
                 }
                 String jsonString=stringBuilder.toString().trim();
-                //System.out.println(jsonString);
+                System.out.println(jsonString);
                 if(!jsonString.equals("")){
                     JSONObject jsonObject=new JSONObject(jsonString);
-                    JSONArray jsonArray=jsonObject.getJSONArray("comments");
+                    JSONArray jsonArray=jsonObject.getJSONArray("replies");
                     System.out.println(jsonArray);
                     int count=0;
                     while(count<jsonArray.length()){
-                        JSONObject commentObject=jsonArray.getJSONObject(count);
+                        JSONObject replyObject=jsonArray.getJSONObject(count);
                         count++;
-                        Comments comment=new Comments(commentObject.getString("userName"),commentObject.getString("commentText"),commentObject.getInt("user_id"),commentObject.getInt("commentId"),postID);
-                        publishProgress(comment);
+                        Replies reply=new Replies(replyObject.getString("userName"),replyObject.getString("replyText"),replyObject.getInt("user_id"),replyObject.getInt("replyId"),commentID);
+                        publishProgress(reply);
                     }
                 }
 
@@ -116,20 +117,22 @@ public class Post_bgTasks extends AsyncTask<String,Comments,Void> {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-        }else if(params[0].equals("addcomment")){
+        }else if(params[0].equals("addreply")){
 
             StringBuilder stringBuilder=new StringBuilder();
 
             try{
-                URL url=new URL(activity.getString(R.string.addCommentUrl));
+                URL url=new URL(activity.getString(R.string.addReplyUrl));
                 HttpURLConnection httpURLConnection=(HttpURLConnection) url.openConnection();
                 BufferedReader bufferedReader;
                 BufferedWriter bufferedWriter;
                 httpURLConnection.setDoOutput(true);
                 httpURLConnection.setDoInput(true);
                 bufferedWriter=new BufferedWriter(new OutputStreamWriter(httpURLConnection.getOutputStream(),"UTF-8"));
-                String data= URLEncoder.encode("userId", "UTF-8") + "=" + URLEncoder.encode(Integer.toString(userID), "UTF-8") + "&" + URLEncoder.encode("commentText", "UTF-8") + "=" + URLEncoder.encode(commentText, "UTF-8") + "&" + URLEncoder.encode("postId", "UTF-8") + "=" + URLEncoder.encode(Integer.toString(postID), "UTF-8");
-                System.out.println(postID);
+                System.out.println(userID);
+                String data= URLEncoder.encode("userId", "UTF-8") + "=" + URLEncoder.encode(Integer.toString(userID), "UTF-8") + "&" + URLEncoder.encode("replyText", "UTF-8") + "=" + URLEncoder.encode(replyText, "UTF-8") + "&" + URLEncoder.encode("commentId", "UTF-8") + "=" + URLEncoder.encode(Integer.toString(commentID), "UTF-8");
+                //Doubt...why?
+                System.out.println(commentID);
                 bufferedWriter.write(data);
                 bufferedWriter.flush();
                 bufferedWriter.close();
@@ -139,6 +142,8 @@ public class Post_bgTasks extends AsyncTask<String,Comments,Void> {
                 while((line=bufferedReader.readLine())!=null){
                     stringBuilder.append(line);
                 }
+                String jsonString=stringBuilder.toString().trim();
+                System.out.println(jsonString);
                 bufferedReader.close();
                 httpURLConnection.disconnect();
             } catch (MalformedURLException e) {
@@ -153,8 +158,8 @@ public class Post_bgTasks extends AsyncTask<String,Comments,Void> {
     }
 
     @Override
-    protected void onProgressUpdate(Comments... values) {
-        comments.add(values[0]);
-        CommentsRecViewAdapter.notifyDataSetChanged();
+    protected void onProgressUpdate(Replies... values) {
+        replies.add(values[0]);
+        RepliesRecViewAdapter.notifyDataSetChanged();
     }
 }

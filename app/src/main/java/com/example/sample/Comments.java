@@ -24,7 +24,7 @@ public class Comments {
         return commentId;
     }
 
-    public void setcommentId(int postId) {
+    public void setcommentId(int commentId) {
         this.commentId = commentId;
     }
 
@@ -35,10 +35,11 @@ public class Comments {
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
     public String getcommentText() { return commentText; }
 
-    public void setPostText(String posttext) {
-        this.commentText = posttext;
+    public void setCommentText(String commentText) {
+        this.commentText = commentText;
     }
 
     @Override

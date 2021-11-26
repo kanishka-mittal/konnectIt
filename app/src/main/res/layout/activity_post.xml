@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".Post">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -24,6 +25,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Add your comment here"
+        android:textColor="@color/yellow"
         app:layout_constraintBottom_toTopOf="@+id/recyclerViewcomment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -37,6 +39,7 @@
         android:layout_height="76dp"
         android:layout_marginStart="8dp"
         android:text="GO"
+        android:textColor="@color/yellow"
         app:layout_constraintBottom_toTopOf="@+id/recyclerViewcomment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

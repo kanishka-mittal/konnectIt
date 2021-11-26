@@ -23,9 +23,10 @@ public class Comments_Recview_Adapter extends RecyclerView.Adapter<Comments_Recv
 
     private ArrayList<Comments> comments_list=new ArrayList<>();
     Context ctx;
-    int postID;
+    int postID,userID;
     Activity activity;
-    public Comments_Recview_Adapter(ArrayList<Comments> comments, Context ctx, int postId) {
+    public Comments_Recview_Adapter(ArrayList<Comments> comments, Context ctx, int postId, int userId) {
+        this.userID=userId;
         this.comments_list = comments;
         this.ctx = ctx;
         this.postID=postId;
@@ -42,10 +43,25 @@ public class Comments_Recview_Adapter extends RecyclerView.Adapter<Comments_Recv
 
     @Override
     public void onBindViewHolder(@NonNull Comments_Recview_Adapter.ViewHolder holder, int position) {
+        int commentID=comments_list.get(position).getcommentId();
+        String commentText=comments_list.get(position).getcommentText();
+        String username=comments_list.get(position).getUserName();
+        int commentuserId=comments_list.get(position).getUserId();
         holder.commentText.setText(comments_list.get(position).getcommentText());
         holder.userName.setText(comments_list.get(position).getUserName());
-        int userId=comments_list.get(position).getUserId();
-        Glide.with(ctx).asBitmap().error(R.mipmap.ic_user).load("http://10.0.2.2/konnectit/profilepics/"+Integer.toString(userId)+".png").into(holder.profilepic);
+        Glide.with(ctx).asBitmap().error(R.mipmap.ic_user).load("http://10.0.2.2/konnectit/profilepics/"+Integer.toString(commentuserId)+".png").into(holder.profilepic);
+        holder.commentsListItemParent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(activity,comment_reply.class);
+                intent.putExtra("commentId",commentID);
+                intent.putExtra("userId",userID);
+                intent.putExtra("commentuserId",commentuserId);
+                intent.putExtra("commentText",commentText);
+                intent.putExtra("username",username);
+                activity.startActivity(intent);
+            }
+        });
     }
 
     @Override
