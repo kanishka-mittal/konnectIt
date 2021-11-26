@@ -35,9 +35,7 @@ public class EditProfile extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             userId = extras.getInt("userId");
-            System.out.println("Yo");
             System.out.println(userId);
-            System.out.println("Yo");
         }
         Gender=findViewById(R.id.edtGender1);
         mobNum=findViewById(R.id.edtMobile1);

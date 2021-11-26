@@ -39,9 +39,9 @@ public class Register extends AppCompatActivity {
                     String method="register";
                     BackgroundTask bgTask=new BackgroundTask(Register.this);
                     bgTask.execute(method,username,fName,email,pswd);
-                    finish();
-                    Intent intent = new Intent(Register.this,MainActivity.class);
-                    startActivity(intent);
+//                    finish();
+//                    Intent intent = new Intent(Register.this,MainActivity.class);
+//                    startActivity(intent);
                 }
 
 //                Intent intent = new Intent(Register.this,Dashboard.class);
