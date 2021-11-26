@@ -60,7 +60,7 @@ public class comments_bgtasks extends AsyncTask<String,Replies,Void> {
         repliesRecView=activity.findViewById(R.id.recyclerViewCommentpage);
         replies=new ArrayList<>();
         repliesRecView.setLayoutManager(new LinearLayoutManager(ctx));
-        RepliesRecViewAdapter=new Replies_recview_Adapter(replies,ctx,commentID);
+        RepliesRecViewAdapter=new Replies_recview_Adapter(replies,ctx,commentID,userID);
         repliesRecView.setAdapter(RepliesRecViewAdapter);
     }
 

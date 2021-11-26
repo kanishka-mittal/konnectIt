@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/comments_listParent"
-    android:gravity="center_vertical">
+    android:id="@+id/comments_listParent">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -15,17 +14,19 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/cardLinearLayout"
             android:padding="5dp"
             >
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
                 app:cardCornerRadius="50dp"
-                app:strokeColor="@color/yellow"
                 app:strokeWidth="1dp"
-                android:layout_marginEnd="10dp">
+                app:strokeColor="@color/yellow">
                 <ImageView
-                    android:id="@+id/profilepiccommemt"
+                    android:id="@+id/profilepiccomment"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:src="@mipmap/ic_user"
@@ -33,31 +34,50 @@
                     android:background="@color/black"
                     />
             </com.google.android.material.card.MaterialCardView>
-
-
             <LinearLayout
-                android:layout_width="339dp"
-                android:layout_height="63dp"
-                android:layout_gravity="top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="top"
-                android:orientation="vertical">
-
+                android:orientation="vertical"
+                android:id="@+id/notifLinearLayout"
+                android:layout_gravity="center_vertical">
                 <TextView
-                    android:id="@+id/userNameComment"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Username"
-                    android:textColor="@color/yellow"/>
-
+                    android:text="User Name"
+                    android:layout_weight="1"
+                    android:id="@+id/userNameComment"
+                    android:textStyle="bold"
+                    android:textColor="@color/yellow"
+                    />
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Comment text"
+                    android:layout_weight="1"
                     android:id="@+id/commentText"
-                    android:layout_width="match_parent"
-                    android:layout_height="47dp"
-                    android:text="Comment content"
                     android:textColor="@color/white"/>
             </LinearLayout>
 
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                app:cardCornerRadius="50dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/red">
+                <ImageView
+                    android:id="@+id/dustbin"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@mipmap/ic_delete"
+                    android:layout_weight="0"
+                    android:visibility="gone"
+                    />
+            </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
+
+
     </androidx.cardview.widget.CardView>
+
 </RelativeLayout>

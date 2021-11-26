@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 
@@ -29,6 +30,8 @@ public class Profile extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private Button btnFriendsList;
+    ImageView userPic;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -63,6 +66,10 @@ public class Profile extends AppCompatActivity {
         tabLayout.getTabAt(1).setIcon(R.drawable.posticon);
 
         String method="load";
+
+        userPic=findViewById(R.id.userpic);
+        Glide.with(this).asBitmap().error(R.mipmap.ic_user).load("http://10.0.2.2/konnectit/profilepics/"+Integer.toString(userId)+".png").into(userPic);
+
         TextView Fullname = findViewById(R.id.fullname);
         TextView Username = findViewById(R.id.username);
         ProfileBackgroundTask bgTask=new ProfileBackgroundTask(this,userId, Fullname, Username, infopage);

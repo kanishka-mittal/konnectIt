@@ -23,12 +23,13 @@ public class Replies_recview_Adapter extends RecyclerView.Adapter<Replies_recvie
 
     private ArrayList<Replies> replies_list=new ArrayList<>();
     Context ctx;
-    int commentID;
+    int commentID,userID;
     Activity activity;
-    public Replies_recview_Adapter(ArrayList<Replies> replies, Context ctx, int commentID) {
+    public Replies_recview_Adapter(ArrayList<Replies> replies, Context ctx, int commentID,int userId) {
         this.replies_list = replies;
         this.ctx = ctx;
         this.commentID=commentID;
+        this.userID=userId;
         activity=(Activity) ctx;
     }
 
@@ -47,6 +48,11 @@ public class Replies_recview_Adapter extends RecyclerView.Adapter<Replies_recvie
         holder.userName.setText(replies_list.get(position).getUserName());
         int replyuserId=replies_list.get(position).getUserId();
         Glide.with(ctx).asBitmap().error(R.mipmap.ic_user).load("http://10.0.2.2/konnectit/profilepics/"+Integer.toString(replyuserId)+".png").into(holder.profilepic);
+
+        if (userID==replyuserId){
+            holder.dustbinreply.setVisibility(View.VISIBLE);
+        }
+
     }
 
     @Override
@@ -62,13 +68,14 @@ public class Replies_recview_Adapter extends RecyclerView.Adapter<Replies_recvie
     public class ViewHolder extends RecyclerView.ViewHolder{
         private TextView userName,replyText;
         private RelativeLayout repliesListItemParent;
-        private ImageView profilepic;
+        private ImageView profilepic,dustbinreply;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             userName=itemView.findViewById(R.id.userNameReply);
             replyText=itemView.findViewById(R.id.replyText);
             repliesListItemParent=itemView.findViewById(R.id.replies_listParent);
             profilepic=itemView.findViewById(R.id.profilepicreply);
+            dustbinreply=itemView.findViewById(R.id.dustbinreply);
         }
     }
 
