@@ -25,7 +25,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-public class SearchBackgroundTask extends AsyncTask<Void,Friend,Void> {
+public class SearchFriendsBackgroundTask extends AsyncTask<Void,Friend,Void> {
     Context ctx;
     Activity activity;
     int userId;
@@ -34,7 +34,7 @@ public class SearchBackgroundTask extends AsyncTask<Void,Friend,Void> {
     FriendRecViewAdapter friendRecViewAdapter;
     ArrayList<Friend> friends;
 
-    public SearchBackgroundTask(Context ctx, int userId, String searchTxt) {
+    public SearchFriendsBackgroundTask(Context ctx, int userId, String searchTxt) {
         this.ctx = ctx;
         activity=(Activity)ctx;
         this.userId = userId;
@@ -44,16 +44,17 @@ public class SearchBackgroundTask extends AsyncTask<Void,Friend,Void> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        searchFriendsRecView=activity.findViewById(R.id.searchFriendsRecView);
-        friends=new ArrayList<>();
-        searchFriendsRecView.setLayoutManager(new LinearLayoutManager(ctx));
-        friendRecViewAdapter=new FriendRecViewAdapter(friends,ctx,userId);
-        searchFriendsRecView.setAdapter(friendRecViewAdapter);
+
     }
 
     @Override
     protected Void doInBackground(Void... voids) {
         try{
+            searchFriendsRecView=activity.findViewById(R.id.searchFriendsRecView);
+            friends=new ArrayList<>();
+            friendRecViewAdapter=new FriendRecViewAdapter(friends,ctx,userId);
+            searchFriendsRecView.setAdapter(friendRecViewAdapter);
+            searchFriendsRecView.setLayoutManager(new LinearLayoutManager(ctx));
             URL url=new URL(activity.getString(R.string.searchFriendsUrl));
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("POST");
@@ -82,7 +83,7 @@ public class SearchBackgroundTask extends AsyncTask<Void,Friend,Void> {
                 while(count<jsonArray.length()){
                     JSONObject friendObject=jsonArray.getJSONObject(count);
                     count++;
-                    Friend friend=new Friend(friendObject.getString("userName"),friendObject.getString("firstName"),friendObject.getInt("user_id"));
+                    Friend friend=new Friend(friendObject.getString("userName"),friendObject.getString("firstName"),friendObject.getInt("user_id"),friendObject.getString("imageurl"));
                     publishProgress(friend);
                 }
             }

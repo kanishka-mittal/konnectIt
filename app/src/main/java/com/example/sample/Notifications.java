@@ -2,8 +2,6 @@ package com.example.sample;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,8 +11,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.util.ArrayList;
 
 public class Notifications extends AppCompatActivity {
     private int userId;
@@ -36,7 +32,7 @@ public class Notifications extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 searchTxt=edtSearch.getText().toString();
-                Intent intent = new Intent(Notifications.this,Search.class);
+                Intent intent = new Intent(Notifications.this, SearchUsers.class);
                 intent.putExtra("searchTxt",searchTxt);
                 intent.putExtra("userId",userId);
                 startActivity(intent);

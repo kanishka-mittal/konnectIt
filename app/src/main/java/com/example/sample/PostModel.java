@@ -1,11 +1,11 @@
 package com.example.sample;
 
 public class PostModel {
-    String userName,firstName,postText,postImageURL;
+    String userName,firstName,postText,postImageURL,imageUrl;
     int postId,userId;
     int numLikes,numComments;
 
-    public PostModel(String userName, String firstName, int postId, int userId, int numLikes, int numComments,String postText,String postImageURL) {
+    public PostModel(String userName, String firstName, int postId, int userId, int numLikes, int numComments,String postText,String postImageURL,String imageUrl) {
         this.userName = userName;
         this.firstName = firstName;
         this.postId = postId;
@@ -14,6 +14,15 @@ public class PostModel {
         this.numComments = numComments;
         this.postText=postText;
         this.postImageURL=postImageURL;
+        this.imageUrl=imageUrl;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getPostImageURL() {

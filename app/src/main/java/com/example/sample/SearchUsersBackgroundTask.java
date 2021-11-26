@@ -58,9 +58,9 @@ public class SearchUsersBackgroundTask extends AsyncTask<String,User,Void> {
             try{
                 searchUsersRecView=activity.findViewById(R.id.searchUsersRecView);
                 users=new ArrayList<>();
-                searchUsersRecView.setLayoutManager(new LinearLayoutManager(ctx));
                 searchUsersRecViewAdapter=new SearchUsersRecViewAdapter(users,ctx,userId);
                 searchUsersRecView.setAdapter(searchUsersRecViewAdapter);
+                searchUsersRecView.setLayoutManager(new LinearLayoutManager(ctx));
                 URL url=new URL(activity.getString(R.string.searchUsersUrl));
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
@@ -69,8 +69,6 @@ public class SearchUsersBackgroundTask extends AsyncTask<String,User,Void> {
                 OutputStream os = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(os));
                 String data=URLEncoder.encode("userId", "UTF-8") + "=" + URLEncoder.encode(Integer.toString(userId), "UTF-8") + "&" + URLEncoder.encode("searchTxt", "UTF-8") + "=" + URLEncoder.encode(searchTxt, "UTF-8");
-                //String data=URLEncoder.encode("userId", "UTF-8") + "=" + URLEncoder.encode(Integer.toString(userId), "UTF-8");
-                //System.out.println(userId);
                 bufferedWriter.write(data);
                 bufferedWriter.flush();
                 bufferedWriter.close();
@@ -91,7 +89,7 @@ public class SearchUsersBackgroundTask extends AsyncTask<String,User,Void> {
                     while(count<jsonArray.length()){
                         JSONObject friendObject=jsonArray.getJSONObject(count);
                         count++;
-                        User user=new User(friendObject.getString("userName"),friendObject.getString("firstName"),friendObject.getInt("user_id"));
+                        User user=new User(friendObject.getString("userName"),friendObject.getString("firstName"),friendObject.getInt("user_id"),friendObject.getString("imageurl"));
                         publishProgress(user);
                     }
                 }

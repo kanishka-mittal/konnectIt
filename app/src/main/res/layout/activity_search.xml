@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Search"
+    tools:context=".SearchUsers"
     android:background="@color/black">
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,14 +29,9 @@
             android:textColor="@color/yellow"/>
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@+id/searchLinearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/searchFriendsRecView"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@+id/searchFriendsRecView"
+        android:layout_below="@+id/searchLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/searchUsersRecView"/>

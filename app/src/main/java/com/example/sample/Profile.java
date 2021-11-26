@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +28,7 @@ public class Profile extends AppCompatActivity {
     private ProfileViewsAdapter viewPagerAdapter;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private Button btnFriendsList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -37,7 +39,15 @@ public class Profile extends AppCompatActivity {
             userId=extras.getInt("userId");
             accessedByUser=extras.getInt("accessedByUser");
         }
-
+        btnFriendsList=findViewById(R.id.btnFriendsList);
+        btnFriendsList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Profile.this,Friends.class);
+                intent.putExtra("userId",userId);
+                startActivity(intent);
+            }
+        });
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);

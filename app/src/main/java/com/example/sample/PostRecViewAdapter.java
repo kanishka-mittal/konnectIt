@@ -52,13 +52,15 @@ public class PostRecViewAdapter extends RecyclerView.Adapter<PostRecViewAdapter.
         holder.userName.setText(post.getUserName());
         holder.numLikes.setText(Integer.toString(post.getNumLikes()));
         holder.numComments.setText(Integer.toString(post.getNumComments()));
-        Glide.with(ctx).asBitmap().placeholder(R.mipmap.ic_user).error(R.mipmap.ic_user).load("http://10.0.2.2/konnectit/profilepics/"+Integer.toString(posts.get(position).getUserId())+".png").into(holder.profilepic);
-        System.out.println(post.getPostImageURL());
+        if(!(post.getImageUrl().equals("null"))){
+            Glide.with(ctx).asBitmap().placeholder(R.mipmap.ic_user).error(R.mipmap.ic_user).load("http://10.0.2.2/konnectit/profilepics/"+Integer.toString(posts.get(position).getUserId())+".png").into(holder.profilepic);
+        }
+        //System.out.println(post.getPostImageURL());
         if((post.getPostImageURL()).equals("null")){
             holder.postImage.setVisibility(View.GONE);
         }else{
             holder.postImage.setVisibility(View.VISIBLE);
-            System.out.println(post.getPostImageURL());
+            //System.out.println(post.getPostImageURL());
             Glide.with(ctx).asBitmap().placeholder(R.mipmap.ic_user).error(R.mipmap.ic_user).load("http://10.0.2.2/konnectit/posts_image/"+Integer.toString(post.getPostId())+".png").into(holder.postImage);
         }
         holder.postText.setText(post.getPostText());

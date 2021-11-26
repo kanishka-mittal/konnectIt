@@ -1,13 +1,22 @@
 package com.example.sample;
 
 public class Friend {
-    private String userName,firstName;
+    private String userName,firstName,imageUrl;
     private int userId;
 
-    public Friend(String userName, String firstName,int userId) {
+    public Friend(String userName, String firstName,int userId,String imageUrl) {
         this.userName = userName;
         this.firstName = firstName;
         this.userId=userId;
+        this.imageUrl=imageUrl;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public int getUserId() {

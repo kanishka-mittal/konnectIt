@@ -86,7 +86,7 @@ public class NotifBackgroundTask extends AsyncTask<String, Notification, Void> {
                     while(count<jsonArray.length()){
                         JSONObject notifObject=jsonArray.getJSONObject(count);
                         count++;
-                        Notification notification=new Notification(notifObject.getString("notifText"),notifObject.getString("userName"),notifObject.getInt("id"),notifObject.getInt("sendUserId"));
+                        Notification notification=new Notification(notifObject.getString("notifText"),notifObject.getString("userName"),notifObject.getInt("id"),notifObject.getInt("sendUserId"),notifObject.getString("imageurl"));
                         publishProgress(notification);
                     }
                 }

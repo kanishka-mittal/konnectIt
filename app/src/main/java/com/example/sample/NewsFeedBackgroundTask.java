@@ -81,7 +81,7 @@ public class NewsFeedBackgroundTask extends AsyncTask<Void,PostModel,Void> {
                 while(count<jsonArray.length()){
                     JSONObject postObject=jsonArray.getJSONObject(count);
                     count++;
-                    PostModel postModel=new PostModel(postObject.getString("userName"),postObject.getString("firstName"),postObject.getInt("postId"),postObject.getInt("user_id"),postObject.getInt("numLikes"),postObject.getInt("numComments"),postObject.getString("postText"),postObject.getString("postImageURL"));
+                    PostModel postModel=new PostModel(postObject.getString("userName"),postObject.getString("firstName"),postObject.getInt("postId"),postObject.getInt("user_id"),postObject.getInt("numLikes"),postObject.getInt("numComments"),postObject.getString("postText"),postObject.getString("postImageURL"),postObject.getString("imageurl"));
                     publishProgress(postModel);
                 }
             }

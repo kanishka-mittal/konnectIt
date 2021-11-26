@@ -85,7 +85,7 @@ public class FriendBackgroundTask extends AsyncTask<String,Friend,Void> {
                     while(count<jsonArray.length()){
                         JSONObject friendObject=jsonArray.getJSONObject(count);
                         count++;
-                        Friend friend=new Friend(friendObject.getString("userName"),friendObject.getString("firstName"),friendObject.getInt("user_id"));
+                        Friend friend=new Friend(friendObject.getString("userName"),friendObject.getString("firstName"),friendObject.getInt("user_id"),friendObject.getString("imageurl"));
                         publishProgress(friend);
                     }
                 }

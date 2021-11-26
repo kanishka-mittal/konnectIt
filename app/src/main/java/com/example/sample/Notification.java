@@ -4,12 +4,25 @@ public class Notification {
     private String notif;
     private String sendUser;
     private int id,sendUserId;
-
-    public Notification(String notif, String sendUser, int id,int sendUserId) {
+    private String imageUrl;
+    public Notification(String notif, String sendUser, int id,int sendUserId,String imageUrl) {
         this.notif = notif;
         this.sendUser = sendUser;
         this.id = id;
         this.sendUserId=sendUserId;
+        this.imageUrl=imageUrl;
+    }
+
+    public void setSendUserId(int sendUserId) {
+        this.sendUserId = sendUserId;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public int getSendUserId() {
