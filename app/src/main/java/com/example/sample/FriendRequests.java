@@ -24,7 +24,7 @@ public class FriendRequests extends AppCompatActivity {
         //BOTTOMBAR NAVIGATION
         BottomNavigationView bottomNavigationView = findViewById(R.id.dashboard);
 
-        bottomNavigationView.setSelectedItemId(R.id.notifs);
+        bottomNavigationView.setSelectedItemId(R.id.friendRequests);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
