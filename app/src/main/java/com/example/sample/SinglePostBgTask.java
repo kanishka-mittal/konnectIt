@@ -209,25 +209,21 @@ public class SinglePostBgTask extends AsyncTask<String,Void,String> {
                             userName.setText(postObject.getString("userName"));
                             firstName.setText(postObject.getString("firstName"));
                             if(!(postObject.getString("postImageURL").equals("null"))){
-//                        Glide.with(ctx).asBitmap().placeholder(R.mipmap.ic_user).error(R.mipmap.ic_user).load(postObject.getString("postImageURL")).into(postImage);
+                                Glide.with(ctx).asBitmap().placeholder(R.mipmap.ic_user).error(R.mipmap.ic_user).load(postObject.getString("postImageURL")).into(postImage);
 
                             }else{
                                 postImage.setVisibility(View.GONE);
                             }
                             if(!(postObject.getString("imageurl").equals("null"))){
-//                        Glide.with(ctx).asBitmap().placeholder(R.mipmap.ic_user).error(R.mipmap.ic_user).load(postObject.getString("imageurl")).into(profilepic);
+                                Glide.with(ctx).asBitmap().placeholder(R.mipmap.ic_user).error(R.mipmap.ic_user).load(postObject.getString("imageurl")).into(profilepic);
                             }
                             postContent.setText(postObject.getString("postText"));
 
                             numComments.setText(Integer.toString(postObject.getInt("numComments")));
                             numLikes.setText(Integer.toString(postObject.getInt("numLikes")));
                             if(postObject.getInt("postedBy")==userId){
-//                        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
                                 dustbin.setVisibility(View.VISIBLE);
                             }else{
-//                        System.out.println(postObject.getInt("postedBy"));
-//                        System.out.println(userId);
-//                        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
                                 dustbin.setVisibility(View.GONE);
                             }
                         }

@@ -27,7 +27,7 @@ public class Profile_info extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private int userId;
+    private int userId,accessedByUser;
     public Profile_info() {
         // Required empty public constructor
     }
@@ -67,6 +67,7 @@ public class Profile_info extends Fragment {
             @Override
             public void run() {
                 userId = getArguments().getInt("userId");
+                accessedByUser = getArguments().getInt("accessedByUser");
                 view = inflater.inflate(R.layout.fragment_profile_info, container, false);
             }
         });

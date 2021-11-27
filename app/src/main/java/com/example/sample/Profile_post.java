@@ -56,7 +56,7 @@ public class Profile_post extends Fragment {
         }
     }
 
-    private int userId;
+    private int userId,accessedByUser;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -67,6 +67,8 @@ public class Profile_post extends Fragment {
             public void run() {
                 view = inflater.inflate(R.layout.fragment_profile_post, container, false);
                 userId = getArguments().getInt("userId");
+                accessedByUser = getArguments().getInt("accessedByUser");
+
             }
         });
 
@@ -77,7 +79,9 @@ public class Profile_post extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         String method="loadPr";
-        NewsFeedBackgroundTask bgTask=new NewsFeedBackgroundTask(getActivity(),userId);
+        NewsFeedBackgroundTask bgTask=new NewsFeedBackgroundTask(getActivity(),userId,accessedByUser);
+
+
         bgTask.execute(method);
     }
 }

@@ -6,13 +6,13 @@
         app:showAsAction="always"
         android:title=""
         android:icon="@drawable/three"
+        android:id="@+id/threedot"
         >
         <item
             android:id="@+id/editprofile"
             android:icon="@drawable/edit"
             android:title="Edit Profile"
             app:showAsAction="never"
-
             />
         <item
             android:id="@+id/settings"

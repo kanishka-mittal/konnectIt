@@ -24,6 +24,7 @@ public class Post extends AppCompatActivity {
     EditText commentText;
     ImageView share,like,dislike,dustbinpostpage;
     public Context ctx;
+    TextView numLikes;
     int accessedByUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +62,17 @@ public class Post extends AppCompatActivity {
                 dialog.setContentView(R.layout.dialog_layout);
                 DialogBackgroundTask bgTask=new DialogBackgroundTask(dialog,ctx,userId,postId);
                 bgTask.execute("load");
+                dialog.show();
+            }
+        });
+        numLikes=findViewById(R.id.numLikespostpage);
+        numLikes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Dialog dialog=new Dialog(ctx);
+                dialog.setContentView(R.layout.likes_dialog_layout);
+                LikesDialogBackgroundTask likesDialogBackgroundTask=new LikesDialogBackgroundTask(dialog,ctx,postId);
+                likesDialogBackgroundTask.execute("load");
                 dialog.show();
             }
         });

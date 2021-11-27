@@ -41,6 +41,8 @@ public class Profile extends AppCompatActivity {
         if (extras != null) {
             userId=extras.getInt("userId");
             accessedByUser=extras.getInt("accessedByUser");
+//            System.out.println(userId);
+//            System.out.println(accessedByUser);
         }
 
 
@@ -131,10 +133,13 @@ public class Profile extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.profilemenu, menu);
-
         if(menu instanceof MenuBuilder){
             MenuBuilder m = (MenuBuilder) menu;
             m.setOptionalIconsVisible(true);
+//            if(accessedByUser!=userId){
+//                MenuItem menuItem=menu.findItem(R.id.threedot);
+//                menuItem.setVisible(false);
+//            }
         }
         return true;
     }

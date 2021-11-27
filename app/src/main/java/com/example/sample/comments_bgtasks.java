@@ -217,7 +217,6 @@ public class comments_bgtasks extends AsyncTask<String,Replies,String> {
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
                 httpURLConnection.setDoInput(true);
-                System.out.println("here");
                 OutputStream os = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(os));
                 String data = URLEncoder.encode("userId", "UTF-8") + "=" + URLEncoder.encode(Integer.toString(userID), "UTF-8") + "&" + URLEncoder.encode("replyId", "UTF-8") + "=" + URLEncoder.encode(params[1], "UTF-8");
@@ -246,7 +245,7 @@ public class comments_bgtasks extends AsyncTask<String,Replies,String> {
             }
         }else if(params[0].equals("unlikeReply")){
             try {
-                URL url = new URL(activity.getString(R.string.unlikeCommentUrl));
+                URL url = new URL(activity.getString(R.string.unlikeReplyUrl));
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);

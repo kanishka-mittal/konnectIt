@@ -33,12 +33,19 @@ public class NewsFeedBackgroundTask extends AsyncTask<String,PostModel,Boolean> 
     ArrayList posts;
     PostRecViewAdapter postRecViewAdapter;
     PostRecViewAdapter.ViewHolder holder;
-    int userId;
+    int userId,accessedByUser;
     String method="";
     public NewsFeedBackgroundTask(Context ctx, int userId) {
         this.ctx = ctx;
         this.userId = userId;
         activity=(Activity) ctx;
+    }
+    public NewsFeedBackgroundTask(Context ctx, int userId,int accessedByUser) {
+        this.ctx = ctx;
+        this.userId = userId;
+        activity=(Activity) ctx;
+        this.accessedByUser=accessedByUser;
+
     }
     public NewsFeedBackgroundTask(Context ctx, int userId,PostRecViewAdapter.ViewHolder holder) {
         this.ctx = ctx;
@@ -121,15 +128,15 @@ public class NewsFeedBackgroundTask extends AsyncTask<String,PostModel,Boolean> 
                 activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+//                        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
                         postRecView = activity.findViewById(R.id.profilePostRecView);
                         posts = new ArrayList();
-                        postRecViewAdapter = new PostRecViewAdapter(posts, ctx, userId);
+                        postRecViewAdapter = new PostRecViewAdapter(posts, ctx, userId,accessedByUser);
                         postRecView.setLayoutManager(new LinearLayoutManager(ctx));
                         postRecView.setAdapter(postRecViewAdapter);
                     }
                 });
-                System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+//                System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
                 URL url = new URL(activity.getString(R.string.ProfileFeedUrl));
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
@@ -142,7 +149,7 @@ public class NewsFeedBackgroundTask extends AsyncTask<String,PostModel,Boolean> 
                 bufferedWriter.flush();
                 bufferedWriter.close();
                 System.out.println(data);
-                System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+//                System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
                 InputStream is = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is));
                 StringBuilder stringBuilder = new StringBuilder();

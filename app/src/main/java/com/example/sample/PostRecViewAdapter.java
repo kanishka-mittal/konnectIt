@@ -23,8 +23,15 @@ public class PostRecViewAdapter extends RecyclerView.Adapter<PostRecViewAdapter.
     ArrayList<PostModel> posts;
     Context ctx;
     Activity activity;
-    int userId;
+    int userId,accessedByUser;
 
+    public PostRecViewAdapter(ArrayList<PostModel> posts, Context ctx, int userId,int accessedByUser) {
+        this.posts = posts;
+        this.ctx = ctx;
+        this.userId = userId;
+        activity=(Activity) ctx;
+        this.accessedByUser=accessedByUser;
+    }
     public PostRecViewAdapter(ArrayList<PostModel> posts, Context ctx, int userId) {
         this.posts = posts;
         this.ctx = ctx;
@@ -63,7 +70,12 @@ public class PostRecViewAdapter extends RecyclerView.Adapter<PostRecViewAdapter.
             //System.out.println(post.getPostImageURL());
             Glide.with(ctx).asBitmap().placeholder(R.mipmap.ic_user).error(R.mipmap.ic_user).load("http://10.0.2.2/konnectit/posts_image/"+Integer.toString(post.getPostId())+".png").into(holder.postImage);
         }
-        if(userId==post.getUserId()){
+//        if(accessedByUser!=userId){
+//            holder.dustbin.setVisibility(View.GONE);
+//        }
+        if(accessedByUser==post.getUserId()){
+            System.out.println(userId);
+            System.out.println(post.getUserId());
             holder.dustbin.setVisibility(View.VISIBLE);
         }else{
             holder.dustbin.setVisibility(View.GONE);
@@ -129,6 +141,16 @@ public class PostRecViewAdapter extends RecyclerView.Adapter<PostRecViewAdapter.
                 dialog.setContentView(R.layout.dialog_layout);
                 DialogBackgroundTask bgTask=new DialogBackgroundTask(dialog,ctx,userId,post.getPostId());
                 bgTask.execute("load");
+                dialog.show();
+            }
+        });
+        holder.numLikes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Dialog dialog=new Dialog(ctx);
+                dialog.setContentView(R.layout.likes_dialog_layout);
+                LikesDialogBackgroundTask likesDialogBackgroundTask=new LikesDialogBackgroundTask(dialog,ctx,post.getPostId());
+                likesDialogBackgroundTask.execute("load");
                 dialog.show();
             }
         });

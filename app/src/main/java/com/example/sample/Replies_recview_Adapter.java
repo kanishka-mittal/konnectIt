@@ -53,13 +53,13 @@ public class Replies_recview_Adapter extends RecyclerView.Adapter<Replies_recvie
             holder.dustbinreply.setVisibility(View.VISIBLE);
         }
 
-//        comments_bgtasks comments_bgtask1=new comments_bgtasks(ctx,userID,holder);
-//        comments_bgtask1.execute("isReplyLiked",Integer.toString(replyId));
+        comments_bgtasks comments_bgtask1=new comments_bgtasks(ctx,userID,holder);
+        comments_bgtask1.execute("isReplyLiked",Integer.toString(replyId));
         holder.like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 comments_bgtasks comments_bgtask2=new comments_bgtasks(ctx,userID,holder);
-                comments_bgtask2.execute("likeReply",Integer.toString(replyId));
+                comments_bgtask2.execute("unlikeReply",Integer.toString(replyId));
                 holder.dislike.setVisibility(View.VISIBLE);
                 holder.like.setVisibility(View.GONE);
 //                holder.numLikes.setText(Integer.toString(post.getNumLikes()-1));
@@ -69,9 +69,8 @@ public class Replies_recview_Adapter extends RecyclerView.Adapter<Replies_recvie
         holder.dislike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("%%%%%%%%%%%%%%%%%%");
                 comments_bgtasks comments_bgtask2=new comments_bgtasks(ctx,userID,holder);
-                comments_bgtask2.execute("unlikeReply",Integer.toString(replyId));
+                comments_bgtask2.execute("likeReply",Integer.toString(replyId));
                 holder.dislike.setVisibility(View.GONE);
                 holder.like.setVisibility(View.VISIBLE);
 //                holder.numLikes.setText(Integer.toString(post.getNumLikes()+1));
