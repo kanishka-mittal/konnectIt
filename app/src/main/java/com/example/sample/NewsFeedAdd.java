@@ -36,9 +36,6 @@ public class NewsFeedAdd extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             userId = extras.getInt("userId");
-            System.out.println("Yo");
-            System.out.println(userId);
-            System.out.println("Yo");
         }
         edtpostText=findViewById(R.id.postText);
         btnPost=findViewById(R.id.btnPost);
@@ -55,9 +52,9 @@ public class NewsFeedAdd extends AppCompatActivity {
                     newsfeedpostbgtasks.execute();
                     finish();
 
-                    Intent intent=new Intent(NewsFeedAdd.this,NewsFeed.class);
-                    intent.putExtra("userId",userId);
-                    startActivity(intent);
+//                    Intent intent=new Intent(NewsFeedAdd.this,NewsFeed.class);
+//                    intent.putExtra("userId",userId);
+//                    startActivity(intent);
                 }
 
             }

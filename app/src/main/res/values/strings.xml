@@ -50,6 +50,7 @@
     <string name="delCommentUrl">http://10.0.2.2//konnectit/delComment.php</string>
     <string name="delReplyUrl">http://10.0.2.2//konnectit/delReply.php</string>
     <string name="editPostLoadUrl">http://10.0.2.2//konnectit/editPostLoad.php</string>
+    <string name="editPostDoneUrl">http://10.0.2.2//konnectit/editPostDone.php</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="newsFeedLoadUrl">http://10.0.2.2//konnectit/newsFeedLoad.php</string>
