@@ -33,6 +33,13 @@
     <string name="likeUrl">http://10.0.2.2//konnectit/like.php</string>
     <string name="unlikeUrl">http://10.0.2.2//konnectit/unlike.php</string>
     <string name="isLikedUrl">http://10.0.2.2//konnectit/isLiked.php</string>
+    <string name="isPostVisibleUrl">http://10.0.2.2//konnectit/isPostVisible.php</string>
+    <string name="isPrivateUrl">http://10.0.2.2//konnectit/isPrivate.php</string>
+    <string name="isFriendUrl">http://10.0.2.2//konnectit/isFriend.php</string>
+    <string name="singlePostLoadUrl">http://10.0.2.2//konnectit/singlePostLoad.php</string>
+    <string name="singleCommentLoadUrl">http://10.0.2.2//konnectit/singleCommentLoad.php</string>
+    <string name="chatLoadUrl">http://10.0.2.2//konnectit/chatLoad.php</string>
+    <string name="sendMsgUrl">http://10.0.2.2//konnectit/sendMsg.php</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="newsFeedLoadUrl">http://10.0.2.2//konnectit/newsFeedLoad.php</string>

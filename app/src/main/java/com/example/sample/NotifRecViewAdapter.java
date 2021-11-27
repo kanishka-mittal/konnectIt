@@ -2,18 +2,15 @@ package com.example.sample;
 
 import android.app.Activity;
 import android.content.Context;
-import android.transition.AutoTransition;
-import android.transition.TransitionManager;
-import android.view.GestureDetector;
+import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,10 +23,12 @@ public class NotifRecViewAdapter extends RecyclerView.Adapter<NotifRecViewAdapte
     private ArrayList<Notification> notifications=new ArrayList<>();
     private Context context;
     private int userId;
+    Activity activity;
     public NotifRecViewAdapter(ArrayList<Notification> notifications, Context context,int userId) {
         this.notifications = notifications;
         this.context = context;
         this.userId=userId;
+        activity=(Activity) context;
     }
 
     @NonNull
@@ -42,6 +41,7 @@ public class NotifRecViewAdapter extends RecyclerView.Adapter<NotifRecViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Notification notification=notifications.get(position);
         int id=notifications.get(position).getId();
         holder.notification.setText(notifications.get(position).getNotif());
         holder.userName.setText(notifications.get(position).getSendUser());
@@ -72,6 +72,22 @@ public class NotifRecViewAdapter extends RecyclerView.Adapter<NotifRecViewAdapte
                 notifyDataSetChanged();
             }
         });
+        holder.btnSeePost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(notification.getNotifType()>0){
+                    Intent intent=new Intent(context,Post.class);
+                    intent.putExtra("postId",notification.getPostId());
+                    //intent.putExtra("accessedByUser",userId);
+                    activity.startActivity(intent);
+                }else{
+                    SeePostBackgroundTask seePostBackgroundTask =new SeePostBackgroundTask(userId,notification.getPostId(),context);
+                    seePostBackgroundTask.execute("privacy");
+                    //check private or public account
+                    //check friends or not
+                }
+            }
+        });
     }
 
     @Override
@@ -92,6 +108,7 @@ public class NotifRecViewAdapter extends RecyclerView.Adapter<NotifRecViewAdapte
         private TextView userName;
         private TextView notification;
         private LinearLayout cardLinearLayout;
+        private Button btnSeePost;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             notification=itemView.findViewById(R.id.notification);
@@ -101,6 +118,7 @@ public class NotifRecViewAdapter extends RecyclerView.Adapter<NotifRecViewAdapte
             cardLinearLayout=itemView.findViewById(R.id.cardLinearLayout);
             userName=itemView.findViewById(R.id.userName);
             notifLinearLayout=itemView.findViewById(R.id.notifLinearLayout);
+            btnSeePost=itemView.findViewById(R.id.btnSeePost);
         }
     }
 }

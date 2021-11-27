@@ -18,11 +18,6 @@ public class comment_reply extends AppCompatActivity {
     Button btnpostReply;
     String replytext;
     EditText replyText;
-    TextView commenttextview;
-    TextView usernametextview;
-    String commentText;
-    String username;
-    ImageView profilepic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,22 +27,13 @@ public class comment_reply extends AppCompatActivity {
         if (extras != null) {
             commentId = extras.getInt("commentId");
             userId=extras.getInt("userId");
-            username=extras.getString("username");
-            commentText=extras.getString("commentText");
-            commentuserId=extras.getInt("commentuserId");
         }
-
-        profilepic=findViewById(R.id.profilepicCommentpage);
-        commenttextview=findViewById(R.id.commentextCommentpage);
-        usernametextview=findViewById(R.id.userNameCommentpage);
-        commenttextview.setText(commentText);
-        usernametextview.setText(username);
-        Glide.with(this).asBitmap().error(R.mipmap.ic_user).load("http://10.0.2.2/konnectit/profilepics/"+Integer.toString(commentuserId)+".png").into(profilepic);
+        SingleCommentBgTask singleCommentBgTask=new SingleCommentBgTask(this,commentId,userId);
+        singleCommentBgTask.execute("load");
 
         String method="replyload";
         comments_bgtasks bgTask=new comments_bgtasks(this,commentId,userId);
         bgTask.execute(method);
-
         replyText= findViewById(R.id.editTextCommentpage);
         btnpostReply = findViewById(R.id.buttonCommentpage);
         btnpostReply.setOnClickListener(new View.OnClickListener() {
@@ -65,9 +51,6 @@ public class comment_reply extends AppCompatActivity {
                     Intent intent=new Intent(comment_reply.this,comment_reply.class);
                     intent.putExtra("commentId",commentId);
                     intent.putExtra("userId",userId);
-                    intent.putExtra("commentuserId",commentuserId);
-                    intent.putExtra("commentText",commentText);
-                    intent.putExtra("username",username);
                     startActivity(intent);
                 }
 

@@ -45,8 +45,8 @@ public class Comments_Recview_Adapter extends RecyclerView.Adapter<Comments_Recv
     @Override
     public void onBindViewHolder(@NonNull Comments_Recview_Adapter.ViewHolder holder, int position) {
         int commentID=comments_list.get(position).getcommentId();
-        String commentText=comments_list.get(position).getcommentText();
-        String username=comments_list.get(position).getUserName();
+//        String commentText=comments_list.get(position).getcommentText();
+//        String username=comments_list.get(position).getUserName();
         int commentuserId=comments_list.get(position).getUserId();
 
         holder.commentText.setText(comments_list.get(position).getcommentText());
@@ -64,9 +64,9 @@ public class Comments_Recview_Adapter extends RecyclerView.Adapter<Comments_Recv
                 Intent intent=new Intent(activity,comment_reply.class);
                 intent.putExtra("commentId",commentID);
                 intent.putExtra("userId",userID);
-                intent.putExtra("commentuserId",commentuserId);
-                intent.putExtra("commentText",commentText);
-                intent.putExtra("username",username);
+//                intent.putExtra("commentuserId",commentuserId);
+//                intent.putExtra("commentText",commentText);
+//                intent.putExtra("username",username);
                 activity.startActivity(intent);
             }
 
@@ -79,9 +79,9 @@ public class Comments_Recview_Adapter extends RecyclerView.Adapter<Comments_Recv
                 Intent intent=new Intent(activity,comment_reply.class);
                 intent.putExtra("commentId",commentID);
                 intent.putExtra("userId",userID);
-                intent.putExtra("commentuserId",commentuserId);
-                intent.putExtra("commentText",commentText);
-                intent.putExtra("username",username);
+//                intent.putExtra("commentuserId",commentuserId);
+//                intent.putExtra("commentText",commentText);
+//                intent.putExtra("username",username);
                 activity.startActivity(intent);
             }
 
@@ -92,7 +92,9 @@ public class Comments_Recview_Adapter extends RecyclerView.Adapter<Comments_Recv
     public int getItemCount() {
         return comments_list.size();
     }
+    public void addItem(){
 
+    }
     public void setComments(ArrayList<Comments> comments) {
         this.comments_list = comments;
         notifyDataSetChanged();

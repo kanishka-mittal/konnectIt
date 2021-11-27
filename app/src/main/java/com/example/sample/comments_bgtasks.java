@@ -151,7 +151,6 @@ public class comments_bgtasks extends AsyncTask<String,Replies,Void> {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-//
         }
 
         return null;

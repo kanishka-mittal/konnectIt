@@ -94,15 +94,6 @@ public class PostRecViewAdapter extends RecyclerView.Adapter<PostRecViewAdapter.
                 Intent intent=new Intent(ctx,Post.class);
                 intent.putExtra("userId",userId);
                 intent.putExtra("postId",post.getPostId());
-                intent.putExtra("postNumComments",post.getNumComments());
-                intent.putExtra("postNumLikes",post.getNumLikes());
-                intent.putExtra("postFirstName",post.getFirstName());
-                intent.putExtra("postUserName",post.getUserName());
-                intent.putExtra("postUserId",post.getUserId());
-                intent.putExtra("postText",post.getPostText());
-                intent.putExtra("postImageURL",post.getPostImageURL());
-                intent.putExtra("ImageURL",post.getImageUrl());
-
                 activity.startActivity(intent);
             }
         });
@@ -112,14 +103,6 @@ public class PostRecViewAdapter extends RecyclerView.Adapter<PostRecViewAdapter.
                 Intent intent=new Intent(ctx,Post.class);
                 intent.putExtra("userId",userId);
                 intent.putExtra("postId",post.getPostId());
-                intent.putExtra("postNumComments",post.getNumComments());
-                intent.putExtra("postNumLikes",post.getNumLikes());
-                intent.putExtra("postFirstName",post.getFirstName());
-                intent.putExtra("postUserName",post.getUserName());
-                intent.putExtra("postUserId",post.getUserId());
-                intent.putExtra("postText",post.getPostText());
-                intent.putExtra("postImageURL",post.getPostImageURL());
-                intent.putExtra("ImageURL",post.getImageUrl());
                 activity.startActivity(intent);
             }
         });

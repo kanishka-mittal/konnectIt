@@ -97,7 +97,7 @@
                 <ImageView
                     android:id="@+id/postImagepostpage"
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
+                    android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
                     android:background="#222222"
                     android:scaleType="fitXY"
@@ -113,7 +113,8 @@
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
                 android:textColor="@color/white"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                android:text="jkjfknn"/>
 
             <LinearLayout
                 android:layout_width="match_parent"

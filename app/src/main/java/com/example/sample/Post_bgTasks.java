@@ -56,20 +56,19 @@ public class Post_bgTasks extends AsyncTask<String,Comments,Void> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        commentsRecView=activity.findViewById(R.id.recyclerViewcomment);
-        comments=new ArrayList<>();
-        commentsRecView.setLayoutManager(new LinearLayoutManager(ctx));
-        CommentsRecViewAdapter=new Comments_Recview_Adapter(comments,ctx,postID,userID);
-        commentsRecView.setAdapter(CommentsRecViewAdapter);
     }
 
 
     @Override
     protected Void doInBackground(String... params) {
-        //String friendUrl="http://10.0.2.2//konnectit/friends.php";
-        if(params[0].equals("postload")){
+        if(params[0].equals("commentsload")){
 
             try {
+                commentsRecView=activity.findViewById(R.id.recyclerViewcomment);
+                comments=new ArrayList<>();
+                commentsRecView.setLayoutManager(new LinearLayoutManager(ctx));
+                CommentsRecViewAdapter=new Comments_Recview_Adapter(comments,ctx,postID,userID);
+                commentsRecView.setAdapter(CommentsRecViewAdapter);
                 URL url = new URL(activity.getString(R.string.postloadUrl));
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
@@ -146,9 +145,7 @@ public class Post_bgTasks extends AsyncTask<String,Comments,Void> {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-//
         }
-
         return null;
     }
 
