@@ -17,6 +17,18 @@
             android:name=".EditPost"
             android:exported="true" />
         <activity
+            android:name=".EditProfileOption"
+            android:exported="true" />
+        <activity
+            android:name=".SettingsPage"
+            android:exported="true" />
+        <activity
+            android:name=".Settingspage"
+            android:exported="true" />
+        <activity
+            android:name=".settings"
+            android:exported="true" />
+        <activity
             android:name=".ChatActivity"
             android:exported="true" />
         <activity

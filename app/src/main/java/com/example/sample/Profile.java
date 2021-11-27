@@ -156,6 +156,12 @@ public class Profile extends AppCompatActivity {
             ProfileBackgroundTask bgTask=new ProfileBackgroundTask(this,userId, Fullname, Username, infopage);
             bgTask.execute(method2);
         }
+        if(item_id == R.id.settings){
+            Intent intent=new Intent(this,SettingsPage.class);
+            intent.putExtra("userId",userId);
+            this.startActivity(intent);
+            overridePendingTransition(0, 0);
+        }
 
         if(item_id == R.id.friendicon){
             Intent intent=new Intent(Profile.this,Friends.class);

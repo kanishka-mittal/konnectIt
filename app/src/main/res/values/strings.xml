@@ -44,9 +44,13 @@
     <string name="isFriendUrl">http://10.0.2.2//konnectit/isFriend.php</string>
     <string name="singlePostLoadUrl">http://10.0.2.2//konnectit/singlePostLoad.php</string>
     <string name="singleCommentLoadUrl">http://10.0.2.2//konnectit/singleCommentLoad.php</string>
+    <string name="deleteprofileUrl">http://10.0.2.2//konnectit/deleteprofile.php</string>
     <string name="chatLoadUrl">http://10.0.2.2//konnectit/chatLoad.php</string>
     <string name="sendMsgUrl">http://10.0.2.2//konnectit/sendMsg.php</string>
     <string name="delPostUrl">http://10.0.2.2//konnectit/delPost.php</string>
+    <string name="settingsLoadUrl">http://10.0.2.2//konnectit/settingsLoad.php</string>
+    <string name="profileLoadUrl">http://10.0.2.2//konnectit/editprofileLoad.php</string>
+    <string name="settingsSaveUrl">http://10.0.2.2//konnectit/savesettings.php</string>
     <string name="delCommentUrl">http://10.0.2.2//konnectit/delComment.php</string>
     <string name="delReplyUrl">http://10.0.2.2//konnectit/delReply.php</string>
     <string name="editPostLoadUrl">http://10.0.2.2//konnectit/editPostLoad.php</string>

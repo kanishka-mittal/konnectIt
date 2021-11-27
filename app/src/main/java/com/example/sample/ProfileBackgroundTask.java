@@ -122,7 +122,8 @@ public class ProfileBackgroundTask extends AsyncTask<String, Void, String>{
         }
 
         else{
-            Intent intent=new Intent(activity,EditProfile.class);
+
+            Intent intent=new Intent(activity,EditProfileOption.class);
             intent.putExtra("userId",userId);
             activity.startActivity(intent);
         }

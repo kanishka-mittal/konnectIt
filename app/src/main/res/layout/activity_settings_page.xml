@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SettingsPage">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/round"
+        android:backgroundTint="@color/black"
+        android:orientation="vertical"
+        android:padding="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/LinearSettingheading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#00B6DCF1"
+                android:text="SETTINGS"
+                android:textColor="@color/yellow"
+                android:textSize="30sp">
+
+            </TextView>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/round2"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <Switch
+                android:id="@+id/switchhidePosts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="25dp"
+                android:textColor="@color/white"
+                android:text="Hide Posts" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/round2"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <Switch
+                android:id="@+id/switchhideAge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="25dp"
+                android:textColor="@color/white"
+                android:text="Hide Age" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/round2"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <Switch
+                android:id="@+id/switchhideGender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="25dp"
+                android:textColor="@color/white"
+                android:text="Hide Gender" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/round2"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <Switch
+                android:id="@+id/switchhideMobile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="25dp"
+                android:textColor="@color/white"
+                android:text="Hide Mobile" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/round2"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <Switch
+                android:id="@+id/switchhideInterests"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="25dp"
+                android:textColor="@color/white"
+                android:text="Hide Interests" />
+
+        </LinearLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnsave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="@color/black"
+            android:elevation="0dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:text="Save"
+            android:textColor="@color/yellow"
+            android:textSize="20dp"
+            app:cornerRadius="10dp"
+            app:strokeColor="@color/yellow"
+            app:strokeWidth="4dp" />
+
+        <!--        <androidx.appcompat.widget.AppCompatButton-->
+        <!--            android:id="@+id/btnSignIn"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="50dp"-->
+        <!--            android:background="@drawable/round3"-->
+        <!--            android:text="@string/sign_in"-->
+        <!--            android:textColor="@android:color/white" />-->
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/LinearSettingother"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#00B6DCF1"
+                android:text="Other Options"
+                android:textColor="@color/yellow"
+                android:textSize="30sp">
+
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearlogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/round2"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/settingslogout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#00B6DCF1"
+                    android:text="Logout"
+                android:textColor="@color/white"
+                android:textSize="25sp">
+
+            </TextView>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lineardelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/round2"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/settingsdeleteprofile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#00B6DCF1"
+                android:text="Delete Profile"
+                android:textColor="@color/white"
+                android:textSize="25sp">
+
+            </TextView>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
