@@ -142,9 +142,11 @@ public class Post extends AppCompatActivity {
         btneditPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(Post.this, "Chalo post edit karenge yahan se", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(Post.this,EditPost.class);
+                intent.putExtra("postId",postId);
+                startActivity(intent);
+//                Toast.makeText(Post.this, "Chalo post edit karenge yahan se", Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 }

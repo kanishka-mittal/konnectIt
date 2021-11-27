@@ -64,6 +64,7 @@
                 android:textColorHint="#70F8F7F7"
                 android:paddingLeft="15dp"
                 android:textSize="18sp"
+                android:inputType="text"
                 >
 
             </EditText>

@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -209,14 +210,16 @@ public class SinglePostBgTask extends AsyncTask<String,Void,String> {
                             JSONObject postObject=jsonObject.getJSONArray("singlepost").getJSONObject(0);
                             userName.setText(postObject.getString("userName"));
                             firstName.setText(postObject.getString("firstName"));
+
+
                             if(!(postObject.getString("postImageURL").equals("null"))){
-                                Glide.with(ctx).asBitmap().placeholder(R.mipmap.ic_user).error(R.mipmap.ic_user).load(postObject.getString("postImageURL")).into(postImage);
+                                Glide.with(ctx).asBitmap().placeholder(R.mipmap.ic_user).error(R.mipmap.ic_user).load("http://10.0.2.2/konnectIt/posts_image/"+postId+".png").into(postImage);
 
                             }else{
                                 postImage.setVisibility(View.GONE);
                             }
                             if(!(postObject.getString("imageurl").equals("null"))){
-                                Glide.with(ctx).asBitmap().placeholder(R.mipmap.ic_user).error(R.mipmap.ic_user).load(postObject.getString("imageurl")).into(profilepic);
+                                Glide.with(ctx).asBitmap().placeholder(R.mipmap.ic_user).error(R.mipmap.ic_user).load("http://10.0.2.2/konnectIt/profilepics/"+Integer.toString(postObject.getInt("postedBy"))+".png").into(profilepic);
                             }
                             postContent.setText(postObject.getString("postText"));
 
@@ -227,7 +230,7 @@ public class SinglePostBgTask extends AsyncTask<String,Void,String> {
                                 btnEditPost.setVisibility(View.VISIBLE);
                             }else{
                                 dustbin.setVisibility(View.GONE);
-                                btnEditPost.setVisibility(View.VISIBLE);
+                                btnEditPost.setVisibility(View.GONE);
                             }
                         }
                     }catch (JSONException e) {
