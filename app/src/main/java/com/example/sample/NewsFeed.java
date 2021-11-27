@@ -30,7 +30,7 @@ public class NewsFeed extends AppCompatActivity {
             userId = extras.getInt("userId");
         }
         NewsFeedBackgroundTask bgTask=new NewsFeedBackgroundTask(this,userId);
-        bgTask.execute("load");
+        bgTask.execute("loadNF");
         btnAddPost=findViewById(R.id.btnAddPost);
         btnAddPost.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +57,7 @@ public class NewsFeed extends AppCompatActivity {
                         startActivity(intent);
 
                         overridePendingTransition(0,0);
+                        finish();
                         return true;
                 }
 
@@ -67,6 +68,7 @@ public class NewsFeed extends AppCompatActivity {
                         intent.putExtra("accessedByUser",userId);
                         startActivity(intent);
                         overridePendingTransition(0,0);
+                        finish();
                         return true;
                 }
                 switch (item.getItemId()){
@@ -76,6 +78,7 @@ public class NewsFeed extends AppCompatActivity {
                         startActivity(intent);
 
                         overridePendingTransition(0,0);
+                        finish();
                         return true;
 
                 }

@@ -63,12 +63,27 @@ public class PostRecViewAdapter extends RecyclerView.Adapter<PostRecViewAdapter.
             //System.out.println(post.getPostImageURL());
             Glide.with(ctx).asBitmap().placeholder(R.mipmap.ic_user).error(R.mipmap.ic_user).load("http://10.0.2.2/konnectit/posts_image/"+Integer.toString(post.getPostId())+".png").into(holder.postImage);
         }
+        if(userId==post.getUserId()){
+            holder.dustbin.setVisibility(View.VISIBLE);
+        }else{
+            holder.dustbin.setVisibility(View.GONE);
+        }
+        holder.dustbin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DeletePostBgTask deletePostBgTask=new DeletePostBgTask(ctx,post.getPostId());
+                deletePostBgTask.execute();
+                posts.remove(post);
+                notifyDataSetChanged();
+            }
+        });
         holder.postText.setText(post.getPostText());
         NewsFeedBackgroundTask bgTask=new NewsFeedBackgroundTask(ctx,userId,holder);
         bgTask.execute("isLiked",Integer.toString(post.getPostId()),Integer.toString(post.getUserId()));
         holder.dislike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                System.out.println("))))))))))))))))))))))))))))))))))))))))))))))");
                 NewsFeedBackgroundTask bgTask=new NewsFeedBackgroundTask(ctx,userId);
                 bgTask.execute("like",Integer.toString(post.getPostId()),Integer.toString(post.getUserId()));
                 holder.dislike.setVisibility(View.GONE);
@@ -126,7 +141,7 @@ public class PostRecViewAdapter extends RecyclerView.Adapter<PostRecViewAdapter.
     public class ViewHolder extends RecyclerView.ViewHolder{
         private TextView userName,firstName,numLikes,numComments,postText;
         private RelativeLayout postListItemParent;
-        ImageView like,dislike,postImage,profilepic,share;
+        ImageView like,dislike,postImage,profilepic,share,dustbin;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             userName=itemView.findViewById(R.id.userName);
@@ -140,6 +155,7 @@ public class PostRecViewAdapter extends RecyclerView.Adapter<PostRecViewAdapter.
             profilepic=itemView.findViewById(R.id.profilepic);
             postText=itemView.findViewById(R.id.postText);
             share=itemView.findViewById(R.id.share);
+            dustbin=itemView.findViewById(R.id.dustbin);
         }
     }
 }

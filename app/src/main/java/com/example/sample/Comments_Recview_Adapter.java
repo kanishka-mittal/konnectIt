@@ -44,6 +44,7 @@ public class Comments_Recview_Adapter extends RecyclerView.Adapter<Comments_Recv
 
     @Override
     public void onBindViewHolder(@NonNull Comments_Recview_Adapter.ViewHolder holder, int position) {
+        Comments comments=comments_list.get(position);
         int commentID=comments_list.get(position).getcommentId();
 //        String commentText=comments_list.get(position).getcommentText();
 //        String username=comments_list.get(position).getUserName();
@@ -76,15 +77,44 @@ public class Comments_Recview_Adapter extends RecyclerView.Adapter<Comments_Recv
 
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(activity,comment_reply.class);
-                intent.putExtra("commentId",commentID);
-                intent.putExtra("userId",userID);
-//                intent.putExtra("commentuserId",commentuserId);
-//                intent.putExtra("commentText",commentText);
-//                intent.putExtra("username",username);
-                activity.startActivity(intent);
+                    DeleteCommentBgTask deleteCommentBgTask=new DeleteCommentBgTask(ctx,commentID);
+                    deleteCommentBgTask.execute();
+                    comments_list.remove(comments);
+                    notifyDataSetChanged();
+//                Intent intent=new Intent(activity,comment_reply.class);
+//                intent.putExtra("commentId",commentID);
+//                intent.putExtra("userId",userID);
+////                intent.putExtra("commentuserId",commentuserId);
+////                intent.putExtra("commentText",commentText);
+////                intent.putExtra("username",username);
+//                activity.startActivity(intent);
             }
 
+        });
+        Post_bgTasks bgTask=new Post_bgTasks(ctx,userID,holder);
+        bgTask.execute("isCommentLiked",Integer.toString(commentID));
+        holder.like.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Post_bgTasks post_bgTasks =new Post_bgTasks(ctx,userID,holder);
+                post_bgTasks.execute("unlikeComment",Integer.toString(commentID));
+                holder.dislike.setVisibility(View.VISIBLE);
+                holder.like.setVisibility(View.GONE);
+//                holder.numLikes.setText(Integer.toString(post.getNumLikes()-1));
+//                post.setNumLikes(post.getNumLikes()-1);
+            }
+        });
+        holder.dislike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println("%%%%%%%%%%%%%%%%%%");
+                Post_bgTasks post_bgTasks =new Post_bgTasks(ctx,userID,holder);
+                post_bgTasks.execute("likeComment",Integer.toString(commentID));
+                holder.dislike.setVisibility(View.GONE);
+                holder.like.setVisibility(View.VISIBLE);
+//                holder.numLikes.setText(Integer.toString(post.getNumLikes()+1));
+//                post.setNumLikes(post.getNumLikes()+1);
+            }
         });
     }
 
@@ -101,9 +131,10 @@ public class Comments_Recview_Adapter extends RecyclerView.Adapter<Comments_Recv
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView userName,commentText;
+        private TextView userName,commentText,numLikes;
         private RelativeLayout commentsListItemParent;
         private ImageView profilepic,dustbin;
+        ImageView like,dislike;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             userName=itemView.findViewById(R.id.userNameComment);
@@ -111,6 +142,9 @@ public class Comments_Recview_Adapter extends RecyclerView.Adapter<Comments_Recv
             commentsListItemParent=itemView.findViewById(R.id.comments_listParent);
             profilepic=itemView.findViewById(R.id.profilepiccomment);
             dustbin=itemView.findViewById(R.id.dustbin);
+            like=itemView.findViewById(R.id.like);
+            dislike=itemView.findViewById(R.id.dislike);
+            numLikes=itemView.findViewById(R.id.numLikes);
         }
     }
 

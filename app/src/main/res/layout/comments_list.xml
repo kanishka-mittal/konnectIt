@@ -66,6 +66,14 @@
                 app:cardCornerRadius="50dp"
                 app:strokeWidth="1dp"
                 app:strokeColor="@color/red">
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                app:cardCornerRadius="50dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/red">
                 <ImageView
                     android:id="@+id/dustbin"
                     android:layout_width="60dp"
@@ -75,6 +83,27 @@
                     android:visibility="gone"
                     />
             </com.google.android.material.card.MaterialCardView>
+            <ImageView
+                android:id="@+id/dislike"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_dislike" />
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_like"
+                android:visibility="gone"
+                android:id="@+id/like"
+                android:layout_margin="10dp"/>
+            <TextView
+                android:textSize="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="0"
+                android:id="@+id/numLikes"/>
         </LinearLayout>
 
 

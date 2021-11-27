@@ -46,11 +46,16 @@ public class DialogBackgroundTask extends AsyncTask<String,Friend,Void> {
     protected Void doInBackground(String... strings) {
         if(strings[0].equals("load")){
             try {
-                sendToRecView=dialog.findViewById(R.id.sendToRecView);
-                friends=new ArrayList<>();
-                sendToRecView.setLayoutManager(new LinearLayoutManager(ctx));
-                sendToRecViewAdapter=new SendToRecViewAdapter(friends,ctx,userId,postId);
-                sendToRecView.setAdapter(sendToRecViewAdapter);
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        sendToRecView=dialog.findViewById(R.id.sendToRecView);
+                        friends=new ArrayList<>();
+                        sendToRecView.setLayoutManager(new LinearLayoutManager(ctx));
+                        sendToRecViewAdapter=new SendToRecViewAdapter(friends,ctx,userId,postId);
+                        sendToRecView.setAdapter(sendToRecViewAdapter);
+                    }
+                });
                 URL url = new URL(activity.getString(R.string.friendUrl));
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");

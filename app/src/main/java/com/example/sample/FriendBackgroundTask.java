@@ -52,11 +52,17 @@ public class FriendBackgroundTask extends AsyncTask<String,Friend,Void> {
         //String friendUrl="http://10.0.2.2//konnectit/friends.php";
         if(params[0].equals("load")){
             try {
-                friendsRecView=activity.findViewById(R.id.friendsRecView);
-                friends=new ArrayList<>();
-                friendsRecView.setLayoutManager(new LinearLayoutManager(ctx));
-                friendRecViewAdapter=new FriendRecViewAdapter(friends,ctx,userId);
-                friendsRecView.setAdapter(friendRecViewAdapter);
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        friendsRecView=activity.findViewById(R.id.friendsRecView);
+                        friends=new ArrayList<>();
+                        friendsRecView.setLayoutManager(new LinearLayoutManager(ctx));
+                        friendRecViewAdapter=new FriendRecViewAdapter(friends,ctx,userId);
+                        friendsRecView.setAdapter(friendRecViewAdapter);
+                    }
+                });
+
                 URL url = new URL(activity.getString(R.string.friendUrl));
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");

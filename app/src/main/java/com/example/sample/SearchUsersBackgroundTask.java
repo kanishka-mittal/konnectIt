@@ -56,11 +56,17 @@ public class SearchUsersBackgroundTask extends AsyncTask<String,User,Void> {
         method=params[0];
         if(method.equals("load")){
             try{
-                searchUsersRecView=activity.findViewById(R.id.searchUsersRecView);
-                users=new ArrayList<>();
-                searchUsersRecViewAdapter=new SearchUsersRecViewAdapter(users,ctx,userId);
-                searchUsersRecView.setAdapter(searchUsersRecViewAdapter);
-                searchUsersRecView.setLayoutManager(new LinearLayoutManager(ctx));
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        searchUsersRecView=activity.findViewById(R.id.searchUsersRecView);
+                        users=new ArrayList<>();
+                        searchUsersRecViewAdapter=new SearchUsersRecViewAdapter(users,ctx,userId);
+                        searchUsersRecView.setAdapter(searchUsersRecViewAdapter);
+                        searchUsersRecView.setLayoutManager(new LinearLayoutManager(ctx));
+                    }
+                });
+
                 URL url=new URL(activity.getString(R.string.searchUsersUrl));
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");

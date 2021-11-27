@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link Profile_info#newInstance} factory method to
@@ -25,7 +27,7 @@ public class Profile_info extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    private int userId;
     public Profile_info() {
         // Required empty public constructor
     }
@@ -61,10 +63,29 @@ public class Profile_info extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_profile_info, container, false);
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                userId = getArguments().getInt("userId");
+                view = inflater.inflate(R.layout.fragment_profile_info, container, false);
+            }
+        });
         return view;
     }
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        String method="load";
+//        userPic=getActivity().findViewById(R.id.userpic);
+//        Glide.with(this).asBitmap().error(R.mipmap.ic_user).load("http://10.0.2.2/konnectit/profilepics/"+Integer.toString(userId)+".png").into(userPic);
 
+        TextView Fullname = getActivity().findViewById(R.id.fullname);
+        TextView Username = getActivity().findViewById(R.id.username);
+        ProfileBackgroundTask bgTask=new ProfileBackgroundTask(getActivity(),userId, Fullname, Username, this);
+        bgTask.execute(method);
+
+//        NewsFeedBackgroundTask bgTask=new NewsFeedBackgroundTask(getActivity(),userId);
+//        bgTask.execute(method);
+    }
     public void setAge(String newage){
         TextView Age = (TextView) getView().findViewById(R.id.age);
         Age.setText(newage);
@@ -82,4 +103,7 @@ public class Profile_info extends Fragment {
         TextView Bio = (TextView) getView().findViewById(R.id.bio);
         Bio.setText(newbio);
     }
+
+
+
 }

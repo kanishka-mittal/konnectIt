@@ -55,6 +55,7 @@ public class Notifications extends AppCompatActivity {
                         intent.putExtra("accessedByUser",userId);
                         startActivity(intent);
                         overridePendingTransition(0,0);
+                        finish();
                         return true;
                 }
                 switch (item.getItemId()){
@@ -63,6 +64,7 @@ public class Notifications extends AppCompatActivity {
                         intent.putExtra("userId",userId);
                         startActivity(intent);
                         overridePendingTransition(0,0);
+                        finish();
                         return true;
                 }
                 switch (item.getItemId()){
@@ -72,6 +74,7 @@ public class Notifications extends AppCompatActivity {
                         startActivity(intent);
 
                         overridePendingTransition(0,0);
+                        finish();
                         return true;
 
                 }

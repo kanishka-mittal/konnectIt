@@ -2,8 +2,10 @@ package com.example.sample;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -20,7 +22,7 @@ public class Post extends AppCompatActivity {
     Button btnpostComment;
     String commenttext;
     EditText commentText;
-    ImageView share;
+    ImageView share,like,dislike,dustbinpostpage;
     public Context ctx;
     int accessedByUser;
     @Override
@@ -31,10 +33,20 @@ public class Post extends AppCompatActivity {
         if (extras != null) {
             postId = extras.getInt("postId");
             userId=extras.getInt("userId");
+            System.out.println(postId);
+            System.out.println(userId);
         }
         SinglePostBgTask singlePostBgTask =new SinglePostBgTask(this,postId,userId);
         try {
             singlePostBgTask.execute("load").get();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        SinglePostBgTask singlePostBgTask2 =new SinglePostBgTask(this,postId,userId);
+        try {
+            singlePostBgTask2.execute("isLiked").get();
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -74,9 +86,45 @@ public class Post extends AppCompatActivity {
                     intent.putExtra("postId",postId);
                     startActivity(intent);
                 }
-//
             }
         });
-
+        like=findViewById(R.id.likepostpage);
+        dislike=findViewById(R.id.dislikepostpage);
+        dislike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SinglePostBgTask bgTask=new SinglePostBgTask(ctx,postId,userId);
+                bgTask.execute("like",Integer.toString(postId),Integer.toString(userId));
+                dislike.setVisibility(View.GONE);
+                like.setVisibility(View.VISIBLE);
+            }
+        });
+        like.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SinglePostBgTask bgTask=new SinglePostBgTask(ctx,postId,userId);
+                bgTask.execute("unlike",Integer.toString(postId),Integer.toString(userId));
+                dislike.setVisibility(View.VISIBLE);
+                like.setVisibility(View.GONE);
+            }
+        });
+        dustbinpostpage=findViewById(R.id.dustbinpostpage);
+        dustbinpostpage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println("here");
+                AlertDialog.Builder builder=new AlertDialog.Builder(Post.this);
+                builder.setMessage("Are you sure you want to delete the post permanently?");
+                builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        DeletePostBgTask deletePostBgTask=new DeletePostBgTask(Post.this,postId);
+                        deletePostBgTask.execute();
+                        finish();
+                    }
+                });
+                builder.show();
+            }
+        });
     }
 }

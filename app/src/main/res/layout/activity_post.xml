@@ -79,8 +79,8 @@
                     app:strokeColor="@color/red">
                     <ImageView
                         android:id="@+id/dustbinpostpage"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:src="@mipmap/ic_delete"
                         android:layout_weight="0"
                         android:visibility="gone"

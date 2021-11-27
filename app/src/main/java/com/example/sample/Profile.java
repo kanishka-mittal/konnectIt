@@ -53,27 +53,31 @@ public class Profile extends AppCompatActivity {
         tabLayout = findViewById(R.id.tablayout);
         viewPager = findViewById(R.id.viewpager);
         viewPagerAdapter = new ProfileViewsAdapter(getSupportFragmentManager());
-
+        Bundle bundle = new Bundle();
+        bundle.putInt("userId", userId );
+        bundle.putInt("accessedByUser", accessedByUser);
         //viewPagerAdapter
         Profile_info infopage = new Profile_info();
-
+        Profile_post postpage = new Profile_post();
+        postpage.setArguments(bundle);
+        infopage.setArguments(bundle);
         viewPagerAdapter.AddFragment(infopage, "");
-        viewPagerAdapter.AddFragment(new Profile_post(), "");
+        viewPagerAdapter.AddFragment(postpage, "");
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
 
         tabLayout.getTabAt(0).setIcon(R.drawable.info);
         tabLayout.getTabAt(1).setIcon(R.drawable.posticon);
 
-        String method="load";
-
-        userPic=findViewById(R.id.userpic);
-        Glide.with(this).asBitmap().error(R.mipmap.ic_user).load("http://10.0.2.2/konnectit/profilepics/"+Integer.toString(userId)+".png").into(userPic);
-
-        TextView Fullname = findViewById(R.id.fullname);
-        TextView Username = findViewById(R.id.username);
-        ProfileBackgroundTask bgTask=new ProfileBackgroundTask(this,userId, Fullname, Username, infopage);
-        bgTask.execute(method);
+//        String method="load";
+//
+//        userPic=findViewById(R.id.userpic);
+//        Glide.with(this).asBitmap().error(R.mipmap.ic_user).load("http://10.0.2.2/konnectit/profilepics/"+Integer.toString(userId)+".png").into(userPic);
+//
+//        TextView Fullname = findViewById(R.id.fullname);
+//        TextView Username = findViewById(R.id.username);
+//        ProfileBackgroundTask bgTask=new ProfileBackgroundTask(this,userId, Fullname, Username, infopage);
+//        bgTask.execute(method);
         BottomNavigationView bottomNavigationView = findViewById(R.id.dashboard);
         if(accessedByUser==userId){
             //BOTTOMBAR NAVIGATION
@@ -91,6 +95,7 @@ public class Profile extends AppCompatActivity {
                             startActivity(intent);
 
                             overridePendingTransition(0,0);
+                            finish();
                             return true;
                     }switch (item.getItemId()){
                         case R.id.notifs:
@@ -99,6 +104,7 @@ public class Profile extends AppCompatActivity {
                             startActivity(intent);
 
                             overridePendingTransition(0,0);
+                            finish();
                             return true;
 
                     }switch (item.getItemId()){
@@ -108,6 +114,7 @@ public class Profile extends AppCompatActivity {
                             startActivity(intent);
 
                             overridePendingTransition(0,0);
+                            finish();
                             return true;
 
                     }

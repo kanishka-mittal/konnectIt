@@ -57,57 +57,68 @@ public class ProfileBackgroundTask extends AsyncTask<String, Void, String>{
     protected void onPostExecute(String info) {
         super.onPreExecute();
         if (info != "") {
-            try{
-                JSONArray array = new JSONArray(info);
-                JSONObject profileinfo = array.getJSONObject(0);
+            activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
 
-                try{
+                }
+            });
+            activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    try{
+                        JSONArray array = new JSONArray(info);
+                        JSONObject profileinfo = array.getJSONObject(0);
 
-                    username = profileinfo.getString("username");
-                    firstName = profileinfo.getString("firstName");
-                    lastName = profileinfo.getString("lastName");
-                    mobile = profileinfo.getString("mobile");
-                    email = profileinfo.getString("email");
-                    age = profileinfo.getString("age");
-                    gender = profileinfo.getString("gender");
-                    bio = profileinfo.getString("bio");
-                    String fn;
-                    if(lastName=="null"){
-                        fn = firstName;
+                        try{
+
+                            username = profileinfo.getString("username");
+                            firstName = profileinfo.getString("firstName");
+                            lastName = profileinfo.getString("lastName");
+                            mobile = profileinfo.getString("mobile");
+                            email = profileinfo.getString("email");
+                            age = profileinfo.getString("age");
+                            gender = profileinfo.getString("gender");
+                            bio = profileinfo.getString("bio");
+                            String fn;
+                            if(lastName=="null"){
+                                fn = firstName;
+                            }
+                            else {
+                                fn = firstName + " " +lastName;
+                            }
+                            fullname.setText(fn);
+                            Username.setText(username);
+                            String agetext;
+                            if(age=="null") agetext = "Age: NA";
+                            else agetext = "Age: "+age+" years";
+                            infopage.setAge(agetext);
+                            String mobiletext;
+                            if(mobile=="null") mobiletext = "Mobile: NA";
+                            else mobiletext = "Mobile: "+mobile;
+                            infopage.setMobile(mobiletext);
+                            String emailtext;
+                            if(email=="null") emailtext = "Email: NA";
+                            else emailtext = "Email: "+email;
+                            infopage.setEmail(emailtext);
+                            String gendertext;
+                            if(gender=="null") gendertext = "Gender: NA";
+                            else gendertext = "Gender: "+gender;
+                            infopage.setGender(gendertext);
+                            String biotext;
+                            if(bio=="null") biotext = "Bio: NA";
+                            else biotext = "Bio: "+bio;
+                            infopage.setBio(biotext);
+                        }
+                        catch (org.json.JSONException e){
+                            e.printStackTrace();
+                        }
                     }
-                    else {
-                        fn = firstName + " " +lastName;
+                    catch(org.json.JSONException e){
+                        Toast.makeText(ctx,info,Toast.LENGTH_LONG).show();
                     }
-                    fullname.setText(fn);
-                    Username.setText(username);
-                    String agetext;
-                    if(age=="null") agetext = "Age: NA";
-                    else agetext = "Age: "+age+" years";
-                    infopage.setAge(agetext);
-                    String mobiletext;
-                    if(mobile=="null") mobiletext = "Mobile: NA";
-                    else mobiletext = "Mobile: "+mobile;
-                    infopage.setMobile(mobiletext);
-                    String emailtext;
-                    if(email=="null") emailtext = "Email: NA";
-                    else emailtext = "Email: "+email;
-                    infopage.setEmail(emailtext);
-                    String gendertext;
-                    if(gender=="null") gendertext = "Gender: NA";
-                    else gendertext = "Gender: "+gender;
-                    infopage.setGender(gendertext);
-                    String biotext;
-                    if(bio=="null") biotext = "Bio: NA";
-                    else biotext = "Bio: "+bio;
-                    infopage.setBio(biotext);
                 }
-                catch (org.json.JSONException e){
-                    e.printStackTrace();
-                }
-            }
-            catch(org.json.JSONException e){
-                Toast.makeText(ctx,info,Toast.LENGTH_LONG).show();
-            }
+            });
         }
 
         else{

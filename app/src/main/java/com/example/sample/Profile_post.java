@@ -56,11 +56,28 @@ public class Profile_post extends Fragment {
         }
     }
 
+    private int userId;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_profile_post, container, false);
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                view = inflater.inflate(R.layout.fragment_profile_post, container, false);
+                userId = getArguments().getInt("userId");
+            }
+        });
+
+
         return view;
+    }
+
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        String method="loadPr";
+        NewsFeedBackgroundTask bgTask=new NewsFeedBackgroundTask(getActivity(),userId);
+        bgTask.execute(method);
     }
 }

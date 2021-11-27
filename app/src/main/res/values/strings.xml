@@ -32,7 +32,13 @@
     <string name="sharePostUrl">http://10.0.2.2//konnectit/sharePost.php</string>
     <string name="likeUrl">http://10.0.2.2//konnectit/like.php</string>
     <string name="unlikeUrl">http://10.0.2.2//konnectit/unlike.php</string>
+    <string name="likeCommentUrl">http://10.0.2.2//konnectit/likeComment.php</string>
+    <string name="unlikeCommentUrl">http://10.0.2.2//konnectit/unlikeComment.php</string>
+    <string name="likeReplyUrl">http://10.0.2.2//konnectit/likeReply.php</string>
+    <string name="unlikeReplyUrl">http://10.0.2.2//konnectit/unlikeReply.php</string>
     <string name="isLikedUrl">http://10.0.2.2//konnectit/isLiked.php</string>
+    <string name="isReplyLikedUrl">http://10.0.2.2//konnectit/isReplyLiked.php</string>
+    <string name="isCommentLikedUrl">http://10.0.2.2//konnectit/isCommentLiked.php</string>
     <string name="isPostVisibleUrl">http://10.0.2.2//konnectit/isPostVisible.php</string>
     <string name="isPrivateUrl">http://10.0.2.2//konnectit/isPrivate.php</string>
     <string name="isFriendUrl">http://10.0.2.2//konnectit/isFriend.php</string>
@@ -40,6 +46,8 @@
     <string name="singleCommentLoadUrl">http://10.0.2.2//konnectit/singleCommentLoad.php</string>
     <string name="chatLoadUrl">http://10.0.2.2//konnectit/chatLoad.php</string>
     <string name="sendMsgUrl">http://10.0.2.2//konnectit/sendMsg.php</string>
+    <string name="delPostUrl">http://10.0.2.2//konnectit/delPost.php</string>
+    <string name="delCommentUrl">http://10.0.2.2//konnectit/delComment.php</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="newsFeedLoadUrl">http://10.0.2.2//konnectit/newsFeedLoad.php</string>
@@ -49,6 +57,7 @@
     <!-- Messages Preferences -->
     <string name="signature_title">Your signature</string>
     <string name="reply_title">Default reply action</string>
+    <string name="ProfileFeedUrl">http://10.0.2.2//konnectit/ProfilePosts.php</string>
 
     <!-- Sync Preferences -->
     <string name="sync_title">Sync email periodically</string>

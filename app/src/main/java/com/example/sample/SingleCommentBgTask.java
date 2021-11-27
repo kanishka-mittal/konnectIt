@@ -87,20 +87,26 @@ public class SingleCommentBgTask extends AsyncTask<String,Void,String> {
     protected void onPostExecute(String jsonString) {
         super.onPostExecute(jsonString);
         if(method.equals("load")){
-            try{
-                System.out.println(jsonString);
-                if(!jsonString.equals("")){
-                    JSONObject jsonObject=new JSONObject(jsonString);
-                    JSONObject commentObject=jsonObject.getJSONArray("singlecomment").getJSONObject(0);
-                    usernametextview.setText(commentObject.getString("userName"));
-                    if(!(commentObject.getString("imageurl").equals("null"))){
-                        Glide.with(ctx).asBitmap().placeholder(R.mipmap.ic_user).error(R.mipmap.ic_user).load(commentObject.getString("imageurl")).into(profilepic);
+            activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    try{
+                        System.out.println(jsonString);
+                        if(!jsonString.equals("")){
+                            JSONObject jsonObject=new JSONObject(jsonString);
+                            JSONObject commentObject=jsonObject.getJSONArray("singlecomment").getJSONObject(0);
+                            usernametextview.setText(commentObject.getString("userName"));
+                            if(!(commentObject.getString("imageurl").equals("null"))){
+                                Glide.with(ctx).asBitmap().placeholder(R.mipmap.ic_user).error(R.mipmap.ic_user).load(commentObject.getString("imageurl")).into(profilepic);
+                            }
+                            commenttextview.setText(commentObject.getString("commentText"));
+                        }
+                    }catch (JSONException e) {
+                        e.printStackTrace();
                     }
-                    commenttextview.setText(commentObject.getString("commentText"));
                 }
-            }catch (JSONException e) {
-                e.printStackTrace();
-            }
+            });
+
         }
     }
 }

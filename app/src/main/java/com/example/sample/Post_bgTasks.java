@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,7 +28,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-public class Post_bgTasks extends AsyncTask<String,Comments,Void> {
+public class Post_bgTasks extends AsyncTask<String,Comments,String> {
     Context ctx;
     Activity activity;
     RecyclerView commentsRecView;
@@ -35,8 +36,14 @@ public class Post_bgTasks extends AsyncTask<String,Comments,Void> {
     ArrayList<Comments> comments;
     int postID;
     int userID;
-    String commentText;
-
+    String commentText,method;
+    Comments_Recview_Adapter.ViewHolder holder;
+    public Post_bgTasks(Context ctx,int userID,Comments_Recview_Adapter.ViewHolder holder) {
+        this.ctx = ctx;
+        activity=(Activity) ctx;
+        this.userID=userID;
+        this.holder=holder;
+    }
     public Post_bgTasks(Context ctx,int postID,int userID) {
         this.ctx = ctx;
         this.postID=postID;
@@ -60,15 +67,22 @@ public class Post_bgTasks extends AsyncTask<String,Comments,Void> {
 
 
     @Override
-    protected Void doInBackground(String... params) {
+    protected String doInBackground(String... params) {
+        method=params[0];
         if(params[0].equals("commentsload")){
 
             try {
-                commentsRecView=activity.findViewById(R.id.recyclerViewcomment);
-                comments=new ArrayList<>();
-                commentsRecView.setLayoutManager(new LinearLayoutManager(ctx));
-                CommentsRecViewAdapter=new Comments_Recview_Adapter(comments,ctx,postID,userID);
-                commentsRecView.setAdapter(CommentsRecViewAdapter);
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        commentsRecView=activity.findViewById(R.id.recyclerViewcomment);
+                        comments=new ArrayList<>();
+                        commentsRecView.setLayoutManager(new LinearLayoutManager(ctx));
+                        CommentsRecViewAdapter=new Comments_Recview_Adapter(comments,ctx,postID,userID);
+                        commentsRecView.setAdapter(CommentsRecViewAdapter);
+                    }
+                });
+
                 URL url = new URL(activity.getString(R.string.postloadUrl));
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
@@ -138,9 +152,110 @@ public class Post_bgTasks extends AsyncTask<String,Comments,Void> {
                 while((line=bufferedReader.readLine())!=null){
                     stringBuilder.append(line);
                 }
+                System.out.println(stringBuilder.toString().trim());
                 bufferedReader.close();
                 httpURLConnection.disconnect();
             } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else if(params[0].equals("isCommentLiked")){
+            try {
+                URL url = new URL(activity.getString(R.string.isCommentLikedUrl));
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream os = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(os));
+                String data = URLEncoder.encode("userId", "UTF-8") + "=" + URLEncoder.encode(Integer.toString(userID), "UTF-8") + "&" + URLEncoder.encode("commentId", "UTF-8") + "=" + URLEncoder.encode(params[1], "UTF-8");
+                bufferedWriter.write(data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                InputStream is = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(is));
+                StringBuilder stringBuilder=new StringBuilder();
+                String line;
+                while((line=bufferedReader.readLine())!=null){
+                    stringBuilder.append(line+"\n");
+                }
+                String jsonString=stringBuilder.toString().trim();
+                System.out.println(jsonString);
+                bufferedReader.close();
+                is.close();
+                httpURLConnection.disconnect();
+                return jsonString;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (ProtocolException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else if(params[0].equals("likeComment")){
+            try {
+                URL url = new URL(activity.getString(R.string.likeCommentUrl));
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                System.out.println("here");
+                OutputStream os = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(os));
+                String data = URLEncoder.encode("userId", "UTF-8") + "=" + URLEncoder.encode(Integer.toString(userID), "UTF-8") + "&" + URLEncoder.encode("commentId", "UTF-8") + "=" + URLEncoder.encode(params[1], "UTF-8");
+                bufferedWriter.write(data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                InputStream is = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(is));
+                StringBuilder stringBuilder=new StringBuilder();
+                String line;
+                while((line=bufferedReader.readLine())!=null){
+                    stringBuilder.append(line+"\n");
+                }
+                String jsonString=stringBuilder.toString().trim();
+                System.out.println(jsonString);
+                bufferedReader.close();
+                is.close();
+                httpURLConnection.disconnect();
+                return null;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (ProtocolException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else if(params[0].equals("unlikeComment")){
+            try {
+                URL url = new URL(activity.getString(R.string.unlikeCommentUrl));
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream os = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(os));
+                String data = URLEncoder.encode("userId", "UTF-8") + "=" + URLEncoder.encode(Integer.toString(userID), "UTF-8") + "&" + URLEncoder.encode("commentId", "UTF-8") + "=" + URLEncoder.encode(params[1], "UTF-8");
+                bufferedWriter.write(data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                InputStream is = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(is));
+                StringBuilder stringBuilder=new StringBuilder();
+                String line;
+                while((line=bufferedReader.readLine())!=null){
+                    stringBuilder.append(line+"\n");
+                }
+                String jsonString=stringBuilder.toString().trim();
+                System.out.println(jsonString);
+                bufferedReader.close();
+                is.close();
+                httpURLConnection.disconnect();
+                return null;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (ProtocolException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -153,5 +268,19 @@ public class Post_bgTasks extends AsyncTask<String,Comments,Void> {
     protected void onProgressUpdate(Comments... values) {
         comments.add(values[0]);
         CommentsRecViewAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    protected void onPostExecute(String s) {
+        super.onPostExecute(s);
+        if(method.equals("isCommentLiked")){
+            if(s.equals("true")){
+                holder.dislike.setVisibility(View.GONE);
+                holder.like.setVisibility(View.VISIBLE);
+            }else{
+                holder.like.setVisibility(View.GONE);
+                holder.dislike.setVisibility(View.VISIBLE);
+            }
+        }
     }
 }

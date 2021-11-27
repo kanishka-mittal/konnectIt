@@ -50,11 +50,17 @@ public class SearchFriendsBackgroundTask extends AsyncTask<Void,Friend,Void> {
     @Override
     protected Void doInBackground(Void... voids) {
         try{
-            searchFriendsRecView=activity.findViewById(R.id.searchFriendsRecView);
-            friends=new ArrayList<>();
-            friendRecViewAdapter=new FriendRecViewAdapter(friends,ctx,userId);
-            searchFriendsRecView.setAdapter(friendRecViewAdapter);
-            searchFriendsRecView.setLayoutManager(new LinearLayoutManager(ctx));
+            activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    searchFriendsRecView=activity.findViewById(R.id.searchFriendsRecView);
+                    friends=new ArrayList<>();
+                    friendRecViewAdapter=new FriendRecViewAdapter(friends,ctx,userId);
+                    searchFriendsRecView.setAdapter(friendRecViewAdapter);
+                    searchFriendsRecView.setLayoutManager(new LinearLayoutManager(ctx));
+                }
+            });
+
             URL url=new URL(activity.getString(R.string.searchFriendsUrl));
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("POST");

@@ -54,11 +54,17 @@ public class NotifBackgroundTask extends AsyncTask<String, Notification, Void> {
         //String notifUrl="http://10.0.2.2//konnectit/notifications.php";
         if(params[0].equals("load")){
             try {
-                notifsRecView=activity.findViewById(R.id.notifsRecView);
-                notifications=new ArrayList<>();
-                notifsRecView.setLayoutManager(new LinearLayoutManager(ctx));
-                notifRecViewAdapter=new NotifRecViewAdapter(notifications, ctx,userId);
-                notifsRecView.setAdapter(notifRecViewAdapter);
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        notifsRecView=activity.findViewById(R.id.notifsRecView);
+                        notifications=new ArrayList<>();
+                        notifsRecView.setLayoutManager(new LinearLayoutManager(ctx));
+                        notifRecViewAdapter=new NotifRecViewAdapter(notifications, ctx,userId);
+                        notifsRecView.setAdapter(notifRecViewAdapter);
+                    }
+                });
+
                 URL url = new URL(activity.getString(R.string.notifUrl));
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");

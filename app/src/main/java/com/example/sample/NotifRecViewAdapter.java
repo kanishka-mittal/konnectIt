@@ -78,7 +78,7 @@ public class NotifRecViewAdapter extends RecyclerView.Adapter<NotifRecViewAdapte
                 if(notification.getNotifType()>0){
                     Intent intent=new Intent(context,Post.class);
                     intent.putExtra("postId",notification.getPostId());
-                    //intent.putExtra("accessedByUser",userId);
+                    intent.putExtra("userId",userId);
                     activity.startActivity(intent);
                 }else{
                     SeePostBackgroundTask seePostBackgroundTask =new SeePostBackgroundTask(userId,notification.getPostId(),context);

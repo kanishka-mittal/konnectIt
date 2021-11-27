@@ -56,13 +56,19 @@ public class NewsFeedBackgroundTask extends AsyncTask<String,PostModel,Boolean> 
     @Override
     protected Boolean doInBackground(String... params) {
         method=params[0];
-        if(params[0].equals("load")){
+        if(params[0].equals("loadNF")){
             try {
-                postRecView=activity.findViewById(R.id.postRecView);
-                posts=new ArrayList();
-                postRecViewAdapter=new PostRecViewAdapter(posts,ctx,userId);
-                postRecView.setLayoutManager(new LinearLayoutManager(ctx));
-                postRecView.setAdapter(postRecViewAdapter);
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        postRecView=activity.findViewById(R.id.postRecView);
+                        posts=new ArrayList();
+                        postRecViewAdapter=new PostRecViewAdapter(posts,ctx,userId);
+                        postRecView.setLayoutManager(new LinearLayoutManager(ctx));
+                        postRecView.setAdapter(postRecViewAdapter);
+                    }
+                });
+
                 URL url = new URL(activity.getString(R.string.newsFeedLoadUrl));
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
@@ -108,7 +114,71 @@ public class NewsFeedBackgroundTask extends AsyncTask<String,PostModel,Boolean> 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-        }else if(params[0].equals("like")){
+        }
+        else if(params[0].equals("loadPr")) {
+            try {
+
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+                        postRecView = activity.findViewById(R.id.profilePostRecView);
+                        posts = new ArrayList();
+                        postRecViewAdapter = new PostRecViewAdapter(posts, ctx, userId);
+                        postRecView.setLayoutManager(new LinearLayoutManager(ctx));
+                        postRecView.setAdapter(postRecViewAdapter);
+                    }
+                });
+                System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+                URL url = new URL(activity.getString(R.string.ProfileFeedUrl));
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream os = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(os));
+                String data = URLEncoder.encode("userId", "UTF-8") + "=" + URLEncoder.encode(Integer.toString(userId), "UTF-8");
+                bufferedWriter.write(data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                System.out.println(data);
+                System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+                InputStream is = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is));
+                StringBuilder stringBuilder = new StringBuilder();
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    stringBuilder.append(line + "\n");
+                }
+                String jsonString = stringBuilder.toString().trim();
+                System.out.println(jsonString);
+                if (!jsonString.equals("")) {
+                    JSONObject jsonObject = new JSONObject(jsonString);
+                    JSONArray jsonArray = jsonObject.getJSONArray("posts");
+                    System.out.println(jsonArray);
+                    int count = 0;
+                    while (count < jsonArray.length()) {
+                        JSONObject postObject = jsonArray.getJSONObject(count);
+                        count++;
+                        PostModel postModel = new PostModel(postObject.getString("userName"), postObject.getString("firstName"), postObject.getInt("postId"), postObject.getInt("user_id"), postObject.getInt("numLikes"), postObject.getInt("numComments"), postObject.getString("postText"), postObject.getString("postImageURL"), postObject.getString("imageurl"));
+                        publishProgress(postModel);
+                    }
+                }
+                bufferedReader.close();
+                is.close();
+                httpURLConnection.disconnect();
+                return null;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (ProtocolException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        else if(params[0].equals("like")){
             try {
                 URL url = new URL(activity.getString(R.string.likeUrl));
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();

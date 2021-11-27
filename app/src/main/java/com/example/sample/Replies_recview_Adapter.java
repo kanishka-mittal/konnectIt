@@ -53,6 +53,32 @@ public class Replies_recview_Adapter extends RecyclerView.Adapter<Replies_recvie
             holder.dustbinreply.setVisibility(View.VISIBLE);
         }
 
+//        comments_bgtasks comments_bgtask1=new comments_bgtasks(ctx,userID,holder);
+//        comments_bgtask1.execute("isReplyLiked",Integer.toString(replyId));
+        holder.like.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                comments_bgtasks comments_bgtask2=new comments_bgtasks(ctx,userID,holder);
+                comments_bgtask2.execute("likeReply",Integer.toString(replyId));
+                holder.dislike.setVisibility(View.VISIBLE);
+                holder.like.setVisibility(View.GONE);
+//                holder.numLikes.setText(Integer.toString(post.getNumLikes()-1));
+//                post.setNumLikes(post.getNumLikes()-1);
+            }
+        });
+        holder.dislike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println("%%%%%%%%%%%%%%%%%%");
+                comments_bgtasks comments_bgtask2=new comments_bgtasks(ctx,userID,holder);
+                comments_bgtask2.execute("unlikeReply",Integer.toString(replyId));
+                holder.dislike.setVisibility(View.GONE);
+                holder.like.setVisibility(View.VISIBLE);
+//                holder.numLikes.setText(Integer.toString(post.getNumLikes()+1));
+//                post.setNumLikes(post.getNumLikes()+1);
+            }
+        });
+
     }
 
     @Override
@@ -66,9 +92,10 @@ public class Replies_recview_Adapter extends RecyclerView.Adapter<Replies_recvie
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView userName,replyText;
+        private TextView userName,replyText,numLikes;
         private RelativeLayout repliesListItemParent;
         private ImageView profilepic,dustbinreply;
+        ImageView like,dislike;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             userName=itemView.findViewById(R.id.userNameReply);
@@ -76,6 +103,9 @@ public class Replies_recview_Adapter extends RecyclerView.Adapter<Replies_recvie
             repliesListItemParent=itemView.findViewById(R.id.replies_listParent);
             profilepic=itemView.findViewById(R.id.profilepicreply);
             dustbinreply=itemView.findViewById(R.id.dustbinreply);
+            like=itemView.findViewById(R.id.like);
+            dislike=itemView.findViewById(R.id.dislike);
+            numLikes=itemView.findViewById(R.id.numLikes);
         }
     }
 

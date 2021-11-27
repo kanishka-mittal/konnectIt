@@ -1,6 +1,8 @@
 package com.example.sample;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+
+import java.util.ArrayList;
 
 public class comment_reply extends AppCompatActivity {
     int commentId,userId,commentuserId;
@@ -32,8 +36,13 @@ public class comment_reply extends AppCompatActivity {
         singleCommentBgTask.execute("load");
 
         String method="replyload";
-        comments_bgtasks bgTask=new comments_bgtasks(this,commentId,userId);
+        RecyclerView repliesRecView;
+        Replies_recview_Adapter RepliesRecViewAdapter;
+        ArrayList<Replies> replies;
+        comments_bgtasks bgTask=new comments_bgtasks(comment_reply.this,commentId,userId);
         bgTask.execute(method);
+
+
         replyText= findViewById(R.id.editTextCommentpage);
         btnpostReply = findViewById(R.id.buttonCommentpage);
         btnpostReply.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +54,7 @@ public class comment_reply extends AppCompatActivity {
                 }
                 else{
                     String method="addreply";
+
                     comments_bgtasks bgTask=new comments_bgtasks(comment_reply.this,commentId,userId,replytext);
                     bgTask.execute(method);
                     finish();
@@ -52,6 +62,7 @@ public class comment_reply extends AppCompatActivity {
                     intent.putExtra("commentId",commentId);
                     intent.putExtra("userId",userId);
                     startActivity(intent);
+                    overridePendingTransition(0, 0);
                 }
 
             }

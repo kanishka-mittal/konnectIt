@@ -46,11 +46,16 @@ public class ChatBackgroundTask extends AsyncTask<String,Message,Void> {
         method=strings[0];
         if(strings[0].equals("load")){
             try{
-                chatRecView=activity.findViewById(R.id.chatRecView);
-                messages=new ArrayList<>();
-                chatRecViewAdapter =new ChatRecViewAdapter(ctx,userId,friendId,messages);
-                chatRecView.setLayoutManager(new LinearLayoutManager(ctx));
-                chatRecView.setAdapter(chatRecViewAdapter);
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        chatRecView=activity.findViewById(R.id.chatRecView);
+                        messages=new ArrayList<>();
+                        chatRecViewAdapter =new ChatRecViewAdapter(ctx,userId,friendId,messages);
+                        chatRecView.setLayoutManager(new LinearLayoutManager(ctx));
+                        chatRecView.setAdapter(chatRecViewAdapter);
+                    }
+                });
                 URL url = new URL(activity.getString(R.string.chatLoadUrl));
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");

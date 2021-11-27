@@ -27,7 +27,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-public class comments_bgtasks extends AsyncTask<String,Replies,Void> {
+public class comments_bgtasks extends AsyncTask<String,Replies,String> {
     Context ctx;
     Activity activity;
     RecyclerView repliesRecView;
@@ -36,8 +36,24 @@ public class comments_bgtasks extends AsyncTask<String,Replies,Void> {
     int commentID;
     int userID;
     String replyText;
+    Replies_recview_Adapter.ViewHolder holder;
 
-    public comments_bgtasks(Context ctx,int commentID,int userID) {
+    public comments_bgtasks(Context ctx, Replies_recview_Adapter repliesRecViewAdapter, ArrayList<Replies> replies, int commentID, int userID) {
+        this.ctx = ctx;
+        RepliesRecViewAdapter = repliesRecViewAdapter;
+        this.replies = replies;
+        this.commentID = commentID;
+        this.userID = userID;
+    }
+
+    public comments_bgtasks(Context ctx, int userID, Replies_recview_Adapter.ViewHolder holder) {
+        this.ctx = ctx;
+        this.userID = userID;
+        this.holder = holder;
+        activity=(Activity) ctx;
+    }
+
+    public comments_bgtasks(Context ctx, int commentID, int userID) {
         this.ctx = ctx;
         this.commentID=commentID;
         activity=(Activity) ctx;
@@ -57,20 +73,25 @@ public class comments_bgtasks extends AsyncTask<String,Replies,Void> {
     protected void onPreExecute() {
         super.onPreExecute();
         //Doubt
-        repliesRecView=activity.findViewById(R.id.recyclerViewCommentpage);
-        replies=new ArrayList<>();
-        repliesRecView.setLayoutManager(new LinearLayoutManager(ctx));
-        RepliesRecViewAdapter=new Replies_recview_Adapter(replies,ctx,commentID,userID);
-        repliesRecView.setAdapter(RepliesRecViewAdapter);
+
     }
 
 
     @Override
-    protected Void doInBackground(String... params) {
-        //String friendUrl="http://10.0.2.2//konnectit/friends.php";
+    protected String doInBackground(String... params) {
         if(params[0].equals("replyload")){
-
             try {
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        repliesRecView=activity.findViewById(R.id.recyclerViewCommentpage);
+                        replies=new ArrayList<>();
+                        repliesRecView.setLayoutManager(new LinearLayoutManager(ctx));
+                        RepliesRecViewAdapter=new Replies_recview_Adapter(replies,ctx,commentID,userID);
+                        repliesRecView.setAdapter(RepliesRecViewAdapter);
+                    }
+                });
+
                 URL url = new URL(activity.getString(R.string.replyloadUrl));
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
@@ -122,6 +143,11 @@ public class comments_bgtasks extends AsyncTask<String,Replies,Void> {
             StringBuilder stringBuilder=new StringBuilder();
 
             try{
+//                repliesRecView=activity.findViewById(R.id.recyclerViewCommentpage);
+//                replies=new ArrayList<>();
+//                repliesRecView.setLayoutManager(new LinearLayoutManager(ctx));
+//                RepliesRecViewAdapter=new Replies_recview_Adapter(replies,ctx,commentID,userID);
+//                repliesRecView.setAdapter(RepliesRecViewAdapter);
                 URL url=new URL(activity.getString(R.string.addReplyUrl));
                 HttpURLConnection httpURLConnection=(HttpURLConnection) url.openConnection();
                 BufferedReader bufferedReader;
@@ -147,6 +173,106 @@ public class comments_bgtasks extends AsyncTask<String,Replies,Void> {
                 bufferedReader.close();
                 httpURLConnection.disconnect();
             } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else if(params[0].equals("isReplyLiked")){
+            try {
+                URL url = new URL(activity.getString(R.string.isReplyLikedUrl));
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream os = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(os));
+                String data = URLEncoder.encode("userId", "UTF-8") + "=" + URLEncoder.encode(Integer.toString(userID), "UTF-8") + "&" + URLEncoder.encode("replyId", "UTF-8") + "=" + URLEncoder.encode(params[1], "UTF-8");
+                bufferedWriter.write(data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                InputStream is = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(is));
+                StringBuilder stringBuilder=new StringBuilder();
+                String line;
+                while((line=bufferedReader.readLine())!=null){
+                    stringBuilder.append(line+"\n");
+                }
+                String jsonString=stringBuilder.toString().trim();
+                System.out.println(jsonString);
+                bufferedReader.close();
+                is.close();
+                httpURLConnection.disconnect();
+                return jsonString;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (ProtocolException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else if(params[0].equals("likeReply")){
+            try {
+                URL url = new URL(activity.getString(R.string.likeReplyUrl));
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                System.out.println("here");
+                OutputStream os = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(os));
+                String data = URLEncoder.encode("userId", "UTF-8") + "=" + URLEncoder.encode(Integer.toString(userID), "UTF-8") + "&" + URLEncoder.encode("replyId", "UTF-8") + "=" + URLEncoder.encode(params[1], "UTF-8");
+                bufferedWriter.write(data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                InputStream is = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(is));
+                StringBuilder stringBuilder=new StringBuilder();
+                String line;
+                while((line=bufferedReader.readLine())!=null){
+                    stringBuilder.append(line+"\n");
+                }
+                String jsonString=stringBuilder.toString().trim();
+                System.out.println(jsonString);
+                bufferedReader.close();
+                is.close();
+                httpURLConnection.disconnect();
+                return null;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (ProtocolException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else if(params[0].equals("unlikeReply")){
+            try {
+                URL url = new URL(activity.getString(R.string.unlikeCommentUrl));
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream os = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(os));
+                String data = URLEncoder.encode("userId", "UTF-8") + "=" + URLEncoder.encode(Integer.toString(userID), "UTF-8") + "&" + URLEncoder.encode("replyId", "UTF-8") + "=" + URLEncoder.encode(params[1], "UTF-8");
+                bufferedWriter.write(data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                InputStream is = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(is));
+                StringBuilder stringBuilder=new StringBuilder();
+                String line;
+                while((line=bufferedReader.readLine())!=null){
+                    stringBuilder.append(line+"\n");
+                }
+                String jsonString=stringBuilder.toString().trim();
+                System.out.println(jsonString);
+                bufferedReader.close();
+                is.close();
+                httpURLConnection.disconnect();
+                return null;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (ProtocolException e) {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
