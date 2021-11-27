@@ -48,6 +48,7 @@
     <string name="sendMsgUrl">http://10.0.2.2//konnectit/sendMsg.php</string>
     <string name="delPostUrl">http://10.0.2.2//konnectit/delPost.php</string>
     <string name="delCommentUrl">http://10.0.2.2//konnectit/delComment.php</string>
+    <string name="delReplyUrl">http://10.0.2.2//konnectit/delReply.php</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="newsFeedLoadUrl">http://10.0.2.2//konnectit/newsFeedLoad.php</string>
@@ -59,6 +60,8 @@
     <string name="reply_title">Default reply action</string>
     <string name="ProfileFeedUrl">http://10.0.2.2//konnectit/ProfilePosts.php</string>
     <string name="likesLoadUrl">http://10.0.2.2//konnectit/likesLoad.php</string>
+    <string name="likesLoadCommentsUrl">http://10.0.2.2//konnectit/likesLoadComments.php</string>
+    <string name="likesLoadRepliesUrl">http://10.0.2.2//konnectit/likesLoadReplies.php</string>
     <!-- Sync Preferences -->
     <string name="sync_title">Sync email periodically</string>
     <string name="attachment_title">Download incoming attachments</string>

@@ -149,8 +149,8 @@ public class PostRecViewAdapter extends RecyclerView.Adapter<PostRecViewAdapter.
             public void onClick(View view) {
                 Dialog dialog=new Dialog(ctx);
                 dialog.setContentView(R.layout.likes_dialog_layout);
-                LikesDialogBackgroundTask likesDialogBackgroundTask=new LikesDialogBackgroundTask(dialog,ctx,post.getPostId());
-                likesDialogBackgroundTask.execute("load");
+                LikesDialogBackgroundTask likesDialogBackgroundTask=new LikesDialogBackgroundTask(dialog,ctx);
+                likesDialogBackgroundTask.execute("loadLikesPosts",Integer.toString(post.getPostId()));
                 dialog.show();
             }
         });

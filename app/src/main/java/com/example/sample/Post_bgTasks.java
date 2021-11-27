@@ -111,7 +111,7 @@ public class Post_bgTasks extends AsyncTask<String,Comments,String> {
                     while(count<jsonArray.length()){
                         JSONObject commentObject=jsonArray.getJSONObject(count);
                         count++;
-                        Comments comment=new Comments(commentObject.getString("userName"),commentObject.getString("commentText"),commentObject.getInt("user_id"),commentObject.getInt("commentId"),postID);
+                        Comments comment=new Comments(commentObject.getString("userName"),commentObject.getString("commentText"),commentObject.getInt("user_id"),commentObject.getInt("commentId"),postID,commentObject.getInt("numLikes"));
                         publishProgress(comment);
                     }
                 }

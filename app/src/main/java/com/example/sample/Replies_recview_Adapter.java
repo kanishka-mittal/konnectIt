@@ -1,6 +1,7 @@
 package com.example.sample;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -43,6 +44,7 @@ public class Replies_recview_Adapter extends RecyclerView.Adapter<Replies_recvie
 
     @Override
     public void onBindViewHolder(@NonNull Replies_recview_Adapter.ViewHolder holder, int position) {
+        Replies replies=replies_list.get(position);
         holder.replyText.setText(replies_list.get(position).getReplyText());
         int replyId=replies_list.get(position).getReplyId();
         holder.userName.setText(replies_list.get(position).getUserName());
@@ -55,6 +57,7 @@ public class Replies_recview_Adapter extends RecyclerView.Adapter<Replies_recvie
 
         comments_bgtasks comments_bgtask1=new comments_bgtasks(ctx,userID,holder);
         comments_bgtask1.execute("isReplyLiked",Integer.toString(replyId));
+        holder.numLikes.setText(Integer.toString(replies.getNumLikes()));
         holder.like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,8 +65,8 @@ public class Replies_recview_Adapter extends RecyclerView.Adapter<Replies_recvie
                 comments_bgtask2.execute("unlikeReply",Integer.toString(replyId));
                 holder.dislike.setVisibility(View.VISIBLE);
                 holder.like.setVisibility(View.GONE);
-//                holder.numLikes.setText(Integer.toString(post.getNumLikes()-1));
-//                post.setNumLikes(post.getNumLikes()-1);
+                holder.numLikes.setText(Integer.toString(replies.getNumLikes()-1));
+                replies.setNumLikes(replies.getNumLikes()-1);
             }
         });
         holder.dislike.setOnClickListener(new View.OnClickListener() {
@@ -73,11 +76,29 @@ public class Replies_recview_Adapter extends RecyclerView.Adapter<Replies_recvie
                 comments_bgtask2.execute("likeReply",Integer.toString(replyId));
                 holder.dislike.setVisibility(View.GONE);
                 holder.like.setVisibility(View.VISIBLE);
-//                holder.numLikes.setText(Integer.toString(post.getNumLikes()+1));
-//                post.setNumLikes(post.getNumLikes()+1);
+                holder.numLikes.setText(Integer.toString(replies.getNumLikes()+1));
+                replies.setNumLikes(replies.getNumLikes()+1);
             }
         });
-
+        holder.numLikes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Dialog dialog=new Dialog(ctx);
+                dialog.setContentView(R.layout.likes_dialog_layout);
+                LikesDialogBackgroundTask likesDialogBackgroundTask=new LikesDialogBackgroundTask(dialog,ctx);
+                likesDialogBackgroundTask.execute("loadLikesReplies",Integer.toString(replies.getReplyId()));
+                dialog.show();
+            }
+        });
+        holder.dustbinreply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DeleteReplyBgTask deleteReplyBgTask=new DeleteReplyBgTask(ctx,replyId);
+                deleteReplyBgTask.execute();
+                replies_list.remove(replies);
+                notifyDataSetChanged();
+            }
+        });
     }
 
     @Override

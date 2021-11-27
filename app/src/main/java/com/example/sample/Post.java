@@ -71,8 +71,8 @@ public class Post extends AppCompatActivity {
             public void onClick(View view) {
                 Dialog dialog=new Dialog(ctx);
                 dialog.setContentView(R.layout.likes_dialog_layout);
-                LikesDialogBackgroundTask likesDialogBackgroundTask=new LikesDialogBackgroundTask(dialog,ctx,postId);
-                likesDialogBackgroundTask.execute("load");
+                LikesDialogBackgroundTask likesDialogBackgroundTask=new LikesDialogBackgroundTask(dialog,ctx);
+                likesDialogBackgroundTask.execute("loadLikesPosts",Integer.toString(postId));
                 dialog.show();
             }
         });

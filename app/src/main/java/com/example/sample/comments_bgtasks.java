@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -35,7 +36,7 @@ public class comments_bgtasks extends AsyncTask<String,Replies,String> {
     ArrayList<Replies> replies;
     int commentID;
     int userID;
-    String replyText;
+    String replyText,method;
     Replies_recview_Adapter.ViewHolder holder;
 
     public comments_bgtasks(Context ctx, Replies_recview_Adapter repliesRecViewAdapter, ArrayList<Replies> replies, int commentID, int userID) {
@@ -79,6 +80,7 @@ public class comments_bgtasks extends AsyncTask<String,Replies,String> {
 
     @Override
     protected String doInBackground(String... params) {
+        method=params[0];
         if(params[0].equals("replyload")){
             try {
                 activity.runOnUiThread(new Runnable() {
@@ -120,7 +122,7 @@ public class comments_bgtasks extends AsyncTask<String,Replies,String> {
                     while(count<jsonArray.length()){
                         JSONObject replyObject=jsonArray.getJSONObject(count);
                         count++;
-                        Replies reply=new Replies(replyObject.getString("userName"),replyObject.getString("replyText"),replyObject.getInt("user_id"),replyObject.getInt("replyId"),commentID);
+                        Replies reply=new Replies(replyObject.getString("userName"),replyObject.getString("replyText"),replyObject.getInt("user_id"),replyObject.getInt("replyId"),commentID,replyObject.getInt("numLikes"));
                         publishProgress(reply);
                     }
                 }
@@ -198,7 +200,9 @@ public class comments_bgtasks extends AsyncTask<String,Replies,String> {
                     stringBuilder.append(line+"\n");
                 }
                 String jsonString=stringBuilder.toString().trim();
-                System.out.println(jsonString);
+//                System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+//                System.out.println(jsonString);
+//                System.out.println("**************************************");
                 bufferedReader.close();
                 is.close();
                 httpURLConnection.disconnect();
@@ -285,5 +289,18 @@ public class comments_bgtasks extends AsyncTask<String,Replies,String> {
     protected void onProgressUpdate(Replies... values) {
         replies.add(values[0]);
         RepliesRecViewAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    protected void onPostExecute(String s) {
+        if(method.equals("isReplyLiked")){
+            if(s.equals("true")){
+                holder.dislike.setVisibility(View.GONE);
+                holder.like.setVisibility(View.VISIBLE);
+            }else{
+                holder.like.setVisibility(View.GONE);
+                holder.dislike.setVisibility(View.VISIBLE);
+            }
+        }
     }
 }

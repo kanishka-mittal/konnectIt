@@ -2,14 +2,32 @@ package com.example.sample;
 
 public class Replies {
     private String userName,replyText;
-    private int userId,replyId,commentID;
+    private int userId,replyId,commentID,numLikes;
 
-    public Replies(String userName, String replytext,int userId,int replyId,int commentID) {
+    public Replies(String userName, String replytext,int userId,int replyId,int commentID,int numLikes) {
         this.userName = userName;
         this.replyText = replytext;
         this.replyId=replyId;
         this.userId=userId;
         this.commentID=commentID;
+        this.numLikes=numLikes;
+
+    }
+
+    public int getNumLikes() {
+        return numLikes;
+    }
+
+    public void setNumLikes(int numLikes) {
+        this.numLikes = numLikes;
+    }
+
+    public int getCommentID() {
+        return commentID;
+    }
+
+    public void setCommentID(int commentID) {
+        this.commentID = commentID;
     }
 
     public int getUserId() {
