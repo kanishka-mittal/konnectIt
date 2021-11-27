@@ -11,7 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.squareup.picasso.Picasso;
+//import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,11 +29,13 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.sql.SQLOutput;
+
 
 public class SinglePostBgTask extends AsyncTask<String,Void,String> {
     Context ctx;
     Activity activity;
-    String method;
+    String method,timeDiff;
     int postId,userId;
     TextView userName,firstName,numLikes,numComments,postContent;
     ImageView postImage,profilepic,like,dislike,dustbin,btnEditPost;
@@ -57,6 +59,21 @@ public class SinglePostBgTask extends AsyncTask<String,Void,String> {
         profilepic=activity.findViewById(R.id.profilepicpostpage);
         postContent=activity.findViewById(R.id.postTextpostpage);
         btnEditPost=activity.findViewById(R.id.btnEditPost);
+    }
+
+    public  String getTimeString(String TimeDiff){
+        String[] sections=TimeDiff.split(":");
+        int hours=Integer.parseInt(sections[0]);
+        int minutes=Integer.parseInt(sections[1]);
+        int seconds=Integer.parseInt(sections[2]);
+        if(hours>=24){
+            int days=hours/24;
+            return days + " day ago";
+        }
+        else if(hours>=1){
+            return hours + " hours ago";
+        }
+        else return minutes + " minutes ago";
     }
 
     @Override
@@ -86,6 +103,8 @@ public class SinglePostBgTask extends AsyncTask<String,Void,String> {
                 bufferedReader.close();
                 is.close();
                 httpURLConnection.disconnect();
+                System.out.println(jsonString);
+                System.out.println("yahan print kiya hai");
                 return jsonString;
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -210,8 +229,10 @@ public class SinglePostBgTask extends AsyncTask<String,Void,String> {
                             JSONObject postObject=jsonObject.getJSONArray("singlepost").getJSONObject(0);
                             userName.setText(postObject.getString("userName"));
                             firstName.setText(postObject.getString("firstName"));
-
-
+                            timeDiff=postObject.getString("TIMEDIFF(CURRENT_TIMESTAMP, p.postedAt)");
+                            String formatedTime= getTimeString(timeDiff);
+                            System.out.println(formatedTime);
+                            System.out.println("Yahan print kiya hai formatted time");
                             if(!(postObject.getString("postImageURL").equals("null"))){
                                 Glide.with(ctx).asBitmap().placeholder(R.mipmap.ic_user).error(R.mipmap.ic_user).load("http://10.0.2.2/konnectIt/posts_image/"+postId+".png").into(postImage);
 

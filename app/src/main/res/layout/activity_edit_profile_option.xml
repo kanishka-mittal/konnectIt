@@ -152,7 +152,16 @@
         app:layout_constraintVertical_bias="0.0"
         app:strokeColor="@color/yellow"
         app:strokeWidth="2dp" />
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upload a profile picture"
+        android:textColor="@color/yellow"
+        app:layout_constraintBottom_toTopOf="@+id/uploadImageoption"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="15dp"/>
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/uploadImageoption"
         android:layout_width="wrap_content"

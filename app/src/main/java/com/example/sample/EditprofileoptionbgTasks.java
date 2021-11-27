@@ -102,6 +102,7 @@ public class EditprofileoptionbgTasks extends AsyncTask<String,Void,String> {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            System.out.println(stringBuilder.toString());
             return stringBuilder.toString();
         }
         else if(strings[0].equals("loadprofilescreen")){
@@ -175,7 +176,10 @@ public class EditprofileoptionbgTasks extends AsyncTask<String,Void,String> {
 //                            Gender.setText(editprofileObject.getString("gender"));
 //                            mobNum.setText(editprofileObject.getString("mobile"));
 //                            Age.setText(editprofileObject.getString("age"));
-                            Glide.with(ctx).asBitmap().error(R.mipmap.ic_user).load("http://10.0.2.2/konnectit/profilepics/"+Integer.toString(userId)+".png").into(profilepic);
+                            if(!(editprofileObject.getString("imageurl").equals("null"))) {
+                                Glide.with(ctx).asBitmap().error(R.mipmap.ic_user).load("http://10.0.2.2/konnectit/profilepics/" + Integer.toString(userId) + ".png").into(profilepic);
+                            }
+
                         }
                     }catch (JSONException e) {
                         e.printStackTrace();

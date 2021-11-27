@@ -37,11 +37,7 @@ public class EditProfileOption extends AppCompatActivity {
             userId = extras.getInt("userId");
             System.out.println(userId);
         }
-    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
         setContentView(R.layout.activity_edit_profile_option);
         Gender=(EditText) findViewById(R.id.edtGender1option);
         mobNum=findViewById(R.id.edtMobile1option);
@@ -76,6 +72,7 @@ public class EditProfileOption extends AppCompatActivity {
                 }
             }
         });
+
         uploadProfilePic=findViewById(R.id.uploadProfilePicoption);
         uploadProfilePic.setOnClickListener(new View.OnClickListener() {
 
