@@ -35,7 +35,7 @@ public class SinglePostBgTask extends AsyncTask<String,Void,String> {
     String method;
     int postId,userId;
     TextView userName,firstName,numLikes,numComments,postContent;
-    ImageView postImage,profilepic,like,dislike,dustbin;
+    ImageView postImage,profilepic,like,dislike,dustbin,btnEditPost;
     EditText commentText;
     Button btnpostComment;
     public SinglePostBgTask(Context ctx, int postId,int userId) {
@@ -55,6 +55,7 @@ public class SinglePostBgTask extends AsyncTask<String,Void,String> {
         numLikes=activity.findViewById(R.id.numLikespostpage);
         profilepic=activity.findViewById(R.id.profilepicpostpage);
         postContent=activity.findViewById(R.id.postTextpostpage);
+        btnEditPost=activity.findViewById(R.id.btnEditPost);
     }
 
     @Override
@@ -223,8 +224,10 @@ public class SinglePostBgTask extends AsyncTask<String,Void,String> {
                             numLikes.setText(Integer.toString(postObject.getInt("numLikes")));
                             if(postObject.getInt("postedBy")==userId){
                                 dustbin.setVisibility(View.VISIBLE);
+                                btnEditPost.setVisibility(View.VISIBLE);
                             }else{
                                 dustbin.setVisibility(View.GONE);
+                                btnEditPost.setVisibility(View.VISIBLE);
                             }
                         }
                     }catch (JSONException e) {

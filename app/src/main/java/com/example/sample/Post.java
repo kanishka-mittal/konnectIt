@@ -22,7 +22,7 @@ public class Post extends AppCompatActivity {
     Button btnpostComment;
     String commenttext;
     EditText commentText;
-    ImageView share,like,dislike,dustbinpostpage;
+    ImageView share,like,dislike,dustbinpostpage,btneditPost;
     public Context ctx;
     TextView numLikes;
     int accessedByUser;
@@ -138,5 +138,13 @@ public class Post extends AppCompatActivity {
                 builder.show();
             }
         });
+        btneditPost=findViewById(R.id.btnEditPost);
+        btneditPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(Post.this, "Chalo post edit karenge yahan se", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 }
