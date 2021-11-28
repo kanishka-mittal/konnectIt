@@ -19,24 +19,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            android:padding="5dp">
+            android:background="@color/black"
+            android:theme="@style/ThemeOverlay.AppCompat.Light"
+            android:paddingTop="7dp"
+            android:paddingBottom="7dp"
+            app:elevation="0dp"
+            android:id="@+id/appbarSet">
 
-            <TextView
-                android:id="@+id/LinearSettingheading"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#00B6DCF1"
-                android:text="SETTINGS"
-                android:textColor="@color/yellow"
-                android:textSize="30sp">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarSet"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                android:outlineAmbientShadowColor="@color/white">
 
-            </TextView>
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/toolbarTextViewSet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="22dp"
+                    android:text="Settings"
+                    android:textColor="#212121"
+                    android:textStyle="bold"
+                    android:paddingLeft="10dp"/>
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
 
 
         <LinearLayout
@@ -52,7 +63,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="25dp"
+                android:textSize="20dp"
+                android:layout_marginStart="10dp"
+                android:textStyle="bold"
                 android:textColor="@color/white"
                 android:text="Hide Posts" />
 
@@ -70,8 +83,10 @@
                 android:id="@+id/switchhideAge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 android:layout_weight="1"
-                android:textSize="25dp"
+                android:textSize="20dp"
+                android:textStyle="bold"
                 android:textColor="@color/white"
                 android:text="Hide Age" />
 
@@ -89,7 +104,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="25dp"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_marginStart="10dp"
                 android:textColor="@color/white"
                 android:text="Hide Gender" />
 
@@ -107,7 +124,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="25dp"
+                android:layout_marginStart="10dp"
+                android:textSize="20dp"
+                android:textStyle="bold"
                 android:textColor="@color/white"
                 android:text="Hide Mobile" />
 
@@ -125,7 +144,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="25dp"
+                android:textSize="20dp"
+                android:layout_marginStart="10dp"
+                android:textStyle="bold"
                 android:textColor="@color/white"
                 android:text="Hide Interests" />
 
@@ -141,11 +162,11 @@
             android:minWidth="0dp"
             android:minHeight="0dp"
             android:paddingTop="12dp"
+            android:background="@drawable/round2"
             android:paddingBottom="12dp"
             android:text="Save"
-            android:textColor="@color/yellow"
+            android:textColor="@color/black"
             android:textSize="20dp"
-            app:cornerRadius="10dp"
             app:strokeColor="@color/yellow"
             app:strokeWidth="4dp" />
 
@@ -160,24 +181,36 @@
 
 
 
-        <LinearLayout
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            android:padding="5dp">
+            android:background="@color/black"
+            android:theme="@style/ThemeOverlay.AppCompat.Light"
+            android:paddingTop="7dp"
+            android:layout_marginTop="20dp"
+            android:paddingBottom="7dp"
+            app:elevation="0dp"
+            android:id="@+id/appbar">
 
-            <TextView
-                android:id="@+id/LinearSettingother"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#00B6DCF1"
-                android:text="Other Options"
-                android:textColor="@color/yellow"
-                android:textSize="30sp">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                android:outlineAmbientShadowColor="@color/white">
 
-            </TextView>
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/toolbarTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="22dp"
+                    android:textColor="#212121"
+                    android:text="Other Options"
+                    android:textStyle="bold"
+                    android:paddingLeft="10dp"/>
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
 
         <LinearLayout
             android:id="@+id/linearlogout"
@@ -193,9 +226,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#00B6DCF1"
-                    android:text="Logout"
+                android:layout_marginStart="10dp"
+                android:text="Logout"
                 android:textColor="@color/white"
-                android:textSize="25sp">
+                android:textSize="20dp"
+                android:textStyle="bold">
 
             </TextView>
 
@@ -216,10 +251,12 @@
                 android:id="@+id/settingsdeleteprofile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 android:backgroundTint="#00B6DCF1"
                 android:text="Delete Profile"
                 android:textColor="@color/white"
-                android:textSize="25sp">
+                android:textSize="20dp"
+                android:textStyle="bold">
 
             </TextView>
 
