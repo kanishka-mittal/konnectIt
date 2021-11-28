@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class Comments_Recview_Adapter extends RecyclerView.Adapter<Comments_Recview_Adapter.ViewHolder> {
 
@@ -86,6 +87,14 @@ public class Comments_Recview_Adapter extends RecyclerView.Adapter<Comments_Recv
                     deleteCommentBgTask.execute();
                     comments_list.remove(comments);
                     notifyDataSetChanged();
+                SinglePostBgTask singlePostBgTask =new SinglePostBgTask(ctx,postID,userID);
+                try {
+                    singlePostBgTask.execute("load").get();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
 
         });
