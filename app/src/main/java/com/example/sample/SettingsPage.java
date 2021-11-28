@@ -77,7 +77,6 @@ public class SettingsPage extends AppCompatActivity {
                     hideinterests = 1;
                 }else{hideinterests = 0;}
 
-
                 String method1="settingssave";
                 SettingsBackgroundTasks bgTask=new SettingsBackgroundTasks(ctx,userId,hideage, hideinterests,hidepost,hidemobile,hidegender);
                 bgTask.execute(method1);

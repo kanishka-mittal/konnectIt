@@ -61,7 +61,11 @@ public class EditProfileOption extends AppCompatActivity {
                 age=Age.getText().toString();
                 if(lastname.equals("")&&age.equals("")&&gender.equals("")&&mobnum.equals("")&&bio.equals("")){
                     Toast.makeText(EditProfileOption.this, "Please fill atleast one field!", Toast.LENGTH_SHORT).show();
-                }else{
+                }
+                else if(!gender.equals("Male")&&!gender.equals("Female")&&!gender.equals("Others")){
+                    Toast.makeText(EditProfileOption.this, "Gender format : Male,Female,Others", Toast.LENGTH_SHORT).show();
+                }
+                else{
                     String method1="saveprofile";
                     EditprofileoptionbgTasks editProfileBackgroundTask=new EditprofileoptionbgTasks(userId,EditProfileOption.this,convertImage,gender,mobnum,bio, lastname,age);
                     editProfileBackgroundTask.execute(method1);
