@@ -1,34 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".EditProfileOption"
-    android:background="@drawable/bgimage"
     android:paddingTop="10dp"
     android:paddingLeft="10dp">
 
 
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/uploadImageoption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:strokeColor="@color/yellow"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        app:strokeWidth="2dp"
+        app:cardCornerRadius="100dp"
+
+        android:layout_marginBottom="20dp">
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@mipmap/ic_user"
+            android:id="@+id/uploadProfilePicoption"
+            />
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/uploadtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/uploadImageoption"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="20dp"
+        android:text="Upload a profile picture"
+        android:textColor="@color/yellow"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/uploadImageoption"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/edtLastNameoption"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
+        android:layout_marginRight="25dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         android:layout_marginTop="20dp"
-        app:boxStrokeColor="@color/black"
+        android:layout_below="@id/uploadtext"
+        app:boxStrokeColor="@color/white"
         app:boxStrokeWidth="3dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:boxCornerRadiusBottomEnd="15dp"
-        app:boxCornerRadiusBottomStart="15dp"
-        app:boxCornerRadiusTopEnd="15dp"
-        app:boxCornerRadiusTopStart="15dp"
-        app:hintTextColor="@color/black">
+        app:hintTextColor="@color/white">
 
         <EditText
             android:id="@+id/edtLastName1option"
+            android:background="@drawable/round2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Last Name" />
@@ -36,92 +70,89 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/edtBiooption"
-        android:layout_width="275dp"
+        android:layout_width="match_parent"
+        android:layout_marginRight="25dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/edtGenderoption"
         app:boxStrokeColor="@color/black"
         app:boxStrokeWidth="3dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/edtLastNameoption"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:boxCornerRadiusBottomEnd="15dp"
-        app:boxCornerRadiusBottomStart="15dp"
-        app:boxCornerRadiusTopEnd="15dp"
-        app:boxCornerRadiusTopStart="15dp"
-        app:hintTextColor="@color/black">
+        app:hintTextColor="@color/white">
 
         <EditText
             android:id="@+id/edtBio1option"
             android:layout_width="match_parent"
+            android:background="@drawable/round2"
             android:layout_height="wrap_content"
             android:hint="Say something about yourself" />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/edtMobileoption"
-        android:layout_width="250dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/edtAgeoption"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="10dp"
         app:boxStrokeColor="@color/black"
         app:boxStrokeWidth="3dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/edtBiooption"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:boxCornerRadiusBottomEnd="15dp"
-        app:boxCornerRadiusBottomStart="15dp"
-        app:boxCornerRadiusTopEnd="15dp"
-        app:boxCornerRadiusTopStart="15dp"
-        app:hintTextColor="@color/black">
+        app:hintTextColor="@color/white">
         <EditText
             android:id="@+id/edtMobile1option"
             android:layout_width="match_parent"
+            android:background="@drawable/round2"
             android:layout_height="wrap_content"
             android:hint="Contact Number" />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/edtAgeoption"
-        android:layout_width="225dp"
+        android:layout_width="match_parent"
+        android:layout_marginRight="25dp"
         android:layout_height="wrap_content"
+        android:layout_below="@id/edtLastNameoption"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         app:boxStrokeColor="@color/black"
         app:boxStrokeWidth="3dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/edtMobileoption"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:boxCornerRadiusBottomEnd="15dp"
-        app:boxCornerRadiusBottomStart="15dp"
-        app:boxCornerRadiusTopEnd="15dp"
-        app:boxCornerRadiusTopStart="15dp"
-        app:hintTextColor="@color/black">
+        app:hintTextColor="@color/white">
 
         <EditText
             android:id="@+id/edtAge1option"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/round2"
             android:hint="Age" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/edtGenderoption"
-        android:layout_width="200dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_marginRight="25dp"
         android:layout_height="wrap_content"
+        android:layout_below="@id/edtMobileoption"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         app:boxStrokeColor="@color/black"
         app:boxStrokeWidth="3dp"
+        app:hintTextColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/edtAgeoption"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:boxCornerRadiusBottomEnd="15dp"
-        app:boxCornerRadiusBottomStart="15dp"
-        app:boxCornerRadiusTopEnd="15dp"
-        app:boxCornerRadiusTopStart="15dp"
-        app:hintTextColor="@color/black">
+        app:layout_constraintTop_toBottomOf="@id/edtAgeoption">
 
         <EditText
             android:id="@+id/edtGender1option"
             android:layout_width="match_parent"
+            android:background="@drawable/round2"
             android:layout_height="wrap_content"
             android:hint="Gender" />
 
@@ -131,18 +162,21 @@
         android:id="@+id/btnSubmitoption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/edtBiooption"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center_vertical"
-        android:layout_marginTop="50dp"
-        android:backgroundTint="@color/black"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/primaryyellow"
         android:elevation="0dp"
         android:minWidth="0dp"
+        android:background="@drawable/round2"
         android:minHeight="0dp"
         android:paddingLeft="30dp"
         android:paddingTop="17dp"
         android:paddingRight="30dp"
         android:paddingBottom="17dp"
         android:text="Save"
-        android:textColor="@color/yellow"
+        android:textColor="@color/black"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -152,34 +186,7 @@
         app:layout_constraintVertical_bias="0.0"
         app:strokeColor="@color/yellow"
         app:strokeWidth="2dp" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Upload a profile picture"
-        android:textColor="@color/yellow"
-        app:layout_constraintBottom_toTopOf="@+id/uploadImageoption"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="20dp"
-        android:textSize="15dp"/>
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/uploadImageoption"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:strokeColor="@color/yellow"
-        app:strokeWidth="2dp"
-        app:cardCornerRadius="100dp"
-        android:layout_marginEnd="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="30dp">
-        <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:src="@mipmap/ic_user"
-            android:id="@+id/uploadProfilePicoption"
-            />
-    </com.google.android.material.card.MaterialCardView>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>
