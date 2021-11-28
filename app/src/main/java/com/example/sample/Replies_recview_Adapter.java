@@ -55,6 +55,10 @@ public class Replies_recview_Adapter extends RecyclerView.Adapter<Replies_recvie
             holder.dustbinreply.setVisibility(View.VISIBLE);
         }
 
+        if (userID!=replyuserId){
+            holder.dustbinreply.setVisibility(View.GONE);
+        }
+
         comments_bgtasks comments_bgtask1=new comments_bgtasks(ctx,userID,holder);
         comments_bgtask1.execute("isReplyLiked",Integer.toString(replyId));
         holder.numLikes.setText(Integer.toString(replies.getNumLikes()));
