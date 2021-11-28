@@ -61,25 +61,26 @@
                     android:gravity="top"
                     android:orientation="vertical">
 
+
+
+                    <TextView
+                        android:id="@+id/firstlastnameCommentpage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/white" />
+
                     <TextView
                         android:id="@+id/userNameCommentpage"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Username"
                         android:textColor="@color/yellow" />
-
-                    <TextView
-                        android:id="@+id/firstlastnameCommentpage"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="First Name last name"
-                        android:textColor="@color/white" />
-
                     <TextView
                         android:id="@+id/commenttimeCommentpage"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="time"
+                        android:text=""
                         android:textColor="@color/white" />
                 </LinearLayout>
 
@@ -89,7 +90,7 @@
         <EditText
             android:id="@+id/editTextCommentpage"
             android:layout_width="300dp"
-            android:layout_height="65dp"
+            android:layout_height="55dp"
             android:layout_below="@id/commentextCommentpage"
             android:background="@null"
             android:ems="10"
@@ -106,7 +107,7 @@
         <Button
             android:id="@+id/buttonCommentpage"
             android:layout_width="75dp"
-            android:layout_height="65dp"
+            android:layout_height="55dp"
             android:layout_below="@id/commentextCommentpage"
             android:layout_marginStart="8dp"
             android:layout_toRightOf="@id/editTextCommentpage"
@@ -123,8 +124,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/cardViewcomment"
             android:background="@color/black"
-            android:paddingVertical="20dp"
             android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:textSize="18dp"
             android:text="comment text"
             android:textColor="@color/yellow"
             app:layout_constraintEnd_toEndOf="parent"

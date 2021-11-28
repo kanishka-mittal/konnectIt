@@ -1,5 +1,6 @@
 package com.example.sample;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
@@ -8,12 +9,15 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.concurrent.ExecutionException;
 
@@ -25,7 +29,6 @@ public class Post extends AppCompatActivity {
     ImageView share,like,dislike,dustbinpostpage,btneditPost;
     public Context ctx;
     TextView numLikes,numComments;
-    int accessedByUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -151,6 +154,65 @@ public class Post extends AppCompatActivity {
 //                Toast.makeText(Post.this, "Chalo post edit karenge yahan se", Toast.LENGTH_SHORT).show();
             }
         });
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.dashboard);
+        if(true){
+            //BOTTOMBAR NAVIGATION
+
+
+            bottomNavigationView.setSelectedItemId(R.id.myprofile);
+            bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                    switch (item.getItemId()){
+                        case R.id.myprofile:
+                            Intent intent=new Intent(getApplicationContext(),Profile.class);
+                            intent.putExtra("userId",userId);
+                            intent.putExtra("accessedByUser", userId);
+                            startActivity(intent);
+
+                            overridePendingTransition(0,0);
+                            finishAffinity();
+                            return true;
+                    }
+
+                    switch (item.getItemId()){
+                        case R.id.news:
+                            Intent intent=new Intent(getApplicationContext(),NewsFeed.class);
+                            intent.putExtra("userId",userId);
+                            startActivity(intent);
+
+                            overridePendingTransition(0,0);
+                            finishAffinity();
+                            return true;
+                    }switch (item.getItemId()){
+                        case R.id.notifs:
+                            Intent intent=new Intent(getApplicationContext(),Notifications.class);
+                            intent.putExtra("userId",userId);
+                            startActivity(intent);
+
+                            overridePendingTransition(0,0);
+                            finishAffinity();
+                            return true;
+
+                    }switch (item.getItemId()){
+                        case R.id.friendRequests:
+                            Intent intent=new Intent(getApplicationContext(),FriendRequests.class);
+                            intent.putExtra("userId",userId);
+                            startActivity(intent);
+
+                            overridePendingTransition(0,0);
+                            finishAffinity();
+                            return true;
+
+                    }
+                    return false;
+                }
+            });
+        }else{
+            bottomNavigationView.setVisibility(View.GONE);
+        }
     }
 
 }

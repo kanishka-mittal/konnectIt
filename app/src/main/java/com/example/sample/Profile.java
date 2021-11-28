@@ -67,13 +67,14 @@ public class Profile extends AppCompatActivity {
         Profile_post postpage = new Profile_post();
         postpage.setArguments(bundle);
         infopage.setArguments(bundle);
-        viewPagerAdapter.AddFragment(infopage, "");
+
         viewPagerAdapter.AddFragment(postpage, "");
+        viewPagerAdapter.AddFragment(infopage, "");
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
 
-        tabLayout.getTabAt(0).setIcon(R.drawable.info);
-        tabLayout.getTabAt(1).setIcon(R.drawable.posticon);
+        tabLayout.getTabAt(1).setIcon(R.drawable.info);
+        tabLayout.getTabAt(0).setIcon(R.drawable.posticon);
 
         userPic=findViewById(R.id.userpic);
         Glide.with(this).asBitmap().error(R.mipmap.ic_user).load("http://10.0.2.2/konnectit/profilepics/"+Integer.toString(userId)+".png").into(userPic);

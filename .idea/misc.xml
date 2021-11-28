@@ -69,6 +69,7 @@
         <entry key="app/src/main/res/drawable/chatbg.xml" value="0.2234375" />
         <entry key="app/src/main/res/drawable/chatbutton.xml" value="0.2234375" />
         <entry key="app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.21354166666666666" />
+        <entry key="app/src/main/res/drawable/ic_comment.xml" value="0.3890625" />
         <entry key="app/src/main/res/drawable/posticon.xml" value="0.3890625" />
         <entry key="app/src/main/res/drawable/round.xml" value="0.21354166666666666" />
         <entry key="app/src/main/res/drawable/round2.xml" value="0.21354166666666666" />
@@ -87,14 +88,14 @@
         <entry key="app/src/main/res/layout/activity_news_feed_add.xml" value="0.20729166666666668" />
         <entry key="app/src/main/res/layout/activity_notifications.xml" value="0.1890625" />
         <entry key="app/src/main/res/layout/activity_one_person_chat.xml" value="0.4642857142857143" />
-        <entry key="app/src/main/res/layout/activity_post.xml" value="0.3729166666666667" />
+        <entry key="app/src/main/res/layout/activity_post.xml" value="0.2932330827067669" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.175" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.2618806571951347" />
         <entry key="app/src/main/res/layout/activity_search.xml" value="0.21666666666666667" />
         <entry key="app/src/main/res/layout/activity_search_friends.xml" value="0.3729166666666667" />
         <entry key="app/src/main/res/layout/chat_list_item.xml" value="0.23121085358764143" />
         <entry key="app/src/main/res/layout/chat_user_list_item.xml" value="0.20729166666666668" />
-        <entry key="app/src/main/res/layout/comments_list.xml" value="0.20729166666666668" />
+        <entry key="app/src/main/res/layout/comments_list.xml" value="0.3183166956992276" />
         <entry key="app/src/main/res/layout/fr_list_item.xml" value="0.20729166666666668" />
         <entry key="app/src/main/res/layout/fragment_posts.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/fragment_profile_info.xml" value="0.2078125" />
@@ -103,7 +104,9 @@
         <entry key="app/src/main/res/layout/message_list_item.xml" value="0.24530483699668276" />
         <entry key="app/src/main/res/layout/onepersonchat.xml" value="0.20599577797308202" />
         <entry key="app/src/main/res/layout/post_list_item.xml" value="0.3729166666666667" />
+        <entry key="app/src/main/res/layout/replies_list.xml" value="0.3729166666666667" />
         <entry key="app/src/main/res/menu/navmenu.xml" value="0.19739583333333333" />
+        <entry key="app/src/main/res/menu/profilemenu.xml" value="0.3729166666666667" />
       </map>
     </option>
   </component>
