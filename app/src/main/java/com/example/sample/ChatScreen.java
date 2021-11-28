@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -42,9 +43,15 @@ public class ChatScreen extends AppCompatActivity {
                 users.clear();
                 if(snapshot.exists()){
                     for (DataSnapshot dataSnapshot:snapshot.getChildren()){
-                        if(!dataSnapshot.child("email").getValue().toString().equals(mauth.getCurrentUser().getEmail())){
-                            users.add(new ChatUser(dataSnapshot.child("username").getValue().toString(),dataSnapshot.child("email").getValue().toString()));
+                        FirebaseUser mFirebaseUser = mauth.getCurrentUser();
+                        if(mFirebaseUser!=null){
+                            if(!dataSnapshot.child("email").getValue().toString().equals(mauth.getCurrentUser().getEmail())){
+                                users.add(new ChatUser(dataSnapshot.child("username").getValue().toString(),dataSnapshot.child("email").getValue().toString()));
+                            }
+                        }else{
+                            Toast.makeText(ChatScreen.this, "Kyaa karen", Toast.LENGTH_SHORT).show();
                         }
+                        
                     }
                     arrayAdapter=new ListAdapter(ChatScreen.this, R.layout.chat_user_list_item,users);
                     userListView.setAdapter(arrayAdapter);
