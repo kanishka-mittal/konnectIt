@@ -67,6 +67,7 @@ public class EditProfileOption extends AppCompatActivity {
                     editProfileBackgroundTask.execute(method1);
                     Intent intent=new Intent(EditProfileOption.this,Profile.class);
                     intent.putExtra("userId",userId);
+                    intent.putExtra("accessedByUser",userId);
                     startActivity(intent);
                     finish();
                 }

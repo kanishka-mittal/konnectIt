@@ -51,6 +51,8 @@ public class NewsFeedGetNameBGTask extends AsyncTask<Void, Void, String> {
             @Override
             public void run() {
                 try{
+                    System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+                    System.out.println(info);
                     JSONArray array = new JSONArray(info);
                     JSONObject profileinfo = array.getJSONObject(0);
 
