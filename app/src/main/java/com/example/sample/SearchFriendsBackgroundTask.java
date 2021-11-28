@@ -29,16 +29,18 @@ public class SearchFriendsBackgroundTask extends AsyncTask<Void,Friend,Void> {
     Context ctx;
     Activity activity;
     int userId;
+    int accessedByUser;
     String searchTxt;
     RecyclerView searchFriendsRecView;
     FriendRecViewAdapter friendRecViewAdapter;
     ArrayList<Friend> friends;
 
-    public SearchFriendsBackgroundTask(Context ctx, int userId, String searchTxt) {
+    public SearchFriendsBackgroundTask(Context ctx, int userId, String searchTxt, int accessedByUser) {
         this.ctx = ctx;
         activity=(Activity)ctx;
         this.userId = userId;
         this.searchTxt = searchTxt;
+        this.accessedByUser=accessedByUser;
     }
 
     @Override
@@ -55,7 +57,7 @@ public class SearchFriendsBackgroundTask extends AsyncTask<Void,Friend,Void> {
                 public void run() {
                     searchFriendsRecView=activity.findViewById(R.id.searchFriendsRecView);
                     friends=new ArrayList<>();
-                    friendRecViewAdapter=new FriendRecViewAdapter(friends,ctx,userId);
+                    friendRecViewAdapter=new FriendRecViewAdapter(friends,ctx,userId,accessedByUser);
                     searchFriendsRecView.setAdapter(friendRecViewAdapter);
                     searchFriendsRecView.setLayoutManager(new LinearLayoutManager(ctx));
                 }

@@ -24,12 +24,14 @@ public class FriendRecViewAdapter extends RecyclerView.Adapter<FriendRecViewAdap
     private ArrayList<Friend> friends=new ArrayList<>();
     Context ctx;
     int userId;
+    int accessedByUser;
     Activity activity;
-    public FriendRecViewAdapter(ArrayList<Friend> friends, Context ctx,int userId) {
+    public FriendRecViewAdapter(ArrayList<Friend> friends, Context ctx,int userId, int accessedByUser) {
         this.friends = friends;
         this.ctx = ctx;
         this.userId=userId;
         activity=(Activity) ctx;
+        this.accessedByUser = accessedByUser;
     }
 
     @NonNull
@@ -51,7 +53,7 @@ public class FriendRecViewAdapter extends RecyclerView.Adapter<FriendRecViewAdap
         holder.remBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FriendBackgroundTask bgTask=new FriendBackgroundTask(ctx,userId);
+                FriendBackgroundTask bgTask=new FriendBackgroundTask(ctx,userId, accessedByUser);
                 bgTask.execute("remFriend",Integer.toString(friendId));
                 friends.remove(holder.getAdapterPosition());
                 notifyDataSetChanged();
@@ -62,17 +64,20 @@ public class FriendRecViewAdapter extends RecyclerView.Adapter<FriendRecViewAdap
             public void onClick(View view) {
                 Intent intent=new Intent(ctx,Profile.class);
                 intent.putExtra("userId",friendId);
-                intent.putExtra("accessedByUser",userId);
+                intent.putExtra("accessedByUser",accessedByUser);
                 ctx.startActivity(intent);
+                activity.overridePendingTransition(0, 0);
             }
         });
         holder.btnChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(ctx,ChatActivity.class);
-                intent.putExtra("userId",friendId);
-                intent.putExtra("accessedByUser",userId);
+                intent.putExtra("userId",userId);
+                intent.putExtra("friendId",friendId);
                 activity.startActivity(intent);
+                activity.overridePendingTransition(0, 0);
+
             }
         });
     }

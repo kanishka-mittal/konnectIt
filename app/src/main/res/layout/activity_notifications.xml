@@ -7,41 +7,61 @@
     tools:context=".Notifications"
     android:background="@color/black">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/searchLinearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/black"
+        android:layout_height="50dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/searchbg"
         android:orientation="horizontal"
-        android:padding="5dp">
+        android:padding="5dp"
+        android:elevation="20dp">
 
         <ImageButton
             android:id="@+id/btnSearch"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:backgroundTint="@color/black"
-            android:src="@mipmap/ic_search" />
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/lightblue"
+            android:src="@drawable/searchicon" />
 
         <EditText
             android:id="@+id/edtSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/btnSearch"
+            android:background="@null"
             android:hint="Search for people"
+            android:paddingLeft="20dp"
+            android:singleLine="true"
             android:textColor="@color/yellow"
             android:textColorHint="@color/yellow2" />
-    </LinearLayout>
+    </RelativeLayout>
+
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/notifsRecView"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/searchLinearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/notifsRecView"/>
+        android:paddingTop="30dp" />
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/dashboard"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bottom_navigation_background"
+        android:elevation="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/dashboard"
-        android:background="@color/primaryyellow"
-        app:itemTextColor="@drawable/selector"
+        android:layout_alignParentBottom="true"
         app:itemIconTint="@drawable/selector"
-        app:menu="@menu/navmenu"
-        android:layout_alignParentBottom="true"/>
+        app:itemTextColor="@drawable/selector"
+        app:menu="@menu/navmenu" />
 </RelativeLayout>

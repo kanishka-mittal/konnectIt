@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bgmain"
+    android:background="@drawable/bg2"
     tools:context=".Register">
 
 
@@ -12,29 +12,29 @@
         android:id="@+id/RegisterHead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="@string/sign_up"
+        android:layout_marginTop="24dp"
+        android:text="Here is\nyour first\nstep with\nus!"
         android:textColor="@color/white"
-        android:textSize="35sp"
+        android:textSize="20sp"
+        android:textStyle="bold"
         android:typeface="sans"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.09"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <LinearLayout
         android:id="@+id/linearLayout_2"
         android:layout_width="353dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="46dp"
+        android:layout_marginTop="36dp"
         android:background="@drawable/round"
+        android:backgroundTint="@color/black"
         android:orientation="vertical"
         android:padding="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RegisterHead"
-        android:backgroundTint="@color/black">
+        app:layout_constraintTop_toBottomOf="@+id/RegisterHead">
 
         <LinearLayout
             android:id="@+id/Linear1_2"
@@ -60,12 +60,10 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="#00B6DCF1"
                 android:hint="@string/username"
-                android:textColor="@android:color/white"
-                android:textColorHint="#70F8F7F7"
                 android:paddingLeft="15dp"
-                android:textSize="18sp"
-                android:inputType="text"
-                >
+                android:textColor="@android:color/black"
+                android:textColorHint="@color/pastelpink"
+                android:textSize="18sp">
 
             </EditText>
         </LinearLayout>
@@ -96,10 +94,9 @@
                 android:hint="@string/email"
                 android:inputType="textEmailAddress"
                 android:paddingLeft="15dp"
-                android:textColor="@android:color/white"
-                android:textColorHint="#70F8F7F7"
-                android:textSize="18sp"
-                >
+                android:textColor="@android:color/black"
+                android:textColorHint="@color/pastelpink"
+                android:textSize="18sp">
 
             </EditText>
         </LinearLayout>
@@ -128,9 +125,9 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="#00B6DCF1"
                 android:hint="@string/first_name"
-                android:textColor="@android:color/white"
-                android:textColorHint="#70F8F7F7"
                 android:paddingLeft="15dp"
+                android:textColor="@android:color/black"
+                android:textColorHint="@color/pastelpink"
                 android:textSize="18sp"
 
                 >
@@ -156,27 +153,28 @@
                 android:src="@drawable/lock2">
 
             </ImageView>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/etPasswordLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:boxStrokeWidth="0dp"
                 app:boxStrokeWidthFocused="0dp"
-                app:passwordToggleEnabled="true"
                 app:hintAnimationEnabled="false"
                 app:hintEnabled="false"
-                >
+                app:passwordToggleEnabled="true">
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/regPwd1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="10dp"
                     android:backgroundTint="#00000000"
                     android:hint="@string/password"
                     android:inputType="textPassword"
-                    android:textColor="@android:color/white"
+                    android:paddingTop="10dp"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/pastelpink"
                     android:textSize="18sp"
-                    android:textColorHint="#70F8F7F7"
 
                     />
 
@@ -201,63 +199,62 @@
                 android:src="@drawable/lock2">
 
             </ImageView>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/etPasswordLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:boxStrokeWidth="0dp"
                 app:boxStrokeWidthFocused="0dp"
-                app:passwordToggleEnabled="true"
                 app:hintAnimationEnabled="false"
                 app:hintEnabled="false"
-                >
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/regPwd2"
-                android:layout_width="match_parent"
-                android:paddingTop="10dp"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#00000000"
-                android:hint="Confirm Password"
-                android:inputType="textPassword"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                android:textColorHint="#70F8F7F7"
-                />
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/regPwd2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#00000000"
+                    android:hint="Confirm Password"
+                    android:inputType="textPassword"
+                    android:paddingTop="10dp"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@color/pastelpink"
+                    android:textSize="18sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_marginTop="40dp"
-            android:text="@string/sign_up_text"
-            android:backgroundTint="@color/black"
+            android:backgroundTint="@color/primaryyellow"
             android:elevation="0dp"
             android:minWidth="0dp"
             android:minHeight="0dp"
-            android:layout_gravity="center_vertical"
-            android:textColor="@color/yellow"
-            android:textSize="15dp"
-            android:id="@+id/btnSignUp"
-            app:strokeColor="@color/yellow"
-            app:strokeWidth="4dp"
             android:paddingTop="12dp"
             android:paddingBottom="12dp"
+            android:text="@string/sign_up_text"
+            android:textColor="@color/black"
+            android:textSize="15dp"
             app:cornerRadius="10dp"
-            />
+            app:strokeColor="@color/yellow"
+            app:strokeWidth="4dp" />
 
 
-<!--        <androidx.appcompat.widget.AppCompatButton-->
-<!--            android:id="@+id/btnSignUp"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:background="@drawable/round3"-->
-<!--            android:onClick="openDashboard"-->
-<!--            android:text="@string/sign_up_text"-->
-<!--            android:textColor="@android:color/white" />-->
+        <!--        <androidx.appcompat.widget.AppCompatButton-->
+        <!--            android:id="@+id/btnSignUp"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="20dp"-->
+        <!--            android:background="@drawable/round3"-->
+        <!--            android:onClick="openDashboard"-->
+        <!--            android:text="@string/sign_up_text"-->
+        <!--            android:textColor="@android:color/white" />-->
 
 
     </LinearLayout>
@@ -266,7 +263,6 @@
         android:id="@+id/icon5_2"
         android:layout_width="90dp"
         android:layout_height="90dp"
-        android:layout_marginTop="0dp"
         android:contentDescription="@string/icon3"
         android:src="@drawable/man2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -281,8 +277,9 @@
         android:onClick="openLogin"
         android:text="Already a member? Login Here!"
         android:textColor="#0B3850"
-        android:textSize="15sp"
+        android:textSize="18sp"
         android:typeface="sans"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

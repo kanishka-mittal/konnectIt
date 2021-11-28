@@ -13,10 +13,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
 
 import java.io.IOException;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class NewsFeed extends AppCompatActivity {
     private int userId;
@@ -29,6 +32,16 @@ public class NewsFeed extends AppCompatActivity {
         if (extras != null) {
             userId = extras.getInt("userId");
         }
+
+
+        CircleImageView userPic;
+        userPic=findViewById(R.id.nfphoto);
+        Glide.with(this).asBitmap().error(R.mipmap.ic_user).load("http://10.0.2.2/konnectit/profilepics/"+Integer.toString(userId)+".png").into(userPic);
+
+        NewsFeedGetNameBGTask bgname = new NewsFeedGetNameBGTask(this, userId);
+        bgname.execute();
+
+
         NewsFeedBackgroundTask bgTask=new NewsFeedBackgroundTask(this,userId);
         bgTask.execute("loadNF");
         btnAddPost=findViewById(R.id.btnAddPost);

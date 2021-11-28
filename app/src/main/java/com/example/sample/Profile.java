@@ -24,13 +24,15 @@ import com.google.android.material.tabs.TabLayout;
 
 import org.w3c.dom.Text;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class Profile extends AppCompatActivity {
     private int userId,accessedByUser;
     private ProfileViewsAdapter viewPagerAdapter;
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private Button btnFriendsList;
-    ImageView userPic;
+    CircleImageView userPic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,15 +43,17 @@ public class Profile extends AppCompatActivity {
         if (extras != null) {
             userId=extras.getInt("userId");
             accessedByUser=extras.getInt("accessedByUser");
-//            System.out.println(userId);
-//            System.out.println(accessedByUser);
         }
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
+        TextView head = findViewById(R.id.toolbarTextView);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("My Profile");
-       // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if(userId==accessedByUser){
+            head.setText("My Profile");
+        }
+        else head.setText("User Profile");
+        // getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //Tabbed Activity
         tabLayout = findViewById(R.id.tablayout);
@@ -71,6 +75,8 @@ public class Profile extends AppCompatActivity {
         tabLayout.getTabAt(0).setIcon(R.drawable.info);
         tabLayout.getTabAt(1).setIcon(R.drawable.posticon);
 
+        userPic=findViewById(R.id.userpic);
+        Glide.with(this).asBitmap().error(R.mipmap.ic_user).load("http://10.0.2.2/konnectit/profilepics/"+Integer.toString(userId)+".png").into(userPic);
 //        String method="load";
 //
 //        userPic=findViewById(R.id.userpic);
@@ -81,7 +87,7 @@ public class Profile extends AppCompatActivity {
 //        ProfileBackgroundTask bgTask=new ProfileBackgroundTask(this,userId, Fullname, Username, infopage);
 //        bgTask.execute(method);
         BottomNavigationView bottomNavigationView = findViewById(R.id.dashboard);
-        if(accessedByUser==userId){
+        if(true){
             //BOTTOMBAR NAVIGATION
 
 
@@ -89,6 +95,17 @@ public class Profile extends AppCompatActivity {
             bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                    switch (item.getItemId()){
+                        case R.id.myprofile:
+                            Intent intent=new Intent(getApplicationContext(),Profile.class);
+                            intent.putExtra("userId",accessedByUser);
+                            intent.putExtra("accessedByUser", accessedByUser);
+                            startActivity(intent);
+
+                            overridePendingTransition(0,0);
+                            return true;
+                    }
 
                     switch (item.getItemId()){
                         case R.id.news:
@@ -126,6 +143,8 @@ public class Profile extends AppCompatActivity {
         }else{
             bottomNavigationView.setVisibility(View.GONE);
         }
+
+        invalidateOptionsMenu();
     }
 
     @SuppressLint("RestrictedApi")
@@ -133,16 +152,18 @@ public class Profile extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.profilemenu, menu);
+
         if(menu instanceof MenuBuilder){
             MenuBuilder m = (MenuBuilder) menu;
             m.setOptionalIconsVisible(true);
-//            if(accessedByUser!=userId){
-//                MenuItem menuItem=menu.findItem(R.id.threedot);
-//                menuItem.setVisible(false);
-//            }
         }
+        /*MenuItem item = menu.findItem(R.id.profilethree);
+        if(accessedByUser!=userId){
+            item.setVisible(false);
+        }*/
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -156,17 +177,14 @@ public class Profile extends AppCompatActivity {
             ProfileBackgroundTask bgTask=new ProfileBackgroundTask(this,userId, Fullname, Username, infopage);
             bgTask.execute(method2);
         }
-        if(item_id == R.id.settings){
-            Intent intent=new Intent(this,SettingsPage.class);
-            intent.putExtra("userId",userId);
-            this.startActivity(intent);
-            overridePendingTransition(0, 0);
-        }
 
         if(item_id == R.id.friendicon){
             Intent intent=new Intent(Profile.this,Friends.class);
             intent.putExtra("userId",userId);
+            intent.putExtra("accessedByUser",accessedByUser);
             startActivity(intent);
+            overridePendingTransition(0, 0);
+
         }
 
         return true;

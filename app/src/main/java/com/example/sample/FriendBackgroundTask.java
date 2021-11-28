@@ -34,11 +34,13 @@ public class FriendBackgroundTask extends AsyncTask<String,Friend,Void> {
     FriendRecViewAdapter friendRecViewAdapter;
     ArrayList<Friend> friends;
     int userId;
+    int accessedByUser;
 
-    public FriendBackgroundTask(Context ctx,int userId) {
+    public FriendBackgroundTask(Context ctx,int userId, int accessedByUser) {
         this.ctx = ctx;
         this.userId=userId;
         activity=(Activity) ctx;
+        this.accessedByUser = accessedByUser;
     }
 
     @Override
@@ -58,7 +60,7 @@ public class FriendBackgroundTask extends AsyncTask<String,Friend,Void> {
                         friendsRecView=activity.findViewById(R.id.friendsRecView);
                         friends=new ArrayList<>();
                         friendsRecView.setLayoutManager(new LinearLayoutManager(ctx));
-                        friendRecViewAdapter=new FriendRecViewAdapter(friends,ctx,userId);
+                        friendRecViewAdapter=new FriendRecViewAdapter(friends,ctx,userId, accessedByUser);
                         friendsRecView.setAdapter(friendRecViewAdapter);
                     }
                 });

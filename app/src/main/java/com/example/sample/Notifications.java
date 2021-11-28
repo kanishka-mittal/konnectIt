@@ -36,6 +36,8 @@ public class Notifications extends AppCompatActivity {
                 intent.putExtra("searchTxt",searchTxt);
                 intent.putExtra("userId",userId);
                 startActivity(intent);
+                overridePendingTransition(0,0);
+                finish();
             }
         });
         NotifBackgroundTask bgTask=new NotifBackgroundTask(this,userId);

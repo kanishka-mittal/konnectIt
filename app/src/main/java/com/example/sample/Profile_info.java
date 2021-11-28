@@ -104,6 +104,23 @@ public class Profile_info extends Fragment {
         TextView Bio = (TextView) getView().findViewById(R.id.bio);
         Bio.setText(newbio);
     }
+    public void hideAge(){
+        TextView Age = (TextView) getView().findViewById(R.id.age);
+        Age.setVisibility(View.GONE);
+    }
+    public void hideMobile(){
+        TextView Mobile = (TextView) getView().findViewById(R.id.mobile);
+        Mobile.setVisibility(View.GONE);
+    }public void hideEmail(){
+        TextView Email = (TextView) getView().findViewById(R.id.email);
+        Email.setVisibility(View.GONE);
+    }public void hideGender(){
+        TextView Gender = (TextView) getView().findViewById(R.id.gender);
+        Gender.setVisibility(View.GONE);
+    }public void hideBio(){
+        TextView Bio = (TextView) getView().findViewById(R.id.bio);
+        Bio.setVisibility(View.GONE);
+    }
 
 
 
