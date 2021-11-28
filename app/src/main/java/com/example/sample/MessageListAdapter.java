@@ -7,15 +7,19 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
+
 import java.util.List;
 
 public class MessageListAdapter extends ArrayAdapter<Message> {
     private int resourceLayout;
     private Context mContext;
-    public MessageListAdapter(Context context, int resource, List<Message> items) {
+    String email;
+    public MessageListAdapter(Context context, int resource, List<Message> items,String email) {
         super(context, resource, items);
         this.resourceLayout = resource;
         this.mContext = context;
+        this.email=email;
     }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -26,16 +30,23 @@ public class MessageListAdapter extends ArrayAdapter<Message> {
             v = vi.inflate(resourceLayout, null);
         }
         Message message = getItem(position);
-//        if (chatUser != null) {
-//            TextView tt1 = (TextView) v.findViewById(R.id.userName);
-//            TextView tt2 = (TextView) v.findViewById(R.id.email);
-//            if (tt1 != null) {
-//                tt1.setText(chatUser.getUserName());
-//            }
-//            if (tt2 != null) {
-//                tt2.setText(chatUser.getEmail());
-//            }
-//        }
+        if (message != null) {
+            CardView recCard=v.findViewById(R.id.recCard);
+            CardView sendCard=v.findViewById(R.id.sendCard);
+            TextView recMsg=v.findViewById(R.id.recMsg);
+            TextView sentMsg=v.findViewById(R.id.sentMsg);
+            if(message.getSenderEmail().equals(email)){
+                recCard.setVisibility(View.GONE);
+                sendCard.setVisibility(View.VISIBLE);
+                sentMsg.setText(message.getMsgTxt());
+            }else{
+                recCard.setVisibility(View.VISIBLE);
+                sendCard.setVisibility(View.GONE);
+                recMsg.setText(message.getMsgTxt());
+            }
+
+
+        }
         return v;
     }
 }

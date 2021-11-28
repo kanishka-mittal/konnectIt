@@ -50,12 +50,6 @@ public class NewsFeedGetNameBGTask extends AsyncTask<Void, Void, String> {
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
-
-            }
-        });
-        activity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
                 try{
                     JSONArray array = new JSONArray(info);
                     JSONObject profileinfo = array.getJSONObject(0);

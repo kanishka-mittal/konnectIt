@@ -34,6 +34,9 @@ public class OnePersonChatActivity extends AppCompatActivity {
     Button send;
     ListView chatListView;
     MessageListAdapter arrayAdapter;
+    String email;
+//    ArrayAdapter arrayAdapter;
+//    ArrayList<String> messages=new ArrayList<>();
     ArrayList<Message> messages=new ArrayList<>();
     DatabaseReference databaseReference;
     FirebaseAuth mAuth;
@@ -49,7 +52,7 @@ public class OnePersonChatActivity extends AppCompatActivity {
 
         Intent intent=getIntent();
         String otherEmail=intent.getStringExtra("email");
-        String email=mAuth.getCurrentUser().getEmail();
+        email=mAuth.getCurrentUser().getEmail();
         setTitle("Chat With "+otherEmail);
         send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,10 +109,12 @@ public class OnePersonChatActivity extends AppCompatActivity {
                         Boolean b=dataSnapshot.child("sender").getValue().toString().equals(otherEmail);
                         if((x && y) || (a && b)){
                             String message=dataSnapshot.child("message").getValue().toString();
+//                            messages.add(message);
                             messages.add(new Message(dataSnapshot.child("sender").getValue().toString(),dataSnapshot.child("message").getValue().toString(),dataSnapshot.child("time").getValue().toString()));
                         }
                     }
-                    arrayAdapter=new MessageListAdapter(OnePersonChatActivity.this, R.layout.message_list_item,messages);
+//                    arrayAdapter=new ArrayAdapter(OnePersonChatActivity.this, android.R.layout.simple_list_item_1,messages);
+                    arrayAdapter=new MessageListAdapter(OnePersonChatActivity.this, R.layout.message_list_item,messages,email);
                     chatListView.setAdapter(arrayAdapter);
                 }
             }
