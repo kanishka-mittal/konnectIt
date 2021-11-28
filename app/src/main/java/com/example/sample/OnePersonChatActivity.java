@@ -124,6 +124,8 @@ public class OnePersonChatActivity extends AppCompatActivity {
 //                    arrayAdapter=new ArrayAdapter(OnePersonChatActivity.this, android.R.layout.simple_list_item_1,messages);
                     arrayAdapter=new MessageListAdapter(OnePersonChatActivity.this, R.layout.message_list_item,messages,email);
                     chatListView.setAdapter(arrayAdapter);
+                    chatListView.setTranscriptMode(ListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
+                    chatListView.setStackFromBottom(true);
                 }
             }
 

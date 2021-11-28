@@ -1,0 +1,525 @@
+commit 88c6a6cbb7c8a255b552747bb4eea9afb4f2249d
+Author: SanyamSaxena <sanyamsaxena2002@gmail.com>
+Date:   Sun Nov 28 21:57:31 2021 +0530
+
+    editprofile
+
+commit c4d7fcccf5e0080caa9e020f55c82ce37baeac41
+Author: Vatsal Goyal <vatsalgoyal44@gmail.com>
+Date:   Sun Nov 28 21:11:15 2021 +0530
+
+    chat ui completed
+
+commit 3c827eeb5c0152060330a67c1d77845a304db1b3
+Merge: 97d5b40 3c9fbd6
+Author: Vatsal Goyal <vatsalgoyal44@gmail.com>
+Date:   Sun Nov 28 20:34:02 2021 +0530
+
+    Merge branch 'main' of https://github.com/kanishka-mittal/konnectIt
+    
+     Conflicts:
+    	app/src/main/res/layout/chat_list_item.xml
+
+commit 97d5b401b22fd84ad24d0595283809e555f7abf5
+Author: Vatsal Goyal <vatsalgoyal44@gmail.com>
+Date:   Sun Nov 28 20:33:12 2021 +0530
+
+    chat ui
+
+commit 3c9fbd6276e3bcfcb6ff351a0e1147477e2b3570
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Sun Nov 28 20:16:28 2021 +0530
+
+    chat (:) (:)
+
+commit 5d1c544effa7754d383984332a12d42ab8712a53
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Sun Nov 28 20:02:13 2021 +0530
+
+    chat (:) (:)
+
+commit 2c7c6d47983bd21bda83daa35f14fd36fe1e5d14
+Merge: 6f8bdc0 6799173
+Author: SanyamSaxena <sanyamsaxena2002@gmail.com>
+Date:   Sun Nov 28 18:37:11 2021 +0530
+
+    Merge remote-tracking branch 'origin/main'
+
+commit 6f8bdc07fc53045a62f34e81bc29f801d81dde5d
+Author: SanyamSaxena <sanyamsaxena2002@gmail.com>
+Date:   Sun Nov 28 18:36:42 2021 +0530
+
+    small error
+
+commit 67991737ad153182fcaa8482ddd103df3c989a1f
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Sun Nov 28 18:25:30 2021 +0530
+
+    chat (:) (:)
+
+commit aebcf0b5a4c5aa3908833d0d92e2034ece1c2dd6
+Merge: 17ba934 99ae6b3
+Author: Vatsal Goyal <vatsalgoyal44@gmail.com>
+Date:   Sun Nov 28 18:23:07 2021 +0530
+
+    Merge branch 'main' of https://github.com/kanishka-mittal/konnectIt
+
+commit 17ba9345d75b991fef89324396848cfaf7d497c1
+Author: Vatsal Goyal <vatsalgoyal44@gmail.com>
+Date:   Sun Nov 28 18:22:24 2021 +0530
+
+    chat ui
+
+commit 99ae6b30cf2538f33a8489b84e94bcd785139cc2
+Author: SanyamSaxena <sanyamsaxena2002@gmail.com>
+Date:   Sun Nov 28 18:20:55 2021 +0530
+
+    small error
+
+commit 4713141c9643495bd14270fc6988827b719fa02f
+Merge: 4a69479 4b8f60a
+Author: Vatsal Goyal <vatsalgoyal44@gmail.com>
+Date:   Sun Nov 28 17:54:04 2021 +0530
+
+    Merge branch 'main' of https://github.com/kanishka-mittal/konnectIt
+
+commit 4a69479d10c1763cd601bc604728970c287b01d8
+Author: Vatsal Goyal <vatsalgoyal44@gmail.com>
+Date:   Sun Nov 28 17:53:51 2021 +0530
+
+    Edit profile UI
+
+commit 4b8f60a3f9d8aa3ff188c6887d12d2b0a66a7ba6
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Sun Nov 28 17:48:08 2021 +0530
+
+    chat (:) (:)
+
+commit 7d7b19f62ded9470a0f7c06a35817f98a3138417
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Sun Nov 28 17:18:48 2021 +0530
+
+    chat (:) (:)
+
+commit b4f51628e527936f562507d55bb382eccbb7d75e
+Merge: 05f6137 0b9fb4e
+Author: Vatsal Goyal <vatsalgoyal44@gmail.com>
+Date:   Sun Nov 28 16:52:30 2021 +0530
+
+    Merge branch 'main' of https://github.com/kanishka-mittal/konnectIt
+
+commit 05f6137727402da138ff2e60188a0302f66059f5
+Author: Vatsal Goyal <vatsalgoyal44@gmail.com>
+Date:   Sun Nov 28 16:52:23 2021 +0530
+
+    Add post UI
+
+commit 0b9fb4eb51cf4731a3f4ad971fe7ab254b3c9949
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Sun Nov 28 16:20:32 2021 +0530
+
+    chat (:) (:)
+
+commit 5feae05488fb7d4f0f82348accda064e22b705ba
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Sun Nov 28 15:59:46 2021 +0530
+
+    chat (:) (:)
+
+commit 8bca83f6d486a225beccb76e309d8408b3a8f980
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Sun Nov 28 15:53:09 2021 +0530
+
+    chat (:) (:)
+
+commit bd88e73ea1e223ee5b47d5f80d2dabdca2183c7b
+Author: SanyamSaxena <sanyamsaxena2002@gmail.com>
+Date:   Sun Nov 28 15:03:40 2021 +0530
+
+    Time function in singlepostloadbgtask
+
+commit cb8232a9f30ec167be26d64121b085c0c48a8082
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Sun Nov 28 14:52:22 2021 +0530
+
+    intermediate chat
+
+commit 9d1ddabc7c5a1fd9918da844a3bd9dc74138be7d
+Author: Vatsal Goyal <vatsalgoyal44@gmail.com>
+Date:   Sun Nov 28 14:44:34 2021 +0530
+
+    UI Changes and fix
+
+commit 49cec7e5c6df3ca8c4dfed74173abb692be10656
+Author: Vatsal Goyal <vatsalgoyal44@gmail.com>
+Date:   Sun Nov 28 14:10:12 2021 +0530
+
+    UI Changes
+
+commit ad49aaa095b0ca3c3e66699d44c38aa617307d69
+Author: Vatsal Goyal <vatsalgoyal44@gmail.com>
+Date:   Sun Nov 28 13:45:34 2021 +0530
+
+    UI Changes
+
+commit 30c24a690e3485ab3b93e2c72b8164d9defc4fed
+Author: Vatsal Goyal <vatsalgoyal44@gmail.com>
+Date:   Sun Nov 28 13:39:40 2021 +0530
+
+    UI Changes
+
+commit 7b53ba69804dc27750ed2dfb9c2e5d1a8db2e4e8
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Sun Nov 28 05:54:46 2021 +0530
+
+    time thing done
+
+commit 3a6fbfa5f4c3ecab7759b2a1c5f4fcaf7c57574f
+Author: SanyamSaxena <sanyamsaxena2002@gmail.com>
+Date:   Sun Nov 28 04:03:08 2021 +0530
+
+    Time function in singlepostloadbgtask
+
+commit 98389ee29e614df2af4af57c2e45a695302169c8
+Author: SanyamSaxena <sanyamsaxena2002@gmail.com>
+Date:   Sun Nov 28 00:57:04 2021 +0530
+
+    editprofile and settings done
+
+commit 41474c3f027c2961cb80018884b13b77bcc637ee
+Author: Kanishka Mittal <81782027+kanishka-mittal@users.noreply.github.com>
+Date:   Sat Nov 27 20:46:50 2021 +0530
+
+    Update README.md
+
+commit e73abcf24fc7abea7b898ec76b1d2513e139f2af
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Sat Nov 27 20:42:38 2021 +0530
+
+    edit post
+
+commit 8d85ece803a642cb9d7e9176724cec522a2753e5
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Sat Nov 27 19:53:29 2021 +0530
+
+    glide error found :)
+
+commit 93c5605eaef69d1d1d29e16764aa034006ed22e2
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Sat Nov 27 18:18:06 2021 +0530
+
+    delete like sabb done
+
+commit 310da24a7de4d3f0d62eff3e97c8e62b4027d416
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Sat Nov 27 18:03:43 2021 +0530
+
+    delete like sabb done
+
+commit 5b07d81a160adb3e0a7b0d242ae9dea7f5b6939f
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Sat Nov 27 17:07:21 2021 +0530
+
+    likes list screen
+
+commit 2e2ae3a507f51aa8008785a7ece45e1dc925c69d
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Sat Nov 27 15:02:38 2021 +0530
+
+    errors corrected
+
+commit 0349229c3529aab8c34801a8e1496e5e3746cf93
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Sat Nov 27 09:39:03 2021 +0530
+
+    chat etc
+
+commit a736f413962ba5b554bcacbf4b684d26baabfddd
+Author: SanyamSaxena <sanyamsaxena2002@gmail.com>
+Date:   Sat Nov 27 03:22:48 2021 +0530
+
+    profilepic vatsal done, postpage completed
+
+commit 10b148f653a4d2e9b9b47a4baf099c3819a2ea2f
+Merge: 8689221 73a6529
+Author: SanyamSaxena <sanyamsaxena2002@gmail.com>
+Date:   Fri Nov 26 18:55:18 2021 +0530
+
+    Merge remote-tracking branch 'origin/main'
+    
+    # Conflicts:
+    #       .idea/deploymentTargetDropDown.xml
+
+commit 8689221cb37855c30e67b457528541d81ee58b50
+Merge: ca48b5e f450e62
+Author: SanyamSaxena <sanyamsaxena2002@gmail.com>
+Date:   Fri Nov 26 18:53:09 2021 +0530
+
+    Merge remote-tracking branch 'origin/main'
+    
+    # Conflicts:
+    #       .idea/misc.xml
+
+commit 73a6529ee26909a54a5121a9ef9f8d9bd9fbb3fb
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Fri Nov 26 18:52:18 2021 +0530
+
+    other changes
+
+commit ca48b5e006d6ba7c713da8ecdec1b30f66ed99d4
+Author: SanyamSaxena <sanyamsaxena2002@gmail.com>
+Date:   Fri Nov 26 18:50:28 2021 +0530
+
+    comment and reply added
+
+commit f450e62e5ddc3d7cc98d6ca6ceab8e3b09e8fce6
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Fri Nov 26 16:31:27 2021 +0530
+
+    notification going on sharing and liking post
+
+commit 40e7716680b2402a17cfe58d7b1fe3af96ceeb57
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Fri Nov 26 13:44:44 2021 +0530
+
+    go to post page on clicking on post
+
+commit 89e1f76ff3950a376135e029e672eae1af69dfce
+Author: Vatsal Goyal <vatsalgoyal44@gmail.com>
+Date:   Fri Nov 26 13:09:38 2021 +0530
+
+    UI fix
+
+commit ac6082b717d0c9c70b3cada9a5563aa971a8045c
+Author: Vatsal Goyal <vatsalgoyal44@gmail.com>
+Date:   Fri Nov 26 13:01:31 2021 +0530
+
+    UI fix
+
+commit 82a5dc438137026f269e6e73c20a9ec247a0b006
+Merge: f1e0f9a 72ffdd7
+Author: Vatsal Goyal <vatsalgoyal44@gmail.com>
+Date:   Fri Nov 26 12:50:25 2021 +0530
+
+    some changes
+
+commit f1e0f9ae259f4385df021f13469c6e8b5af54a81
+Author: Vatsal Goyal <vatsalgoyal44@gmail.com>
+Date:   Fri Nov 26 12:46:08 2021 +0530
+
+    some changes
+
+commit 72ffdd766acc419abf0d8f06ea08d781ef85f540
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Fri Nov 26 11:17:41 2021 +0530
+
+    completed friends page
+
+commit c3fa75598e692c8052d618156555189071020973
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Fri Nov 26 10:10:43 2021 +0530
+
+    friend request accept reject done
+
+commit c15ac1a1043c9c21a02a319833af107ebaddcf37
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Fri Nov 26 08:27:08 2021 +0530
+
+    friend request can be sent (not received)....no new activity starting now on deleting notification or adding friend or removing friend
+
+commit 9abe6f53818f2776e1b3f02c38cdb1226cab6350
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Fri Nov 26 07:31:50 2021 +0530
+
+    Friends can see profile page of friends
+
+commit 8044f52a3686851438e28110fd31d8465e71a4ad
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Fri Nov 26 07:05:59 2021 +0530
+
+    Friends can see profile page of friends
+
+commit 853d1efe5e1b8aeef8d568fcb24f5882db7018f2
+Author: Vatsal Goyal <vatsalgoyal44@gmail.com>
+Date:   Thu Nov 25 21:46:06 2021 +0530
+
+    navigation added, and some changes
+
+commit ff3f4e81a639b60072775ed1f7a91059a042e90a
+Author: Vatsal Goyal <vatsalgoyal44@gmail.com>
+Date:   Thu Nov 25 21:42:29 2021 +0530
+
+    navigation added
+
+commit 5ec40a89649810119156d12d5d1e670480a98873
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Thu Nov 25 19:00:38 2021 +0530
+
+    post with and without image
+
+commit eda777a14e4c030cba4953cf009c12e8a027e68e
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Thu Nov 25 18:43:53 2021 +0530
+
+    post add functionality corrected
+
+commit 89af4dc6a2607238b2cebf40d6eb9ba85e3f0fb3
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Thu Nov 25 18:05:00 2021 +0530
+
+    few changes
+
+commit ea1f472605e1483ad0f19105dd0bfa0128b191aa
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Thu Nov 25 17:16:23 2021 +0530
+
+    few changes
+
+commit d3ff6d64dd002e91bfbc1a68348b8e8994c94f83
+Author: SanyamSaxena <sanyamsaxena2002@gmail.com>
+Date:   Wed Nov 24 20:33:46 2021 +0530
+
+    add Comment done, edit profile modified
+
+commit d11782dbf3366f7ad48cd57efc210742beb1ffd6
+Author: SanyamSaxena <sanyamsaxena2002@gmail.com>
+Date:   Wed Nov 24 18:02:29 2021 +0530
+
+    newsfeed added 2
+
+commit c30ce23f7e5b0a91ab98c91ba64b08a3e5860ab1
+Author: SanyamSaxena <sanyamsaxena2002@gmail.com>
+Date:   Wed Nov 24 17:59:01 2021 +0530
+
+    newsfeed added
+
+commit a973b7a43d1a848f35bf5e0e2324f006d456806c
+Merge: 8f53e8a 1de228f
+Author: Kanishka Mittal <81782027+kanishka-mittal@users.noreply.github.com>
+Date:   Wed Nov 24 07:04:27 2021 +0530
+
+    Merge pull request #1 from kanishka-mittal/master
+    
+    adding profile page
+
+commit 1de228fb38abb274b2767898e8c64391383298c5
+Author: Vatsal Goyal <vatsalgoyal44@gmail.com>
+Date:   Wed Nov 24 02:18:59 2021 +0530
+
+    adding profile page
+
+commit 8f53e8a284fb612fa32223254ae72876e6a292c0
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Mon Nov 22 10:55:59 2021 +0530
+
+    added function to upload profile picture
+
+commit 58ec8a49d538060d4f7c1fee75c3e229432806b4
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Mon Nov 22 10:51:53 2021 +0530
+
+    added function to upload profile picture
+
+commit 3ccbd042af2b2e8b0c646aab4c276ab9ba2bdb23
+Merge: 87486de ca10717
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Mon Nov 22 10:05:04 2021 +0530
+
+    Merge remote-tracking branch 'origin/main'
+
+commit 87486decdee47125b3389a6f6c0c053645b6bc5c
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Mon Nov 22 10:04:53 2021 +0530
+
+    added function to upload profile picture
+
+commit ca10717d3524d0d24a63ce74e8b050b3d78b6f01
+Author: Kanishka Mittal <81782027+kanishka-mittal@users.noreply.github.com>
+Date:   Mon Nov 22 09:37:54 2021 +0530
+
+    Update README.md
+
+commit ebfa196034279b6f6f18a3a83f1233df5ca5823c
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Mon Nov 22 09:36:10 2021 +0530
+
+    added function to upload profile picture
+
+commit 79da8da5868d2c0aa4288d4ed670280c98e04ab4
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Sun Nov 21 16:10:48 2021 +0530
+
+    kaamchalau ui changes for login and register page
+
+commit a8ea2b06f28963a1e4d9953ae143048cdcaf49c3
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Sun Nov 21 15:16:08 2021 +0530
+
+    edit profile page added
+
+commit 55f68bb421fc979c82df33e59b8c08c4494b0c0b
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Sun Nov 21 14:46:30 2021 +0530
+
+    edit profile page added
+
+commit e17d84d012a93d0c804cab2923e4d7c8f0d30270
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Sun Nov 21 14:34:45 2021 +0530
+
+    edit profile page added
+
+commit 07967a284859dea9b73bbaee28443b371a7c8964
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Sun Nov 21 11:35:11 2021 +0530
+
+    edit profile page added
+
+commit 74b9cfaae323534bfdab0266f8dbbdf739eca4f3
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Sun Nov 21 10:20:35 2021 +0530
+
+    added search functionality
+
+commit 4eb45f19175a0e294c38adb2f625f150e6f29cc2
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Sun Nov 21 08:04:28 2021 +0530
+
+    ui changed
+
+commit cf5e30b917de0c5512984dc575925fd901b2d39b
+Merge: ee79190 9516ed8
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Sat Nov 20 16:57:32 2021 +0530
+
+    Merge remote-tracking branch 'origin/main'
+
+commit ee79190dc466dc909c09f1fcbff644364881607b
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Sat Nov 20 16:56:59 2021 +0530
+
+    added search page
+
+commit 9516ed871f0d6a6778cd459dc2f260af5b88403d
+Author: Kanishka Mittal <81782027+kanishka-mittal@users.noreply.github.com>
+Date:   Sat Nov 20 16:35:43 2021 +0530
+
+    Delete konnectIt directory
+
+commit 4cba455bda73e512bf8dd259c4f2e7b8515e4b3f
+Author: Kanishka Mittal <81782027+kanishka-mittal@users.noreply.github.com>
+Date:   Sat Nov 20 16:32:12 2021 +0530
+
+    Add files via upload
+
+commit e40093e1ecf4196eb21f3a49a25c949c0855737f
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Sat Nov 20 16:28:41 2021 +0530
+
+    added basic functionality of friends and notifications page
+
+commit 7ee81246d10d71949085fa45118e8c52c807a806
+Author: Kanishka Mittal <kanishka.mittal279@gmail.com>
+Date:   Sat Nov 20 16:27:51 2021 +0530
+
+    first commit
