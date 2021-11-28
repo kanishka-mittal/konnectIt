@@ -22,7 +22,7 @@ import java.io.IOException;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class NewsFeed extends AppCompatActivity {
-    private int userId;
+    private int userId, accessByUser;
     private Button btnAddPost;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -66,7 +66,7 @@ Friends extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.news:
                         Intent intent = new Intent(getApplicationContext(), NewsFeed.class);
-                        intent.putExtra("userId", userId);
+                        intent.putExtra("userId", accessedByUser);
                         startActivity(intent);
                         finish();
 
@@ -76,7 +76,7 @@ Friends extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.notifs:
                         Intent intent = new Intent(getApplicationContext(), Notifications.class);
-                        intent.putExtra("userId", userId);
+                        intent.putExtra("userId", accessedByUser);
                         startActivity(intent);
                         finish();
 
@@ -87,7 +87,7 @@ Friends extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.friendRequests:
                         Intent intent = new Intent(getApplicationContext(), FriendRequests.class);
-                        intent.putExtra("userId", userId);
+                        intent.putExtra("userId", accessedByUser);
                         startActivity(intent);
                         finish();
 

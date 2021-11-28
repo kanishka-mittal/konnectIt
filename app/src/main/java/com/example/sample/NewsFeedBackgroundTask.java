@@ -97,6 +97,7 @@ public class NewsFeedBackgroundTask extends AsyncTask<String,PostModel,Boolean> 
                     stringBuilder.append(line+"\n");
                 }
                 String jsonString=stringBuilder.toString().trim();
+                System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
                 System.out.println(jsonString);
                 if(!jsonString.equals("")){
                     JSONObject jsonObject=new JSONObject(jsonString);
