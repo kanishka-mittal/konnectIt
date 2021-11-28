@@ -158,10 +158,10 @@ public class Profile extends AppCompatActivity {
             MenuBuilder m = (MenuBuilder) menu;
             m.setOptionalIconsVisible(true);
         }
-        /*MenuItem item = menu.findItem(R.id.profilethree);
+        MenuItem item = menu.findItem(R.id.friendicon);
         if(accessedByUser!=userId){
             item.setVisible(false);
-        }*/
+        }
         return true;
     }
 

@@ -58,10 +58,10 @@ public class EditProfile extends AppCompatActivity {
                 }else{
                     EditProfileBackgroundTask editProfileBackgroundTask=new EditProfileBackgroundTask(userId,EditProfile.this,convertImage,gender,mobnum,bio, lastname,age);
                     editProfileBackgroundTask.execute();
-                    finish();
                     Intent intent=new Intent(EditProfile.this,Notifications.class);
                     intent.putExtra("userId",userId);
                     startActivity(intent);
+                    finish();
                 }
             }
         });
