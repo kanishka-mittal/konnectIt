@@ -78,7 +78,7 @@ public class Comments_Recview_Adapter extends RecyclerView.Adapter<Comments_Recv
 
             @Override
             public void onClick(View view) {
-                    DeleteCommentBgTask deleteCommentBgTask=new DeleteCommentBgTask(ctx,commentID);
+                    DeleteCommentBgTask deleteCommentBgTask=new DeleteCommentBgTask(ctx,commentID,postID);
                     deleteCommentBgTask.execute();
                     comments_list.remove(comments);
                     notifyDataSetChanged();

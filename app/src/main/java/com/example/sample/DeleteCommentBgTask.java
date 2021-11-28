@@ -21,11 +21,12 @@ public class DeleteCommentBgTask extends AsyncTask<Void,Void,Void> {
     Context ctx;
     Activity activity;
     int commentId;
-
-    public DeleteCommentBgTask(Context ctx, int commentId) {
+    int postId;
+    public DeleteCommentBgTask(Context ctx, int commentId,int postId) {
         this.ctx = ctx;
         this.commentId =commentId;
         activity=(Activity) ctx;
+        this.postId=postId;
     }
     @Override
     protected Void doInBackground(Void... voids) {
@@ -37,7 +38,7 @@ public class DeleteCommentBgTask extends AsyncTask<Void,Void,Void> {
             httpURLConnection.setDoInput(true);
             OutputStream os = httpURLConnection.getOutputStream();
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(os));
-            String data = URLEncoder.encode("commentId", "UTF-8") + "=" + URLEncoder.encode(Integer.toString(commentId), "UTF-8");
+            String data = URLEncoder.encode("commentId", "UTF-8") + "=" + URLEncoder.encode(Integer.toString(commentId), "UTF-8") + "&" + URLEncoder.encode("postId", "UTF-8") + "=" + URLEncoder.encode(Integer.toString(postId), "UTF-8");
             bufferedWriter.write(data);
             bufferedWriter.flush();
             bufferedWriter.close();
