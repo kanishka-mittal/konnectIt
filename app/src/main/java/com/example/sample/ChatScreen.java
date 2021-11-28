@@ -77,6 +77,8 @@ public class ChatScreen extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent=new Intent(ChatScreen.this,OnePersonChatActivity.class);
                 intent.putExtra("email",users.get(i).getEmail());
+                intent.putExtra("userName",users.get(i).getUserName());
+                intent.putExtra("firstName",users.get(i).getFirstName());
                 startActivity(intent);
             }
         });
