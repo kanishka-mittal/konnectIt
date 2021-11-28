@@ -130,7 +130,7 @@
                 <ImageView
                     android:id="@+id/postImagepostpage"
                     android:layout_width="match_parent"
-                    android:layout_height="320dp"
+                    android:layout_height="330dp"
                     android:adjustViewBounds="true"
                     android:background="#222222"
                     android:scaleType="fitXY"
@@ -253,7 +253,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewcomment"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="150dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         app:layout_constraintTop_toBottomOf="@id/postCardpostpage"
