@@ -46,7 +46,7 @@ public class ChatScreen extends AppCompatActivity {
                         FirebaseUser mFirebaseUser = mauth.getCurrentUser();
                         if(mFirebaseUser!=null){
                             if(!dataSnapshot.child("email").getValue().toString().equals(mauth.getCurrentUser().getEmail())){
-                                users.add(new ChatUser(dataSnapshot.child("username").getValue().toString(),dataSnapshot.child("email").getValue().toString()));
+                                users.add(new ChatUser(dataSnapshot.child("username").getValue().toString(),dataSnapshot.child("firstName").getValue().toString(),dataSnapshot.child("email").getValue().toString()));
                             }
                         }else{
                             Toast.makeText(ChatScreen.this, "Kyaa karen", Toast.LENGTH_SHORT).show();

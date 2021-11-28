@@ -69,17 +69,7 @@ public class FriendRecViewAdapter extends RecyclerView.Adapter<FriendRecViewAdap
                 activity.overridePendingTransition(0, 0);
             }
         });
-        holder.btnChat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent intent=new Intent(ctx,ChatActivity.class);
-//                intent.putExtra("userId",userId);
-//                intent.putExtra("friendId",friendId);
-//                activity.startActivity(intent);
-//                activity.overridePendingTransition(0, 0);
 
-            }
-        });
     }
 
     @Override
@@ -95,7 +85,7 @@ public class FriendRecViewAdapter extends RecyclerView.Adapter<FriendRecViewAdap
     public class ViewHolder extends RecyclerView.ViewHolder{
         private TextView userName,firstName;
         private RelativeLayout friendListItemParent;
-        private Button remBtn,btnChat;
+        private Button remBtn;
         private ImageView profilepic;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -103,7 +93,6 @@ public class FriendRecViewAdapter extends RecyclerView.Adapter<FriendRecViewAdap
             firstName=itemView.findViewById(R.id.firstName);
             friendListItemParent=itemView.findViewById(R.id.friendListItemParent);
             remBtn=itemView.findViewById(R.id.remBtn);
-            btnChat=itemView.findViewById(R.id.btnChat);
             profilepic=itemView.findViewById(R.id.profilepic);
         }
     }

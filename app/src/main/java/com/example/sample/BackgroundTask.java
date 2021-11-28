@@ -167,11 +167,21 @@ public class BackgroundTask extends AsyncTask<String,String,String> {
                                     databaseReference.child("users").child(mauth.getCurrentUser().getUid()).child("username").setValue(username).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
-                                            Intent intent=new Intent(activity,EditProfile.class);
-                                            intent.putExtra("userId",Integer.valueOf(result));
-                                            activity.startActivity(intent);
-                                            activity.finish();
-                                            Toast.makeText(ctx, "Registration Success", Toast.LENGTH_SHORT).show();
+                                            databaseReference.child("users").child(mauth.getCurrentUser().getUid()).child("firstName").setValue(username).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    Intent intent=new Intent(activity,EditProfile.class);
+                                                    intent.putExtra("userId",Integer.valueOf(result));
+                                                    activity.startActivity(intent);
+                                                    activity.finish();
+                                                    Toast.makeText(ctx, "Registration Success", Toast.LENGTH_SHORT).show();
+                                                }
+                                            }).addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    Toast.makeText(ctx, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
                                         }
                                     }).addOnFailureListener(new OnFailureListener() {
                                         @Override
