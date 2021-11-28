@@ -49,7 +49,7 @@ public class FrRecViewAdapter extends RecyclerView.Adapter<FrRecViewAdapter.View
         holder.userName.setText(frModel.getUserName());
         holder.firstName.setText(frModel.getFirstName());
         if(!(frModel.getImageURL().equals("null"))){
-            Glide.with(ctx).asBitmap().load("http://10.0.2.2/konnectit/profilepics/"+Integer.toString(frModel.getUserId())+".png").into(holder.profilePic);
+            Glide.with(ctx).asBitmap().placeholder(R.mipmap.ic_user).error(R.mipmap.ic_user).load("http://10.0.2.2/konnectit/profilepics/"+Integer.toString(frModel.getUserId())+".png").into(holder.profilePic);
         }
         holder.frLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override

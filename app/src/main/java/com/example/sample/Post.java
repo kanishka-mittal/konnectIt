@@ -160,7 +160,6 @@ public class Post extends AppCompatActivity {
             //BOTTOMBAR NAVIGATION
 
 
-            bottomNavigationView.setSelectedItemId(R.id.myprofile);
             bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
