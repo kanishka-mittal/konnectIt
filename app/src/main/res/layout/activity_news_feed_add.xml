@@ -64,7 +64,7 @@
         app:boxCornerRadiusTopStart="15dp"
         app:boxStrokeColor="@color/black"
         app:boxStrokeWidth="3dp"
-        app:hintTextColor="@color/black"
+        app:hintTextColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         >

@@ -5,13 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".OnePersonChatActivity"
-    android:background="@color/ns_primaryDark">
+    android:background="@color/black">
 
     <EditText
         android:id="@+id/message"
         android:layout_width="282dp"
         android:layout_height="39dp"
         android:ems="10"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="20dp"
+        android:paddingLeft="20dp"
+        android:background="@drawable/round2"
         android:hint="Enter Message"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,9 +24,11 @@
     <ListView
         android:id="@+id/chatListView"
         android:layout_width="388dp"
-        android:layout_height="648dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -36,7 +42,9 @@
         android:text="Send"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.266"
         app:layout_constraintStart_toEndOf="@+id/message"
-        app:layout_constraintTop_toBottomOf="@+id/chatListView" />
+        app:layout_constraintTop_toBottomOf="@+id/chatListView"
+        app:layout_constraintVertical_bias="0.973" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
