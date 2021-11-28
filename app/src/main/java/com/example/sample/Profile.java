@@ -162,6 +162,14 @@ public class Profile extends AppCompatActivity {
         if(accessedByUser!=userId){
             item.setVisible(false);
         }
+        MenuItem item1 = menu.findItem(R.id.editprofile);
+        if(accessedByUser!=userId){
+            item1.setVisible(false);
+        }
+        MenuItem item2 = menu.findItem(R.id.settings);
+        if(accessedByUser!=userId){
+            item2.setVisible(false);
+        }
         return true;
     }
 

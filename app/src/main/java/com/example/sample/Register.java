@@ -44,9 +44,14 @@ public class Register extends AppCompatActivity {
                 confpswd=edtConfPassword.getText().toString();
                 if(username.equals("")||fName.equals("")||pswd.equals("")||email.equals("")||confpswd.equals("")){
                     Toast.makeText(Register.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
-                }else if(!pswd.equals(confpswd)){
+                }
+                else if(!pswd.equals(confpswd)){
                     Toast.makeText(Register.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
-                }else if(!validate(email)){
+                }
+                else if(pswd.length()<6){
+                    Toast.makeText(Register.this, "Password should be greater than or equal to 6 characters", Toast.LENGTH_SHORT).show();
+                }
+                else if(!validate(email)){
                     Toast.makeText(Register.this, "Enter a valid email address", Toast.LENGTH_SHORT).show();
                 } else{
                     String method="register";
