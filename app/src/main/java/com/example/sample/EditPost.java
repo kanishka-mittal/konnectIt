@@ -18,7 +18,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 public class EditPost extends AppCompatActivity {
-    int postId;
+    int postId,userId;
     EditText edtpostText;
     Button btnDone;
     String postText;
@@ -35,6 +35,7 @@ public class EditPost extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             postId = extras.getInt("postId");
+            userId = extras.getInt("userId");
         }
         EditPostLoadBgTask editPostLoadBgTask=new EditPostLoadBgTask(postId,this);
         editPostLoadBgTask.execute();
@@ -50,10 +51,10 @@ public class EditPost extends AppCompatActivity {
                 else{
                     EditPostDoneBgTask editPostDoneBgTask=new EditPostDoneBgTask(postId,postText,convertImage,EditPost.this);
                     editPostDoneBgTask.execute();
-                    finish();
-//                    Intent intent=new Intent(NewsFeedAdd.this,NewsFeed.class);
-//                    intent.putExtra("userId",userId);
-//                    startActivity(intent);
+                    Intent intent=new Intent(EditPost.this,Profile.class);
+                    intent.putExtra("userId",userId);
+                    startActivity(intent);
+                    finishAffinity();
                 }
             }
         });

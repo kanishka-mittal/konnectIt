@@ -65,10 +65,10 @@ public class EditProfileOption extends AppCompatActivity {
                     String method1="saveprofile";
                     EditprofileoptionbgTasks editProfileBackgroundTask=new EditprofileoptionbgTasks(userId,EditProfileOption.this,convertImage,gender,mobnum,bio, lastname,age);
                     editProfileBackgroundTask.execute(method1);
-                    finish();
-                    Intent intent=new Intent(EditProfileOption.this,EditProfileOption.class);
+                    Intent intent=new Intent(EditProfileOption.this,Profile.class);
                     intent.putExtra("userId",userId);
                     startActivity(intent);
+                    finish();
                 }
             }
         });

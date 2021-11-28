@@ -24,7 +24,7 @@ public class Post extends AppCompatActivity {
     EditText commentText;
     ImageView share,like,dislike,dustbinpostpage,btneditPost;
     public Context ctx;
-    TextView numLikes;
+    TextView numLikes,numComments;
     int accessedByUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +76,7 @@ public class Post extends AppCompatActivity {
                 dialog.show();
             }
         });
+        numComments=findViewById(R.id.numCommentspostpage);
         String method="commentsload";
         Post_bgTasks bgTask=new Post_bgTasks(this,postId,userId);
         bgTask.execute(method);
@@ -92,11 +93,12 @@ public class Post extends AppCompatActivity {
                     String method="addcomment";
                     Post_bgTasks bgTask=new Post_bgTasks(Post.this,postId,userId,commenttext);
                     bgTask.execute(method);
-                    finish();
                     Intent intent=new Intent(Post.this,Post.class);
                     intent.putExtra("userId",userId);
                     intent.putExtra("postId",postId);
                     startActivity(intent);
+                    overridePendingTransition(0,0);
+                    finish();
                 }
             }
         });
@@ -144,9 +146,11 @@ public class Post extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent=new Intent(Post.this,EditPost.class);
                 intent.putExtra("postId",postId);
+                intent.putExtra("userId",userId);
                 startActivity(intent);
 //                Toast.makeText(Post.this, "Chalo post edit karenge yahan se", Toast.LENGTH_SHORT).show();
             }
         });
     }
+
 }

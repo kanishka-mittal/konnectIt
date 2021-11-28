@@ -3,45 +3,36 @@ package com.example.sample;
 import java.sql.Time;
 
 public class Message {
-    int senderId,recipientId;
-    String time,messageTxt;
+    String senderEmail,msgTxt,timestamp;
 
-    public Message(int senderId, int recipientId, String time, String messageTxt) {
-        this.senderId = senderId;
-        this.recipientId = recipientId;
-        this.time = time;
-        this.messageTxt=messageTxt;
+    public Message(String senderEmail, String msgTxt, String timestamp) {
+        this.senderEmail = senderEmail;
+        this.msgTxt = msgTxt;
+        this.timestamp = timestamp;
     }
 
-    public String getMessageTxt() {
-        return messageTxt;
+    public String getSenderEmail() {
+        return senderEmail;
+    }
+
+    public void setSenderEmail(String senderEmail) {
+        this.senderEmail = senderEmail;
     }
 
 
-
-
-
-    public int getSenderId() {
-        return senderId;
+    public String getMsgTxt() {
+        return msgTxt;
     }
 
-    public void setSenderId(int senderId) {
-        this.senderId = senderId;
+    public void setMsgTxt(String msgTxt) {
+        this.msgTxt = msgTxt;
     }
 
-    public int getRecipientId() {
-        return recipientId;
+    public String getTimestamp() {
+        return timestamp;
     }
 
-    public void setRecipientId(int recipientId) {
-        this.recipientId = recipientId;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
     }
 }

@@ -9,10 +9,21 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Register extends AppCompatActivity {
     EditText edtUsername,edtFirstName,edtEmail,edtPassword,edtConfPassword;
     Button btnSignUp;
     String username,fName,pswd,email,confpswd;
+    public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
+            Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+
+    public static boolean validate(String emailStr) {
+        System.out.println(emailStr);
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailStr);
+        return matcher.find();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,17 +46,13 @@ public class Register extends AppCompatActivity {
                     Toast.makeText(Register.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
                 }else if(!pswd.equals(confpswd)){
                     Toast.makeText(Register.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
-                }else{
+                }else if(!validate(email)){
+                    Toast.makeText(Register.this, "Enter a valid email address", Toast.LENGTH_SHORT).show();
+                } else{
                     String method="register";
                     BackgroundTask bgTask=new BackgroundTask(Register.this);
                     bgTask.execute(method,username,fName,email,pswd);
-//                    finish();
-//                    Intent intent = new Intent(Register.this,MainActivity.class);
-//                    startActivity(intent);
                 }
-
-//                Intent intent = new Intent(Register.this,Dashboard.class);
-//                startActivity(intent);
             }
         });
     }
@@ -53,4 +60,5 @@ public class Register extends AppCompatActivity {
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
     }
+
 }

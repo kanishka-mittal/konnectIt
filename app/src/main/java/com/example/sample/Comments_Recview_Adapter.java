@@ -85,8 +85,10 @@ public class Comments_Recview_Adapter extends RecyclerView.Adapter<Comments_Recv
             }
 
         });
+
         Post_bgTasks bgTask=new Post_bgTasks(ctx,userID,holder);
         bgTask.execute("isCommentLiked",Integer.toString(commentID));
+        holder.numLikes.setText(Integer.toString(comments.getNumLikes()));
         holder.like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -12,6 +12,8 @@
     <string name="username">Username</string>
     <string name="email">Email</string>
     <string name="first_name">First Name</string>
+    <string name="loginUrl">http://10.0.2.2//konnectit/login.php</string>
+    <string name="registerUrl">http://10.0.2.2//konnectit/register.php</string>
     <string name="friendUrl">http://10.0.2.2//konnectit/friends.php</string>
     <string name="profileUrl">http://10.0.2.2//konnectit/profile.php</string>
     <string name="remFriendUrl">http://10.0.2.2//konnectit/remFriends.php</string>

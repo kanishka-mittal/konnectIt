@@ -10,11 +10,15 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText edtUsername,edtPassword;
     String loginUsername,loginPassword;
     private Button SignIn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
     public void openRegister(View view){
         Intent intent = new Intent(this,Register.class);

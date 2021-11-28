@@ -70,8 +70,18 @@
         android:layout_marginBottom="10dp"
         android:backgroundTint="@color/primaryyellow"
         app:icon="@drawable/ic_add"
-        android:elevation="20dp"
         />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/btnChatScreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:backgroundTint="@color/primaryyellow"
+        android:elevation="20dp"
+
+        app:icon="@drawable/ic_add" />
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/dashboard"
         android:layout_marginLeft="8dp"

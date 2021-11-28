@@ -72,11 +72,11 @@ public class FriendRecViewAdapter extends RecyclerView.Adapter<FriendRecViewAdap
         holder.btnChat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(ctx,ChatActivity.class);
-                intent.putExtra("userId",userId);
-                intent.putExtra("friendId",friendId);
-                activity.startActivity(intent);
-                activity.overridePendingTransition(0, 0);
+//                Intent intent=new Intent(ctx,ChatActivity.class);
+//                intent.putExtra("userId",userId);
+//                intent.putExtra("friendId",friendId);
+//                activity.startActivity(intent);
+//                activity.overridePendingTransition(0, 0);
 
             }
         });

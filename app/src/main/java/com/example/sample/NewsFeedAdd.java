@@ -51,7 +51,7 @@ public class NewsFeedAdd extends AppCompatActivity {
                     Newsfeedpostbgtasks newsfeedpostbgtasks=new Newsfeedpostbgtasks(userId,NewsFeedAdd.this,convertImage,postText);
                     newsfeedpostbgtasks.execute();
                     finish();
-
+//
 //                    Intent intent=new Intent(NewsFeedAdd.this,NewsFeed.class);
 //                    intent.putExtra("userId",userId);
 //                    startActivity(intent);

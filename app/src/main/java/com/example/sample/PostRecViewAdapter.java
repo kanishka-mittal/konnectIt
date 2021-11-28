@@ -138,6 +138,7 @@ public class PostRecViewAdapter extends RecyclerView.Adapter<PostRecViewAdapter.
                 intent.putExtra("userId",userId);
                 intent.putExtra("postId",post.getPostId());
                 activity.startActivity(intent);
+                activity.finish();
             }
         });
         holder.postText.setOnClickListener(new View.OnClickListener() {

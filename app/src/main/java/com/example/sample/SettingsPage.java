@@ -12,6 +12,13 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class SettingsPage extends AppCompatActivity {
     TextView deleteProfile,logout;
     Switch hideAge,hideGender,hidePosts,hideInterests,hideMobile;
@@ -74,38 +81,37 @@ public class SettingsPage extends AppCompatActivity {
                 String method1="settingssave";
                 SettingsBackgroundTasks bgTask=new SettingsBackgroundTasks(ctx,userId,hideage, hideinterests,hidepost,hidemobile,hidegender);
                 bgTask.execute(method1);
-
-                finish();
-                Intent intent=new Intent(SettingsPage.this,SettingsPage.class);
+                Intent intent=new Intent(SettingsPage.this,Profile.class);
                 intent.putExtra("userId",userId);
                 startActivity(intent);
-
+                finishAffinity();
             }
         });
 
         Logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                FirebaseAuth mAuth;
+                mAuth=FirebaseAuth.getInstance();
+                mAuth.signOut();
                 Intent intent=new Intent(SettingsPage.this,MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
-
+                finishAffinity();
             }
         });
 
         Deleteprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                FirebaseAuth firebaseAuth=FirebaseAuth.getInstance();
+                FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();
+                DatabaseReference databaseReference= firebaseDatabase.getReference();
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                String uid=user.getUid();
+                user.delete();
                 String method2="deleteprofile";
                 SettingsBackgroundTasks bgTask=new SettingsBackgroundTasks(ctx,userId);
                 bgTask.execute(method2);
-
-                Intent intent=new Intent(SettingsPage.this,MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-
             }
         });
 

@@ -23,7 +23,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class NewsFeed extends AppCompatActivity {
     private int userId, accessByUser;
-    private Button btnAddPost;
+    private Button btnAddPost,btnChatScreen;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +53,14 @@ public class NewsFeed extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        btnChatScreen=findViewById(R.id.btnChatScreen);
+        btnChatScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(NewsFeed.this,ChatScreen.class);
+                startActivity(intent);
+            }
+        });
 
         //BOTTOMBAR NAVIGATION
         BottomNavigationView bottomNavigationView = findViewById(R.id.dashboard);
@@ -99,6 +106,12 @@ public class NewsFeed extends AppCompatActivity {
             }
         });
 
+    }
+    @Override
+    public void onRestart() {
+        super.onRestart();
+        NewsFeedBackgroundTask bgTask=new NewsFeedBackgroundTask(this,userId);
+        bgTask.execute("loadNF");
     }
 
 }

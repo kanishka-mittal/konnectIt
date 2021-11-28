@@ -218,8 +218,8 @@ public class SettingsBackgroundTasks extends AsyncTask<String,Void,String> {
                 }
                 else if(method.equals("deleteprofile")){
                     Intent intent=new Intent(activity,Register.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     activity.startActivity(intent);
+                    activity.finishAffinity();
                 }
             }
         });

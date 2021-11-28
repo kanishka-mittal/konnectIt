@@ -7,9 +7,19 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,9 +42,13 @@ public class BackgroundTask extends AsyncTask<String,String,String> {
     Context ctx;
     Activity activity;
     String method;
-    //    AlertDialog.Builder builder;
-//    AlertDialog alertDialog;
+    DatabaseReference databaseReference;
     int userId;
+    String username;
+    String fName;
+    String email;
+    String pswd;
+    FirebaseAuth mauth;
     BackgroundTask(Context ctx){
         this.ctx=ctx;
         activity=(Activity) ctx;
@@ -42,21 +56,19 @@ public class BackgroundTask extends AsyncTask<String,String,String> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        //builder=new AlertDialog.Builder(ctx);
-        //builder.setTitle("Login Information");
+        databaseReference= FirebaseDatabase.getInstance().getReference();
     }
+
     @Override
     protected String doInBackground(String... params) {
-        String regUrl="http://10.0.2.2//konnectit/register.php";
-        String logInUrl="http://10.0.2.2//konnectit/login.php";
         method=params[0];
         if(method.equals("register")) {
-            String username = params[1];
-            String fName = params[2];
-            String email = params[3];
-            String pswd = params[4];
+            username = params[1];
+            fName = params[2];
+            email = params[3];
+            pswd = params[4];
             try {
-                URL url = new URL(regUrl);
+                URL url = new URL(activity.getString(R.string.registerUrl));
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
@@ -74,10 +86,12 @@ public class BackgroundTask extends AsyncTask<String,String,String> {
                 while((line=bufferedReader.readLine())!=null){
                     response+=line;
                 }
-                //System.out.println(response);
+//                System.out.println(response);
                 is.close();
                 httpURLConnection.disconnect();
+                System.out.println(response);
                 return response;
+
             } catch (MalformedURLException | ProtocolException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -85,10 +99,10 @@ public class BackgroundTask extends AsyncTask<String,String,String> {
             }
         }
         else if(method.equals("login")){
-            String username = params[1];
-            String pswd = params[2];
+            username = params[1];
+            pswd = params[2];
             try {
-                URL url = new URL(logInUrl);
+                URL url = new URL(activity.getString(R.string.loginUrl));
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
@@ -107,14 +121,20 @@ public class BackgroundTask extends AsyncTask<String,String,String> {
                 while((line=bufferedReader.readLine())!=null){
                     response+=line;
                 }
-                JSONObject jsonObject=new JSONObject(response);
-                JSONArray jsonArray=jsonObject.getJSONArray("user_info");
-                JSONObject userObject=jsonArray.getJSONObject(0);
-                userId=userObject.getInt("user_id");
-                bufferedReader.close();
-                is.close();
-                httpURLConnection.disconnect();
-                return response;
+                System.out.println(response);
+                if(response.equals("Error")){
+                    return "Error";
+                }else{
+                    JSONObject jsonObject=new JSONObject(response);
+                    JSONArray jsonArray=jsonObject.getJSONArray("user_info");
+                    JSONObject userObject=jsonArray.getJSONObject(0);
+                    userId=userObject.getInt("user_id");
+                    email=userObject.getString("email");
+                    bufferedReader.close();
+                    is.close();
+                    httpURLConnection.disconnect();
+                    return response;
+                }
             } catch (MalformedURLException | ProtocolException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -130,35 +150,78 @@ public class BackgroundTask extends AsyncTask<String,String,String> {
     @Override
     protected void onPostExecute(String result) {
         if(method.equals("register")){
-            Intent intent=new Intent(activity,EditProfile.class);
-            intent.putExtra("userId",Integer.valueOf(result));
-            activity.startActivity(intent);
-            activity.finish();
-            Toast.makeText(ctx, "Registration Success", Toast.LENGTH_SHORT).show();
-        }else{
-//            builder.setPositiveButton("Notifications", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialogInterface, int i) {
-//                    Intent intent = new Intent(ctx,Notifications.class);
-//                    intent.putExtra("userId",userId);
-//                    ctx.startActivity(intent);
-//                }
-//            });
-//            builder.setNegativeButton("Friends", new DialogInterface.OnClickListener() {
-//                @Override
-//                public void onClick(DialogInterface dialogInterface, int i) {
-//                    Intent intent = new Intent(ctx,Friends.class);
-//                    intent.putExtra("userId",userId);
-//                    ctx.startActivity(intent);
-//                }
-//            });
-//            alertDialog = builder.create();
-//            alertDialog.show();
-            //TODO currently being redirected to notifications page,,,, change this to news feed page
-            Intent intent=new Intent(activity,NewsFeed.class);
-            intent.putExtra("userId",userId);
-            activity.startActivity(intent);
-            activity.finish();
+            if(result.equals("Error")){
+                AlertDialog.Builder builder=new AlertDialog.Builder(ctx);
+                builder.setMessage("Username already exists or email is already registered");
+                builder.setCancelable(true);
+                builder.show();
+            }else{
+                mauth=FirebaseAuth.getInstance();
+                mauth.createUserWithEmailAndPassword(email,pswd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            databaseReference.child("users").child(mauth.getCurrentUser().getUid()).child("email").setValue(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    databaseReference.child("users").child(mauth.getCurrentUser().getUid()).child("username").setValue(username).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            Intent intent=new Intent(activity,EditProfile.class);
+                                            intent.putExtra("userId",Integer.valueOf(result));
+                                            activity.startActivity(intent);
+                                            activity.finish();
+                                            Toast.makeText(ctx, "Registration Success", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(ctx, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(ctx, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(ctx, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        }else if(method.equals("login")){
+            if(result.equals("Error")){
+                AlertDialog.Builder builder=new AlertDialog.Builder(ctx);
+                builder.setMessage("The username doesn't exist or the password is incorrect");
+                builder.setCancelable(true);
+                builder.show();
+            }else{
+                mauth=FirebaseAuth.getInstance();
+                mauth.signInWithEmailAndPassword(email,pswd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(ctx, "LoginIn Successful", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(ctx, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+                Intent intent=new Intent(activity,NewsFeed.class);
+                intent.putExtra("userId",userId);
+                activity.finish();
+                activity.startActivity(intent);
+
+            }
         }
     }
 
