@@ -1,42 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".EditProfile"
-    android:background="@drawable/bgmain"
     android:paddingTop="10dp"
     android:paddingLeft="10dp">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:theme="@style/ThemeOverlay.AppCompat.Light"
+        android:paddingTop="7dp"
+        android:paddingBottom="7dp"
+        app:elevation="0dp"
+        android:id="@+id/appbar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            android:outlineAmbientShadowColor="@color/white">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="22dp"
+                android:text="Edit Post"
+                android:textColor="#212121"
+                android:textStyle="bold"
+                android:paddingLeft="10dp"/>
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ImageView
+        android:id="@+id/edtPostPic"
+        android:layout_width="350dp"
+        android:layout_height="300dp"
+        android:layout_below="@id/appbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/round2"
+        android:src="@color/pastelpink" />
+
 
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:id="@+id/edtMobile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:layout_marginRight="25dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="25dp"
+        android:layout_below="@id/edtPostPic"
+        app:boxCornerRadiusBottomEnd="15dp"
+        app:boxCornerRadiusBottomStart="15dp"
+        app:boxCornerRadiusTopEnd="15dp"
+        app:boxCornerRadiusTopStart="15dp"
         app:boxStrokeColor="@color/black"
         app:boxStrokeWidth="3dp"
-        app:hintTextColor="@color/black"
-        android:id="@+id/edtPostTextCover"
+        app:hintTextColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4">
+        >
 
         <EditText
             android:id="@+id/edtPostText"
+            android:backgroundTint="@color/lightblue"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:hint="Add Text Here" />
+            android:layout_height="wrap_content"
+            android:hint="Write a caption" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnDone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/edtMobile"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center_vertical"
+        android:layout_marginTop="50dp"
         android:layout_marginBottom="72dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/primaryyellow"
         android:elevation="0dp"
         android:minWidth="0dp"
         android:minHeight="0dp"
@@ -44,67 +94,38 @@
         android:paddingTop="17dp"
         android:paddingRight="30dp"
         android:paddingBottom="17dp"
-        android:text="Done "
-        android:textColor="@color/yellow"
-        android:textSize="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:strokeColor="@color/yellow"
-        app:strokeWidth="2dp" />
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/uploadImagePost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:strokeColor="@color/yellow"
-        app:strokeWidth="2dp"
-        app:cardCornerRadius="100dp"
-        android:layout_marginEnd="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="30dp">
-
-    </com.google.android.material.card.MaterialCardView>
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Edit Post"
+        android:text="Done"
         android:textColor="@color/black"
-        android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.471"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
-
-    <ImageView
-        android:id="@+id/edtPostPic"
-        android:layout_width="300dp"
-        android:layout_height="150dp"
-        android:layout_marginBottom="228dp"
-        android:src="@mipmap/ic_user"
-        app:layout_constraintBottom_toTopOf="@+id/btnDone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtPostTextCover"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Upload Post Pic"
-        android:textSize="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/edtPostPic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtPostTextCover"
-        app:layout_constraintVertical_bias="0.15" />
+        android:textSize="15dp" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- <TextView
+         android:id="@+id/textView4"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="Add Post"
+         android:textColor="@color/black"
+         android:textSize="30dp"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.471"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent"
+         app:layout_constraintVertical_bias="0.022" />
+
+
+     <TextView
+         android:id="@+id/textView6"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="Upload Post Pic"
+         android:textSize="15dp"
+         app:layout_constraintBottom_toTopOf="@+id/uploadPostPic"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.501"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/edtMobile"
+         app:layout_constraintVertical_bias="0.15" />-->
+
+
+</RelativeLayout>
