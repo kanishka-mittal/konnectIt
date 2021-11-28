@@ -79,8 +79,8 @@ public class NewsFeedAdd extends AppCompatActivity {
                             intent.putExtra("userId",userId);
                             intent.putExtra("accessedByUser", userId);
                             startActivity(intent);
-
                             overridePendingTransition(0,0);
+                            finish();
                             return true;
                     }
 
@@ -89,7 +89,6 @@ public class NewsFeedAdd extends AppCompatActivity {
                             Intent intent=new Intent(getApplicationContext(),NewsFeed.class);
                             intent.putExtra("userId",userId);
                             startActivity(intent);
-
                             overridePendingTransition(0,0);
                             finish();
                             return true;
@@ -98,7 +97,6 @@ public class NewsFeedAdd extends AppCompatActivity {
                             Intent intent=new Intent(getApplicationContext(),Notifications.class);
                             intent.putExtra("userId",userId);
                             startActivity(intent);
-
                             overridePendingTransition(0,0);
                             finish();
                             return true;
@@ -108,7 +106,6 @@ public class NewsFeedAdd extends AppCompatActivity {
                             Intent intent=new Intent(getApplicationContext(),FriendRequests.class);
                             intent.putExtra("userId",userId);
                             startActivity(intent);
-
                             overridePendingTransition(0,0);
                             finish();
                             return true;

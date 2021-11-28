@@ -144,12 +144,6 @@ public class SearchUsersBackgroundTask extends AsyncTask<String,User,Void> {
                     builder.setCancelable(true);
                 }else if(responseString.equals("Already Received")){
                     builder.setMessage("you have a pending friend request from this user");
-                    builder.setPositiveButton("Pending Friend Requests", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            Toast.makeText(ctx, "Functionality to be added", Toast.LENGTH_SHORT).show();
-                        }
-                    });
                     builder.setCancelable(true);
                 }else if(responseString.equals("Sent")){
                     builder.setMessage("Friend Request Sent");

@@ -218,6 +218,10 @@ public class BackgroundTask extends AsyncTask<String,String,String> {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(ctx, "LoginIn Successful", Toast.LENGTH_SHORT).show();
+                            Intent intent=new Intent(activity,NewsFeed.class);
+                            intent.putExtra("userId",userId);
+                            activity.finish();
+                            activity.startActivity(intent);
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
@@ -226,10 +230,7 @@ public class BackgroundTask extends AsyncTask<String,String,String> {
                         Toast.makeText(ctx, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
-                Intent intent=new Intent(activity,NewsFeed.class);
-                intent.putExtra("userId",userId);
-                activity.finish();
-                activity.startActivity(intent);
+
 
             }
         }

@@ -57,11 +57,11 @@ public class comment_reply extends AppCompatActivity {
 
                     comments_bgtasks bgTask=new comments_bgtasks(comment_reply.this,commentId,userId,replytext);
                     bgTask.execute(method);
-                    finish();
                     Intent intent=new Intent(comment_reply.this,comment_reply.class);
                     intent.putExtra("commentId",commentId);
                     intent.putExtra("userId",userId);
                     startActivity(intent);
+                    finish();
                     overridePendingTransition(0, 0);
                 }
 

@@ -66,11 +66,11 @@ public class EditProfileBackgroundTask extends AsyncTask<Void,Void,String> {
             httpURLConnection.setDoInput(true);
             bufferedWriter=new BufferedWriter(new OutputStreamWriter(httpURLConnection.getOutputStream(),"UTF-8"));
             System.out.println("##################################################################");
-            System.out.println(convertImage);
+//            System.out.println(convertImage);
             String data= URLEncoder.encode("userId", "UTF-8") + "=" + URLEncoder.encode(Integer.toString(userId), "UTF-8") + "&" + URLEncoder.encode("image_path", "UTF-8") + "=" + URLEncoder.encode(convertImage, "UTF-8")+ "&" + URLEncoder.encode("lastName", "UTF-8") + "=" + URLEncoder.encode(lastname, "UTF-8")+ "&" + URLEncoder.encode("Bio", "UTF-8") + "=" + URLEncoder.encode(bio, "UTF-8")+ "&" + URLEncoder.encode("mobNum", "UTF-8") + "=" + URLEncoder.encode(mobnum, "UTF-8")+ "&" + URLEncoder.encode("Age", "UTF-8") + "=" + URLEncoder.encode(age, "UTF-8")+ "&" + URLEncoder.encode("Gender", "UTF-8") + "=" + URLEncoder.encode(gender, "UTF-8");
             //String data= URLEncoder.encode("userId", "UTF-8") + "=" + URLEncoder.encode(Integer.toString(userId), "UTF-8") + "&" + URLEncoder.encode("lastName", "UTF-8") + "=" + URLEncoder.encode(lastname, "UTF-8")+ "&" + URLEncoder.encode("Bio", "UTF-8") + "=" + URLEncoder.encode(bio, "UTF-8")+ "&" + URLEncoder.encode("mobNum", "UTF-8") + "=" + URLEncoder.encode(mobnum, "UTF-8")+ "&" + URLEncoder.encode("Age", "UTF-8") + "=" + URLEncoder.encode(age, "UTF-8")+ "&" + URLEncoder.encode("Gender", "UTF-8") + "=" + URLEncoder.encode(gender, "UTF-8");
-            System.out.println(mobnum);
-            System.out.println("Print kra rha hun");
+//            System.out.println(mobnum);
+//            System.out.println("Print kra rha hun");
             bufferedWriter.write(data);
             bufferedWriter.flush();
             bufferedWriter.close();
