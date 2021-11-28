@@ -68,6 +68,13 @@
                         android:layout_weight="1"
                         android:id="@+id/firstNamepostpage"
                         android:textColor="@color/white"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Time"
+                        android:layout_weight="1"
+                        android:id="@+id/timePostPage"
+                        android:textColor="@color/white"/>
                 </LinearLayout>
 
                 <com.google.android.material.card.MaterialCardView

@@ -60,6 +60,8 @@ public class NewsFeedBackgroundTask extends AsyncTask<String,PostModel,Boolean> 
 
     }
 
+
+
     @Override
     protected Boolean doInBackground(String... params) {
         method=params[0];
@@ -104,7 +106,7 @@ public class NewsFeedBackgroundTask extends AsyncTask<String,PostModel,Boolean> 
                     while(count<jsonArray.length()){
                         JSONObject postObject=jsonArray.getJSONObject(count);
                         count++;
-                        PostModel postModel=new PostModel(postObject.getString("userName"),postObject.getString("firstName"),postObject.getInt("postId"),postObject.getInt("user_id"),postObject.getInt("numLikes"),postObject.getInt("numComments"),postObject.getString("postText"),postObject.getString("postImageURL"),postObject.getString("imageurl"));
+                        PostModel postModel=new PostModel(postObject.getString("userName"),postObject.getString("firstName"),postObject.getInt("postId"),postObject.getInt("user_id"),postObject.getInt("numLikes"),postObject.getInt("numComments"),postObject.getString("postText"),postObject.getString("postImageURL"),postObject.getString("imageurl"),postObject.getString("TIMEDIFF(CURRENT_TIMESTAMP, p.postedAt)"));
                         publishProgress(postModel);
                     }
                 }
@@ -167,7 +169,7 @@ public class NewsFeedBackgroundTask extends AsyncTask<String,PostModel,Boolean> 
                     while (count < jsonArray.length()) {
                         JSONObject postObject = jsonArray.getJSONObject(count);
                         count++;
-                        PostModel postModel = new PostModel(postObject.getString("userName"), postObject.getString("firstName"), postObject.getInt("postId"), postObject.getInt("user_id"), postObject.getInt("numLikes"), postObject.getInt("numComments"), postObject.getString("postText"), postObject.getString("postImageURL"), postObject.getString("imageurl"));
+                        PostModel postModel = new PostModel(postObject.getString("userName"), postObject.getString("firstName"), postObject.getInt("postId"), postObject.getInt("user_id"), postObject.getInt("numLikes"), postObject.getInt("numComments"), postObject.getString("postText"), postObject.getString("postImageURL"), postObject.getString("imageurl"),postObject.getString("TIMEDIFF(CURRENT_TIMESTAMP, p.postedAt)"));
                         publishProgress(postModel);
                     }
                 }

@@ -37,7 +37,7 @@ public class SinglePostBgTask extends AsyncTask<String,Void,String> {
     Activity activity;
     String method,timeDiff;
     int postId,userId;
-    TextView userName,firstName,numLikes,numComments,postContent;
+    TextView userName,firstName,numLikes,numComments,postContent,time;
     ImageView postImage,profilepic,like,dislike,dustbin,btnEditPost;
     EditText commentText;
     Button btnpostComment;
@@ -59,6 +59,7 @@ public class SinglePostBgTask extends AsyncTask<String,Void,String> {
         profilepic=activity.findViewById(R.id.profilepicpostpage);
         postContent=activity.findViewById(R.id.postTextpostpage);
         btnEditPost=activity.findViewById(R.id.btnEditPost);
+        time=activity.findViewById(R.id.timePostPage);
     }
 
     public  String getTimeString(String TimeDiff){
@@ -232,6 +233,7 @@ public class SinglePostBgTask extends AsyncTask<String,Void,String> {
                             timeDiff=postObject.getString("TIMEDIFF(CURRENT_TIMESTAMP, p.postedAt)");
                             String formatedTime= getTimeString(timeDiff);
                             System.out.println(formatedTime);
+                            time.setText(formatedTime);
                             System.out.println("Yahan print kiya hai formatted time");
                             if(!(postObject.getString("postImageURL").equals("null"))){
                                 Glide.with(ctx).asBitmap().placeholder(R.mipmap.ic_user).error(R.mipmap.ic_user).load("http://10.0.2.2/konnectIt/posts_image/"+postId+".png").into(postImage);

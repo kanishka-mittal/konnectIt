@@ -26,7 +26,20 @@ public class PostRecViewAdapter extends RecyclerView.Adapter<PostRecViewAdapter.
     Context ctx;
     Activity activity;
     int userId,accessedByUser;
-
+    public  String getTimeString(String TimeDiff){
+        String[] sections=TimeDiff.split(":");
+        int hours=Integer.parseInt(sections[0]);
+        int minutes=Integer.parseInt(sections[1]);
+        int seconds=Integer.parseInt(sections[2]);
+        if(hours>=24){
+            int days=hours/24;
+            return days + " day ago";
+        }
+        else if(hours>=1){
+            return hours + " hours ago";
+        }
+        else return minutes + " minutes ago";
+    }
     public PostRecViewAdapter(ArrayList<PostModel> posts, Context ctx, int userId,int accessedByUser) {
         this.posts = posts;
         this.ctx = ctx;
@@ -60,6 +73,7 @@ public class PostRecViewAdapter extends RecyclerView.Adapter<PostRecViewAdapter.
         holder.firstName.setText(post.getFirstName());
         holder.userName.setText(post.getUserName());
         holder.numLikes.setText(Integer.toString(post.getNumLikes()));
+        holder.timestamp.setText(getTimeString(post.getTimeStamp()));
         holder.numComments.setText(Integer.toString(post.getNumComments()));
         if(!(post.getImageUrl().equals("null"))){
             Glide.with(ctx).asBitmap().placeholder(R.mipmap.ic_user).error(R.mipmap.ic_user).load("http://10.0.2.2/konnectit/profilepics/"+Integer.toString(posts.get(position).getUserId())+".png").into(holder.profilepic);
@@ -163,7 +177,7 @@ public class PostRecViewAdapter extends RecyclerView.Adapter<PostRecViewAdapter.
         return posts.size();
     }
     public class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView userName,firstName,numLikes,numComments,postText;
+        private TextView userName,firstName,numLikes,numComments,postText,timestamp;
         private RelativeLayout postListItemParent;
         ImageView like,dislike,postImage,profilepic,share,dustbin;
         public ViewHolder(@NonNull View itemView) {
@@ -180,6 +194,7 @@ public class PostRecViewAdapter extends RecyclerView.Adapter<PostRecViewAdapter.
             postText=itemView.findViewById(R.id.postText);
             share=itemView.findViewById(R.id.share);
             dustbin=itemView.findViewById(R.id.dustbin);
+            timestamp=itemView.findViewById(R.id.timestamp);
         }
     }
 }
