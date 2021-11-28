@@ -56,7 +56,7 @@ public class EditProfile extends AppCompatActivity {
                 if(lastname.equals("")&&age.equals("")&&gender.equals("")&&mobnum.equals("")&&bio.equals("")){
                     Toast.makeText(EditProfile.this, "Please fill atleast one field!", Toast.LENGTH_SHORT).show();
                 }
-                else if(!gender.equals("Male")&&!gender.equals("Female")&&!gender.equals("Others")){
+                else if(!gender.equals("Male")&&!gender.equals("Female")&&!gender.equals("Others")&&!gender.equals("Others")){
                     Toast.makeText(EditProfile.this, "Gender format : Male,Female,Others", Toast.LENGTH_SHORT).show();
                 }
                 else{
