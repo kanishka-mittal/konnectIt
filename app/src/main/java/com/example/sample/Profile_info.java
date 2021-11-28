@@ -28,6 +28,7 @@ public class Profile_info extends Fragment {
     private String mParam1;
     private String mParam2;
     private int userId,accessedByUser;
+
     public Profile_info() {
         // Required empty public constructor
     }

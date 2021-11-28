@@ -83,6 +83,7 @@ public class SettingsPage extends AppCompatActivity {
                 bgTask.execute(method1);
                 Intent intent=new Intent(SettingsPage.this,Profile.class);
                 intent.putExtra("userId",userId);
+                intent.putExtra("accessedByUser",userId);
                 startActivity(intent);
                 finishAffinity();
             }
