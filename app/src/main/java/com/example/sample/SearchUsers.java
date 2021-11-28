@@ -47,7 +47,7 @@ public class SearchUsers extends AppCompatActivity {
             //BOTTOMBAR NAVIGATION
 
 
-            bottomNavigationView.setSelectedItemId(R.id.myprofile);
+            bottomNavigationView.setSelectedItemId(R.id.notifs);
             bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
