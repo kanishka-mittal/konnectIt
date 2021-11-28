@@ -186,6 +186,13 @@ public class Profile extends AppCompatActivity {
             overridePendingTransition(0, 0);
 
         }
+        if(item_id == R.id.settings){
+            Intent intent=new Intent(this,SettingsPage.class);
+            intent.putExtra("userId",userId);
+            this.startActivity(intent);
+            overridePendingTransition(0, 0);
+        }
+
 
         return true;
     }
