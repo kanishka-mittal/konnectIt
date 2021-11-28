@@ -109,7 +109,8 @@
             android:layout_width="match_parent"
             android:background="@drawable/round2"
             android:layout_height="wrap_content"
-            android:hint="Contact Number" />
+            android:hint="Contact Number"
+            android:inputType="number"/>
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/edtAgeoption"
@@ -131,7 +132,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/round2"
-            android:hint="Age" />
+            android:hint="Age"
+            android:inputType="number"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -154,7 +156,8 @@
             android:layout_width="match_parent"
             android:background="@drawable/round2"
             android:layout_height="wrap_content"
-            android:hint="Gender" />
+            android:hint="Gender"
+            />
 
     </com.google.android.material.textfield.TextInputLayout>
 
