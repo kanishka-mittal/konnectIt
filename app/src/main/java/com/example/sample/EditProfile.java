@@ -84,7 +84,7 @@ public class EditProfile extends AppCompatActivity {
 
     public void nextScreen(View view){
         finish();
-        Intent intent=new Intent(EditProfile.this,Notifications.class);
+        Intent intent=new Intent(EditProfile.this,NewsFeed.class);
         intent.putExtra("userId",userId);
         startActivity(intent);
     }
