@@ -38,6 +38,7 @@ public class ProfileBackgroundTask extends AsyncTask<String, Void, String>{
     String age;
     String gender;
     String bio;
+    String genderprivate,ageprivate,mobileprivate,bioprivate;
 
     public ProfileBackgroundTask(Context ctx,int userId, TextView fullname, TextView Username, Profile_info infopage) {
         this.ctx = ctx;
@@ -70,6 +71,8 @@ public class ProfileBackgroundTask extends AsyncTask<String, Void, String>{
                         JSONArray array = new JSONArray(info);
                         JSONObject profileinfo = array.getJSONObject(0);
 
+                        System.out.println(info);
+                        System.out.println("yahan print kiya info hai");
                         try {
 
                             username = profileinfo.getString("username");
@@ -80,6 +83,13 @@ public class ProfileBackgroundTask extends AsyncTask<String, Void, String>{
                             age = profileinfo.getString("age");
                             gender = profileinfo.getString("gender");
                             bio = profileinfo.getString("bio");
+                            System.out.println(profileinfo.getString("genderprivate"));
+                            System.out.println("Yahan print kiya hai gender parameter");
+
+                            bioprivate = profileinfo.getString("bioprivate");
+                            ageprivate = profileinfo.getString("ageprivate");
+                            mobileprivate = profileinfo.getString("mobileprivate");
+                            genderprivate = profileinfo.getString("genderprivate");
                             String fn;
                             if (lastName == "null") {
                                 fn = firstName;
@@ -89,32 +99,42 @@ public class ProfileBackgroundTask extends AsyncTask<String, Void, String>{
                             fullname.setText(fn);
                             Username.setText(username);
                             String agetext;
-                            if (age == "null") infopage.hideAge();
+                            if (age == "null"||ageprivate.equals("1")) {
+                                infopage.hideAge();
+                            }
                             else {
                                 agetext = "Age: " + age + " years";
                                 infopage.setAge(agetext);
                             }
 
                             String mobiletext;
-                            if (mobile == "null") infopage.hideMobile();
+                            if (mobile == "null"||mobileprivate.equals("1")) {
+                                infopage.hideMobile();
+                            }
                             else {
                                 mobiletext = "Mobile: " + mobile;
                                 infopage.setMobile(mobiletext);
                             }
                             String emailtext;
-                            if (email == "null") infopage.hideEmail();
+                            if (email == "null") {
+                                infopage.hideEmail();
+                            }
                             else {
                                 emailtext = "Email: " + email;
                                 infopage.setEmail(emailtext);
                             }
                             String gendertext;
-                            if (gender == "null") infopage.hideGender();
+                            if (gender == "null"||genderprivate.equals("1")) {
+                                infopage.hideGender();
+                            }
                             else {
                                 gendertext = "Gender: " + gender;
                                 infopage.setGender(gendertext);
                             }
                             String biotext;
-                            if (bio == "null") infopage.hideBio();
+                            if (bio == "null"||bioprivate.equals("1")) {
+                                infopage.hideBio();
+                            }
                             else {
                                 biotext = "Bio: " + bio;
                                 infopage.setBio(biotext);
