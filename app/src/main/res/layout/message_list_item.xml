@@ -12,14 +12,26 @@
         app:cardCornerRadius="20dp"
         android:id="@+id/recCard"
         >
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/recMsg"
-            android:text="yahanakjana"
-            android:textSize="20sp"
-            android:background="@color/chatBlue"
-            android:padding="7dp"/>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/recMsg"
+                android:text="yahanakjana"
+                android:textSize="20sp"
+                android:background="@color/chatBlue"
+                android:padding="7dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/chatBlue"
+                android:text="time"
+                android:id="@+id/recTime"/>
+        </LinearLayout>
+
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -31,13 +43,25 @@
         android:id="@+id/sendCard"
         android:visibility="gone"
         >
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="yahanakjana"
-            android:id="@+id/sentMsg"
-            android:textSize="20sp"
-            android:background="#F4F9F9"
-            android:padding="7dp"/>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="yahanakjana"
+                android:id="@+id/sentMsg"
+                android:textSize="20sp"
+                android:background="#F4F9F9"
+                android:padding="7dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#F4F9F9"
+                android:text="time"
+                android:id="@+id/sendTime"/>
+        </LinearLayout>
+
     </androidx.cardview.widget.CardView>
 </RelativeLayout>
