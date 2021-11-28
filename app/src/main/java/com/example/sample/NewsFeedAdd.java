@@ -1,5 +1,6 @@
 package com.example.sample;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,12 +9,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
 
 import java.io.ByteArrayOutputStream;
@@ -59,6 +62,64 @@ public class NewsFeedAdd extends AppCompatActivity {
 
             }
         });
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.dashboard);
+        if(true){
+            //BOTTOMBAR NAVIGATION
+
+
+            bottomNavigationView.setSelectedItemId(R.id.myprofile);
+            bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                    switch (item.getItemId()){
+                        case R.id.myprofile:
+                            Intent intent=new Intent(getApplicationContext(),Profile.class);
+                            intent.putExtra("userId",userId);
+                            intent.putExtra("accessedByUser", userId);
+                            startActivity(intent);
+
+                            overridePendingTransition(0,0);
+                            return true;
+                    }
+
+                    switch (item.getItemId()){
+                        case R.id.news:
+                            Intent intent=new Intent(getApplicationContext(),NewsFeed.class);
+                            intent.putExtra("userId",userId);
+                            startActivity(intent);
+
+                            overridePendingTransition(0,0);
+                            finish();
+                            return true;
+                    }switch (item.getItemId()){
+                        case R.id.notifs:
+                            Intent intent=new Intent(getApplicationContext(),Notifications.class);
+                            intent.putExtra("userId",userId);
+                            startActivity(intent);
+
+                            overridePendingTransition(0,0);
+                            finish();
+                            return true;
+
+                    }switch (item.getItemId()){
+                        case R.id.friendRequests:
+                            Intent intent=new Intent(getApplicationContext(),FriendRequests.class);
+                            intent.putExtra("userId",userId);
+                            startActivity(intent);
+
+                            overridePendingTransition(0,0);
+                            finish();
+                            return true;
+
+                    }
+                    return false;
+                }
+            });
+        }else{
+            bottomNavigationView.setVisibility(View.GONE);
+        }
 
         uploadPostPic=findViewById(R.id.uploadPostPic);
         uploadPostPic.setOnClickListener(new View.OnClickListener() {
