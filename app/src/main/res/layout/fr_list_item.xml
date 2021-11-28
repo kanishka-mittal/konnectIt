@@ -53,7 +53,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="first name "
+                    android:text="first name"
                     android:layout_weight="1"
                     android:id="@+id/firstName"
                     android:textColor="@color/white"/>
@@ -63,12 +63,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 app:cardCornerRadius="50dp"
+                android:layout_gravity="center_vertical"
                 app:strokeWidth="1dp"
                 app:strokeColor="@color/green">
                 <ImageView
                     android:id="@+id/accept"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:src="@mipmap/ic_accept"
                     android:layout_weight="0"
                     />
@@ -78,12 +79,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 app:cardCornerRadius="50dp"
+                android:layout_marginEnd="10dp"
+                android:layout_gravity="center_vertical"
                 app:strokeWidth="1dp"
                 app:strokeColor="@color/red">
                 <ImageView
                     android:id="@+id/dustbin"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:src="@mipmap/ic_delete"
                     android:layout_weight="0"
                     android:visibility="gone"
