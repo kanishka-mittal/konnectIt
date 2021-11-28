@@ -137,7 +137,11 @@ public class Post extends AppCompatActivity {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         DeletePostBgTask deletePostBgTask=new DeletePostBgTask(Post.this,postId);
                         deletePostBgTask.execute();
-                        finish();
+                        Intent intent=new Intent(ctx,Profile.class);
+                        intent.putExtra("userId",userId);
+                        intent.putExtra("accessedByUser",userId);
+                        startActivity(intent);
+                        finishAffinity();
                     }
                 });
                 builder.show();
