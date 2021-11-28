@@ -2,6 +2,7 @@ package com.example.sample;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageButton;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -31,10 +33,11 @@ import java.util.Map;
 
 public class OnePersonChatActivity extends AppCompatActivity {
     EditText message;
-    Button send;
+    AppCompatImageButton send;
     ListView chatListView;
     MessageListAdapter arrayAdapter;
     String email;
+    String username;
 //    ArrayAdapter arrayAdapter;
 //    ArrayList<String> messages=new ArrayList<>();
     ArrayList<Message> messages=new ArrayList<>();
@@ -52,6 +55,11 @@ public class OnePersonChatActivity extends AppCompatActivity {
 
         Intent intent=getIntent();
         String otherEmail=intent.getStringExtra("email");
+        username=intent.getStringExtra("userName");
+
+        TextView Username = findViewById(R.id.firstnamechat);
+        Username.setText(username);
+
         email=mAuth.getCurrentUser().getEmail();
         setTitle("Chat With "+otherEmail);
         send.setOnClickListener(new View.OnClickListener() {

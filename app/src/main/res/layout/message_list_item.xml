@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -10,7 +11,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginStart="10dp"
         android:id="@+id/recCard"
-
+        card_view:cardElevation="0dp"
         >
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/black"
-                android:paddingLeft="0do"
+                android:paddingLeft="0dp"
                 android:text="time"
                 android:id="@+id/recTime"/>
         </LinearLayout>
@@ -40,9 +41,10 @@
         android:layout_marginEnd="10dp"
         android:layout_marginTop="15dp"
         android:layout_marginStart="70dp"
-        app:cardCornerRadius="20dp"
         android:id="@+id/sendCard"
         android:visibility="gone"
+        card_view:cardElevation="0dp"
+        android:elevation="0dp"
         >
         <LinearLayout
             android:layout_width="match_parent"

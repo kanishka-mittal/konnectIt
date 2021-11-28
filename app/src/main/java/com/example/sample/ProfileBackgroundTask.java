@@ -99,7 +99,7 @@ public class ProfileBackgroundTask extends AsyncTask<String, Void, String>{
                             fullname.setText(fn);
                             Username.setText(username);
                             String agetext;
-                            if (age == "null"||ageprivate.equals("1")) {
+                            if (age == "null"||age.equals("")||ageprivate.equals("1")) {
                                 infopage.hideAge();
                             }
                             else {
@@ -108,7 +108,7 @@ public class ProfileBackgroundTask extends AsyncTask<String, Void, String>{
                             }
 
                             String mobiletext;
-                            if (mobile == "null"||mobileprivate.equals("1")) {
+                            if (mobile == "null"||mobile.equals("")||mobileprivate.equals("1")) {
                                 infopage.hideMobile();
                             }
                             else {
@@ -116,7 +116,7 @@ public class ProfileBackgroundTask extends AsyncTask<String, Void, String>{
                                 infopage.setMobile(mobiletext);
                             }
                             String emailtext;
-                            if (email == "null") {
+                            if (email == "null"||email.equals("")) {
                                 infopage.hideEmail();
                             }
                             else {
@@ -124,7 +124,7 @@ public class ProfileBackgroundTask extends AsyncTask<String, Void, String>{
                                 infopage.setEmail(emailtext);
                             }
                             String gendertext;
-                            if (gender == "null"||genderprivate.equals("1")) {
+                            if (gender == "null"||gender.equals("")||genderprivate.equals("1")) {
                                 infopage.hideGender();
                             }
                             else {
@@ -132,7 +132,7 @@ public class ProfileBackgroundTask extends AsyncTask<String, Void, String>{
                                 infopage.setGender(gendertext);
                             }
                             String biotext;
-                            if (bio == "null"||bioprivate.equals("1")) {
+                            if (bio == "null"||bio.equals("")||bioprivate.equals("1")) {
                                 infopage.hideBio();
                             }
                             else {
