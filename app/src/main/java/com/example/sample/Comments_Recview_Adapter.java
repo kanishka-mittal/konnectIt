@@ -59,6 +59,10 @@ public class Comments_Recview_Adapter extends RecyclerView.Adapter<Comments_Recv
             holder.dustbin.setVisibility(View.VISIBLE);
         }
 
+        if(commentuserId!=userID){
+            holder.dustbin.setVisibility(View.GONE);
+        }
+
         holder.commentText.setOnClickListener(new View.OnClickListener() {
 
             @Override
