@@ -8,9 +8,9 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="70dp"
         android:layout_marginTop="15dp"
-        android:layout_marginStart="5dp"
-        app:cardCornerRadius="20dp"
+        android:layout_marginStart="10dp"
         android:id="@+id/recCard"
+
         >
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,12 +22,13 @@
                 android:id="@+id/recMsg"
                 android:text="yahanakjana"
                 android:textSize="20sp"
-                android:background="@color/chatBlue"
-                android:padding="7dp"/>
+                android:background="@drawable/roundrec"
+                android:padding="10dp"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/chatBlue"
+                android:background="@color/black"
+                android:paddingLeft="0do"
                 android:text="time"
                 android:id="@+id/recTime"/>
         </LinearLayout>
@@ -36,9 +37,9 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="70dp"
+        android:layout_marginEnd="10dp"
         android:layout_marginTop="15dp"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="70dp"
         app:cardCornerRadius="20dp"
         android:id="@+id/sendCard"
         android:visibility="gone"
@@ -52,14 +53,19 @@
                 android:layout_height="match_parent"
                 android:text="yahanakjana"
                 android:id="@+id/sentMsg"
+                android:paddingStart="12dp"
                 android:textSize="20sp"
-                android:background="#F4F9F9"
-                android:padding="7dp"/>
+                android:textColor="@color/black"
+                android:background="@drawable/roundsend"
+                android:backgroundTint="@color/primaryyellow"
+                android:padding="10dp"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#F4F9F9"
+                android:background="@color/black"
                 android:text="time"
+                android:paddingRight="0dp"
+                android:textAlignment="textEnd"
                 android:id="@+id/sendTime"/>
         </LinearLayout>
 
