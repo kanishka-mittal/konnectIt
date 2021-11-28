@@ -46,7 +46,7 @@ public class ChatScreen extends AppCompatActivity {
                         FirebaseUser mFirebaseUser = mauth.getCurrentUser();
                         if(mFirebaseUser!=null){
                             if(!dataSnapshot.child("email").getValue().toString().equals(mauth.getCurrentUser().getEmail())){
-                                users.add(new ChatUser(dataSnapshot.child("username").getValue().toString(),dataSnapshot.child("email").getValue().toString()));
+                                users.add(new ChatUser(dataSnapshot.child("username").getValue().toString(),dataSnapshot.child("firstName").getValue().toString(),dataSnapshot.child("email").getValue().toString()));
                             }
                         }else{
                             Toast.makeText(ChatScreen.this, "Kyaa karen", Toast.LENGTH_SHORT).show();
@@ -77,6 +77,8 @@ public class ChatScreen extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent=new Intent(ChatScreen.this,OnePersonChatActivity.class);
                 intent.putExtra("email",users.get(i).getEmail());
+                intent.putExtra("userName",users.get(i).getUserName());
+                intent.putExtra("firstName",users.get(i).getFirstName());
                 startActivity(intent);
             }
         });
