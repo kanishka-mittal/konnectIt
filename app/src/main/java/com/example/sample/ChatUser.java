@@ -1,11 +1,20 @@
 package com.example.sample;
 
 public class ChatUser {
-    String userName,email;
+    String userName,firstName,email;
 
-    public ChatUser(String userName, String email) {
+    public ChatUser(String userName, String firstName,String email) {
         this.userName = userName;
-        this.email = email;
+        this.firstName = firstName;
+        this.email=email;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getUserName() {

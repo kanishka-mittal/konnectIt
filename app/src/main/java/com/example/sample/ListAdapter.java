@@ -30,12 +30,12 @@ public class ListAdapter extends ArrayAdapter<ChatUser> {
         ChatUser chatUser = getItem(position);
         if (chatUser != null) {
             TextView tt1 = (TextView) v.findViewById(R.id.userName);
-            TextView tt2 = (TextView) v.findViewById(R.id.email);
+            TextView tt2 = (TextView) v.findViewById(R.id.firstName);
             if (tt1 != null) {
                 tt1.setText(chatUser.getUserName());
             }
             if (tt2 != null) {
-                tt2.setText(chatUser.getEmail());
+                tt2.setText(chatUser.getFirstName());
             }
         }
         return v;

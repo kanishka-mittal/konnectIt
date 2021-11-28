@@ -128,7 +128,7 @@
                 <ImageView
                     android:id="@+id/postImagepostpage"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="350dp"
                     android:adjustViewBounds="true"
                     android:background="#222222"
                     android:scaleType="fitXY"
